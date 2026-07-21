@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>11주차 · 내 연구의 한 줄 — 연구방법론 교재</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Noto+Sans+KR:wght@300;400;500;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#1B2635;--paper:#F5F4EF;--grid:#D8DFE6;--graph:#3D6B8E;--hl:#FFD447;--sub:#6B7683;--gold:#C7A008;--card:#FFF}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Noto Sans KR',sans-serif;color:var(--ink);background:var(--paper);
+background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);
+background-size:32px 32px;line-height:1.95;font-size:16.5px}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+.wrap{max-width:820px;margin:0 auto;padding:0 24px}
+.eyebrow{font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.22em;color:var(--graph);text-transform:uppercase}
+h1,h2,h3,h4{font-family:'Gowun Batang',serif;font-weight:700;line-height:1.45}
+.mark{background:linear-gradient(transparent 62%,var(--hl) 62%,var(--hl) 94%,transparent 94%);padding:0 2px}
+header.page{padding:66px 0 46px;border-bottom:2px solid var(--ink);background:linear-gradient(rgba(245,244,239,.5),rgba(245,244,239,.9))}
+.crumb{font-family:'IBM Plex Mono',monospace;font-size:12px;margin-bottom:20px}
+.crumb a{color:var(--graph);text-decoration:none}
+.crumb a:hover{text-decoration:underline}
+.wk-badge{display:inline-block;font-family:'IBM Plex Mono',monospace;font-size:13px;font-weight:500;background:var(--hl);border:2px solid var(--ink);padding:4px 14px;margin-bottom:16px}
+header.page h1{font-size:clamp(27px,4.2vw,40px)}
+.lead{margin-top:16px;color:var(--sub);font-size:17px;max-width:660px}
+main{padding:24px 0 40px}
+section.ch{padding:44px 0;border-bottom:1px dashed var(--grid)}
+section.ch:last-of-type{border-bottom:none}
+.sec-no{font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--graph);letter-spacing:.18em;margin-bottom:8px}
+section.ch h2{font-size:25px;margin-bottom:20px}
+section.ch p{margin-bottom:18px;color:#2c3542;text-align:justify}
+section.ch p b{color:var(--ink)}
+.case{background:var(--card);border:2px solid var(--ink);box-shadow:6px 6px 0 rgba(27,38,53,.11);padding:26px 26px 20px;margin:28px 0}
+.case .case-tag{display:inline-block;font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.2em;background:var(--ink);color:var(--hl);padding:4px 12px;margin-bottom:12px}
+.case h4{font-size:17px;margin-bottom:10px}
+.case p{font-size:14.5px;color:#3a4350;margin-bottom:10px;line-height:1.85}
+.case .src{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--sub);border-top:1px dashed var(--grid);padding-top:10px;margin-top:6px}
+.note{border-left:4px solid var(--hl);background:rgba(255,212,71,.13);padding:16px 20px;margin:24px 0;font-size:15px}
+.note b{font-family:'Gowun Batang',serif}
+.vis{background:var(--card);border:2px solid var(--ink);padding:18px;margin:26px 0;box-shadow:6px 6px 0 rgba(27,38,53,.11)}
+.vis svg{width:100%;height:auto;display:block}
+.vis .cap{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--sub);margin-top:8px;text-align:right}
+.axis-label{font-family:'IBM Plex Mono',monospace;font-size:10px;fill:var(--sub)}
+table.terms{width:100%;border-collapse:collapse;margin:22px 0;background:var(--card);border:2px solid var(--ink);box-shadow:6px 6px 0 rgba(27,38,53,.11)}
+table.terms th{background:var(--ink);color:var(--card);font-family:'Gowun Batang',serif;font-size:14px;padding:11px 16px;text-align:left}
+table.terms td{padding:11px 16px;border-top:1px dashed var(--grid);font-size:14px;vertical-align:top}
+table.terms td:first-child{font-family:'Gowun Batang',serif;font-weight:700;white-space:nowrap;color:var(--graph);width:170px}
+.refs{background:var(--card);border:2px solid var(--ink);padding:26px 28px;margin-top:10px;box-shadow:6px 6px 0 rgba(27,38,53,.11)}
+.refs h3{font-size:18px;margin-bottom:14px}
+.refs ol{margin-left:20px}
+.refs li{font-size:13.5px;color:#3a4350;margin-bottom:9px;line-height:1.7}
+.refs .find{margin-top:16px;padding:13px 16px;background:var(--paper);border-left:4px solid var(--hl);font-size:13px;color:var(--sub)}
+.refs .find b{color:var(--ink)}
+.summary{background:var(--ink);color:var(--paper);padding:30px 30px;margin-top:34px}
+.summary .eyebrow{color:var(--hl)}
+.summary ul{margin:12px 0 0 20px}
+.summary li{font-size:15px;margin-bottom:9px;line-height:1.8}
+.pager{display:flex;justify-content:space-between;gap:14px;padding:44px 0 72px;flex-wrap:wrap}
+.pager a{flex:1;min-width:220px;text-decoration:none;color:var(--ink);background:var(--card);border:2px solid var(--ink);padding:18px 20px;transition:transform .15s,box-shadow .15s}
+.pager a:hover{transform:translate(-2px,-2px);box-shadow:5px 5px 0 rgba(27,38,53,.15)}
+.pager a .dir{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--graph);letter-spacing:.14em}
+.pager a .ti{font-family:'Gowun Batang',serif;font-weight:700;font-size:16px;margin-top:6px}
+.pager a.next{text-align:right}
+.pager a.home{flex:0 0 100%;text-align:center;background:var(--paper)}
+footer{border-top:1px solid var(--grid);padding:24px 0;text-align:center;font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--sub)}
+</style>
+</head>
+<body>
+<header class="page">
+  <div class="wrap">
+    <div class="crumb"><a href="index.html">← 강의 개요</a> / 제3부 · 논문 스토리 / 강의 교재</div>
+    <span class="wk-badge">제11장 · 11주차</span>
+    <h1>내 연구의 한 줄</h1>
+    <p class="lead">'나는 무엇을 왜 연구했나'를 한 문장으로 압축한다. 이 문장이 이후 모든 장 — 서론, 결과, 결론, 심사 답변 — 의 나침반이 된다.</p>
+  </div>
+</header>
+<main>
+<section class="ch"><div class="wrap"><div class="sec-no">11.1</div><h2>연구 문장 — 논문 전체를 지배하는 한 줄</h2><p>좋은 논문은 한 문장으로 요약된다. 형식은 이렇다. <b>'[기존 연구의 공백]이 있어서, [질문]을 [방법]으로 답했더니 [발견/기여]를 얻었다.'</b> 이 문장이 흐리면 서론의 초점이 흐려지고, 결과 절의 구성이 산만해지며, 심사 답변서에서 방어할 진지가 사라진다.</p><div class="case"><span class="case-tag">연구 문장의 실례</span><h4>국내 연구를 한 줄로 압축해 보면</h4><p>제6장의 매개 연구를 연구 문장으로 압축하면 이렇다 — '기존 CPTED 연구는 물리적 환경과 범죄두려움의 직접 관계를 주로 보아 효과의 경로가 불분명했기에(공백), 무질서 인식의 매개 역할을(질문) 도시재생 지역 주민 설문과 구조방정식으로 검증하여(방법), 직접 효과는 없고 무질서를 매개한 간접 효과가 있음을 보였다(기여).'</p><p>제5장의 조절 연구는 이렇다 — 'CPTED의 효과가 어디서나 같다고 가정되어 왔기에(공백), 지역의 취약수준에 따라 효과가 달라지는지를(질문) 서울 시민 800명 설문으로 검토하여(방법), 사회경제적 맥락에 따른 효과성 차이를 확인했다(기여).'</p><p>두 문장을 소리 내어 읽어 보라. 각 논문이 왜 존재해야 하는지가 문장 안에 들어 있다. 여러분의 학위논문도 이 형식의 한 줄을 가져야 하며, 그 한 줄을 만드는 데 제1부와 제2부의 훈련이 모두 동원된다 — 공백은 제2부의 계보 추적에서, 질문의 구조(영향? 조절? 매개?)는 제1부의 관계 읽기에서 나온다.</p><div class="src">본문에 인용된 각 원문의 서지사항은 제5·6장 참고문헌을 보라.</div></div></div></section><section class="ch"><div class="wrap"><div class="sec-no">11.2</div><h2>논문은 스토리 아크다</h2><p>소설에 기승전결이 있듯 논문에도 서사의 곡선이 있다. 평온한 세계(선행연구가 쌓아 온 것) → 균열(공백의 발견) → 모험(방법과 결과) → 귀환(결론과 기여). 독자를 이 곡선에 태우는 것이 제3부 전체의 목표이며, 제12장부터 각 구간의 작법을 다룬다.</p><div class="vis"><svg viewBox="0 0 880 260" role="img" aria-label="논문 스토리 아크">
+<path d="M 60 210 C 220 205, 300 100, 440 76 C 570 52, 660 88, 820 60" fill="none" stroke="#3D6B8E" stroke-width="4" stroke-linecap="round"/>
+<circle cx="60" cy="210" r="8" fill="#FFD447" stroke="#1B2635" stroke-width="2.5"/>
+<text x="60" y="240" text-anchor="middle" font-size="12.5" font-weight="500">한 줄</text>
+<circle cx="255" cy="166" r="8" fill="#FFF" stroke="#1B2635" stroke-width="2.5"/>
+<text x="255" y="142" text-anchor="middle" font-size="12.5" font-weight="500">서론</text>
+<circle cx="440" cy="76" r="8" fill="#FFF" stroke="#1B2635" stroke-width="2.5"/>
+<text x="440" y="52" text-anchor="middle" font-size="12.5" font-weight="500">결과</text>
+<circle cx="640" cy="76" r="8" fill="#FFF" stroke="#1B2635" stroke-width="2.5"/>
+<text x="640" y="108" text-anchor="middle" font-size="12.5" font-weight="500">결론</text>
+<circle cx="820" cy="60" r="8" fill="#FFD447" stroke="#1B2635" stroke-width="2.5"/>
+<text x="820" y="36" text-anchor="middle" font-size="12.5" font-weight="500">투고</text>
+</svg><div class="cap">그림 11-1. 논문의 스토리 아크</div></div></div></section><section class="ch"><div class="wrap"><div class="sec-no">11.3</div><h2>질적·기술개발 연구자를 위한 양적 사전 연구 설계</h2><p>제1장의 약속을 여기서 구체화한다. 본 연구가 질적이거나 기술개발이라도, 연구 문장의 '공백'과 '방법' 부분을 단단하게 만드는 데 좁은 양적 탐색이 결정적으로 기여한다.</p><p>질적 연구자의 경우 — 도시재생 지역의 장소성 형성을 심층 인터뷰로 연구한다면, 인터뷰에 앞서 전국 도시재생 사업지의 유형·규모·시기 분포를 공공데이터로 정리하라. 그 분포 위에서 '전형적 사례'인지 '극단적 사례'인지를 명시하며 대상지를 고르면, '왜 이 세 동네인가'라는 질문에 데이터로 답할 수 있다. 청주 중앙동 도시재생 지역의 장소성 형성을 다룬 국내 연구처럼, 사례 연구도 대상지 선정의 논리에서 설득력이 갈린다.</p><p>기술개발 연구자의 경우 — BIM 기반 자동 검토 도구를 개발한다면, 기존 수작업 검토의 소요 시간·오류율 분포를 소규모라도 먼저 측정하라. 그 분포가 개선 목표치의 근거가 되고, 개발 후 성능 비교의 기준선(baseline)이 된다. 변수 두세 개, 표본 수십 건이면 충분하다 — 요점은 규모가 아니라, 주장의 모든 수치에 출처가 있게 만드는 것이다.</p></div></section><div class="wrap"><div class="summary"><div class="eyebrow">이 장의 요약</div><ul><li>연구 문장은 공백–질문–방법–기여의 한 줄이며, 논문 전체의 나침반이다. 실제 국내 연구들도 이 형식으로 압축된다.</li><li>논문은 평온–균열–모험–귀환의 스토리 아크를 탄다.</li><li>질적 연구는 사례 선정의 근거로, 기술개발 연구는 기준선 확보로 — 좁은 양적 사전 탐색이 연구 문장을 단단하게 만든다.</li></ul></div></div><div class="wrap" style="padding-top:30px"><div class="refs"><h3>참고문헌</h3><ol><li>도시재생사업이 장소성 형성에 미친 영향 분석: 청주시 중앙동 도시재생사업 대상지를 중심으로. KCI 등재 학술지. — 사례 대상지 선정과 장소성 형성 요인 구성의 예.</li></ol><div class="find"><b>더 찾아보려면</b> — 자신의 연구 문장 초안을 이 장의 형식으로 세 번 고쳐 써 보라. 세 번째 버전이 대개 학위논문 초록의 첫 문단이 된다.</div></div></div></main>
+<div class="wrap"><div class="pager"><a href="week10.html"><span class="dir">← 제10장</span><div class="ti">검증 흐름 읽기 — 명제는 어떻게 자라는가</div></a><a class="next" href="week12.html"><span class="dir">제12장 →</span><div class="ti">서론 — 독자를 끌어당기는 법</div></a>
+<a class="home" href="index.html"><span class="dir">INDEX</span><div class="ti">강의 개요로 돌아가기</div></a>
+</div></div>
+<footer>연구방법론 강의 교재 · 제11장 · 본문 예시의 수치는 교육용 가상 데이터이며, 인용 논문의 결과는 해당 원문을 따릅니다</footer>
+</body></html>

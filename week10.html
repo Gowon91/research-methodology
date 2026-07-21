@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>10주차 · 검증 흐름 읽기 — 명제는 어떻게 자라는가 — 연구방법론 교재</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Noto+Sans+KR:wght@300;400;500;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#1B2635;--paper:#F5F4EF;--grid:#D8DFE6;--graph:#3D6B8E;--hl:#FFD447;--sub:#6B7683;--gold:#C7A008;--card:#FFF}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Noto Sans KR',sans-serif;color:var(--ink);background:var(--paper);
+background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);
+background-size:32px 32px;line-height:1.95;font-size:16.5px}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+.wrap{max-width:820px;margin:0 auto;padding:0 24px}
+.eyebrow{font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.22em;color:var(--graph);text-transform:uppercase}
+h1,h2,h3,h4{font-family:'Gowun Batang',serif;font-weight:700;line-height:1.45}
+.mark{background:linear-gradient(transparent 62%,var(--hl) 62%,var(--hl) 94%,transparent 94%);padding:0 2px}
+header.page{padding:66px 0 46px;border-bottom:2px solid var(--ink);background:linear-gradient(rgba(245,244,239,.5),rgba(245,244,239,.9))}
+.crumb{font-family:'IBM Plex Mono',monospace;font-size:12px;margin-bottom:20px}
+.crumb a{color:var(--graph);text-decoration:none}
+.crumb a:hover{text-decoration:underline}
+.wk-badge{display:inline-block;font-family:'IBM Plex Mono',monospace;font-size:13px;font-weight:500;background:var(--hl);border:2px solid var(--ink);padding:4px 14px;margin-bottom:16px}
+header.page h1{font-size:clamp(27px,4.2vw,40px)}
+.lead{margin-top:16px;color:var(--sub);font-size:17px;max-width:660px}
+main{padding:24px 0 40px}
+section.ch{padding:44px 0;border-bottom:1px dashed var(--grid)}
+section.ch:last-of-type{border-bottom:none}
+.sec-no{font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--graph);letter-spacing:.18em;margin-bottom:8px}
+section.ch h2{font-size:25px;margin-bottom:20px}
+section.ch p{margin-bottom:18px;color:#2c3542;text-align:justify}
+section.ch p b{color:var(--ink)}
+.case{background:var(--card);border:2px solid var(--ink);box-shadow:6px 6px 0 rgba(27,38,53,.11);padding:26px 26px 20px;margin:28px 0}
+.case .case-tag{display:inline-block;font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.2em;background:var(--ink);color:var(--hl);padding:4px 12px;margin-bottom:12px}
+.case h4{font-size:17px;margin-bottom:10px}
+.case p{font-size:14.5px;color:#3a4350;margin-bottom:10px;line-height:1.85}
+.case .src{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--sub);border-top:1px dashed var(--grid);padding-top:10px;margin-top:6px}
+.note{border-left:4px solid var(--hl);background:rgba(255,212,71,.13);padding:16px 20px;margin:24px 0;font-size:15px}
+.note b{font-family:'Gowun Batang',serif}
+.vis{background:var(--card);border:2px solid var(--ink);padding:18px;margin:26px 0;box-shadow:6px 6px 0 rgba(27,38,53,.11)}
+.vis svg{width:100%;height:auto;display:block}
+.vis .cap{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--sub);margin-top:8px;text-align:right}
+.axis-label{font-family:'IBM Plex Mono',monospace;font-size:10px;fill:var(--sub)}
+table.terms{width:100%;border-collapse:collapse;margin:22px 0;background:var(--card);border:2px solid var(--ink);box-shadow:6px 6px 0 rgba(27,38,53,.11)}
+table.terms th{background:var(--ink);color:var(--card);font-family:'Gowun Batang',serif;font-size:14px;padding:11px 16px;text-align:left}
+table.terms td{padding:11px 16px;border-top:1px dashed var(--grid);font-size:14px;vertical-align:top}
+table.terms td:first-child{font-family:'Gowun Batang',serif;font-weight:700;white-space:nowrap;color:var(--graph);width:170px}
+.refs{background:var(--card);border:2px solid var(--ink);padding:26px 28px;margin-top:10px;box-shadow:6px 6px 0 rgba(27,38,53,.11)}
+.refs h3{font-size:18px;margin-bottom:14px}
+.refs ol{margin-left:20px}
+.refs li{font-size:13.5px;color:#3a4350;margin-bottom:9px;line-height:1.7}
+.refs .find{margin-top:16px;padding:13px 16px;background:var(--paper);border-left:4px solid var(--hl);font-size:13px;color:var(--sub)}
+.refs .find b{color:var(--ink)}
+.summary{background:var(--ink);color:var(--paper);padding:30px 30px;margin-top:34px}
+.summary .eyebrow{color:var(--hl)}
+.summary ul{margin:12px 0 0 20px}
+.summary li{font-size:15px;margin-bottom:9px;line-height:1.8}
+.pager{display:flex;justify-content:space-between;gap:14px;padding:44px 0 72px;flex-wrap:wrap}
+.pager a{flex:1;min-width:220px;text-decoration:none;color:var(--ink);background:var(--card);border:2px solid var(--ink);padding:18px 20px;transition:transform .15s,box-shadow .15s}
+.pager a:hover{transform:translate(-2px,-2px);box-shadow:5px 5px 0 rgba(27,38,53,.15)}
+.pager a .dir{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--graph);letter-spacing:.14em}
+.pager a .ti{font-family:'Gowun Batang',serif;font-weight:700;font-size:16px;margin-top:6px}
+.pager a.next{text-align:right}
+.pager a.home{flex:0 0 100%;text-align:center;background:var(--paper)}
+footer{border-top:1px solid var(--grid);padding:24px 0;text-align:center;font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--sub)}
+</style>
+</head>
+<body>
+<header class="page">
+  <div class="wrap">
+    <div class="crumb"><a href="index.html">← 강의 개요</a> / 제2부 · 개념 추적 / 강의 교재</div>
+    <span class="wk-badge">제10장 · 10주차</span>
+    <h1>검증 흐름 읽기 — 명제는 어떻게 자라는가</h1>
+    <p class="lead">하나의 명제가 후속 연구에 의해 귀납적으로 쌓였는지 연역적으로 검증됐는지 읽고, 1,000편 규모의 문헌을 AI로 훑는 파이프라인을 설계한다.</p>
+  </div>
+</header>
+<main>
+<section class="ch"><div class="wrap"><div class="sec-no">10.1</div><h2>명제가 자라는 두 가지 방식</h2><p>원저에서 태어난 명제는 두 가지 방식으로 자란다. 첫째는 <b>귀납적 축적</b>이다. 여러 사례연구가 서로 다른 도시, 다른 시기, 다른 자료에서 비슷한 패턴을 반복 보고하면서 명제가 굳어지는 경우다. 개별 연구 하나하나는 일반화에 약하지만, 축적되면 강해진다. CPTED의 효과에 관한 국내 연구사가 전형적이다 — 국내외 선행연구를 종합한 고찰 연구는 CPTED 적용의 효과로 범죄율 감소, 범죄두려움 감소, 지가 상승, 이웃관계 증진 등이 보고되어 왔음을 정리하면서도, 국내 연구의 실증적 검증이 더 필요하다는 한계를 지적했다.</p><p>둘째는 <b>연역적 검증</b>이다. 명제로부터 가설을 도출해 새 데이터로 시험하는 경우다. 한 편이라도 엄밀한 반증이 나오면 명제는 수정되거나 조건이 붙는다. 제5장에서 본 취약수준 연구가 좋은 예다 — 'CPTED는 두려움을 줄인다'는 일반 명제에 '지역의 사회경제적 맥락에 따라'라는 조건이 붙은 것이다.</p><p>여러분이 어떤 명제를 논문의 토대로 삼을 때, 그 명제가 어느 방식으로 얼마나 지지되어 왔는지가 곧 여러분 논문의 토대 강도다. 서론에서 '많은 연구들이 밝혀 왔듯'이라고 쓰려면, 실제로 몇 편이, 어떤 방식으로 밝혔는지 셀 수 있어야 한다.</p></div></section><section class="ch"><div class="wrap"><div class="sec-no">10.2</div><h2>인용 네트워크 — 개념의 진화 지도</h2><p>원저에서 출발해 'Cited by'를 정방향으로 따라가면, 개념이 어느 분야로 퍼졌고 어디에서 변형·반박되었는지의 지도가 그려진다. Connected Papers, ResearchRabbit, VOSviewer 같은 도구는 이 지도를 자동으로 시각화해 준다. 읽는 법은 이렇다. 지도에 군집이 여러 개 보이면 개념이 분야별로 다르게 진화한 것이고, 원저와 멀리 떨어진 군집일수록 의미 변형의 가능성을 의심해야 한다.</p><p>장소성 개념이 좋은 예다. Relph와 Tuan에서 출발한 개념이 국내에서는 도시설계, 관광, 문학, 공간디자인 등 여러 분야로 갈라져 들어갔고, 분야마다 조작적 정의가 달라졌다. 국토계획 게재 동향 분석에 따르면 국내 장소성 연구는 2010년대 중반까지 활발하다가 이후 감소 추세를 보이는데, 이런 거시 동향 역시 인용 네트워크와 서지 데이터로 읽어내는 것이다.</p></div></section><section class="ch"><div class="wrap"><div class="sec-no">10.3</div><h2>1,000편을 훑는 4단계 파이프라인</h2><p>체계적 문헌 검토(SLR)의 축소판으로, 대량의 문헌을 사람이 다 읽지 않고 걸러서 깊이 읽는 절차를 설계한다.</p><table class="terms"><tr><th>용어</th><th>정의</th></tr><tr><td>① 수집</td><td>Scopus·WoS·OpenAlex에서 검색식으로 1,000~2,000편의 서지(제목·초록·키워드)를 내려받는다. 검색식과 날짜를 기록한다</td></tr><tr><td>② 1차 필터</td><td>포함/제외 기준을 먼저 문서화한 뒤, 제목+초록만으로 AI에게 관련성 분류를 시킨다. 1,500편이 150편으로 줄어든다</td></tr><tr><td>③ 패턴 파악</td><td>남은 문헌을 VOSviewer 등으로 키워드 군집 시각화하여 이 분야의 하위 주제와 방법론 지형을 파악한다</td></tr><tr><td>④ 선별 정독</td><td>핵심 20편은 직접 정독하고, 나머지는 AI 요약 후 제9장의 3항 대조로 검증한다</td></tr></table><div class="note"><b>스팟 체크 원칙</b> — AI가 '제외'로 분류한 문헌의 일부(예: 50편)를 무작위로 뽑아 직접 확인하고 오류율을 추정하라. 이 수치가 있어야 학위논문의 방법 절에 'AI 보조 선별의 신뢰성'을 쓸 수 있고, 심사자의 질문에 답할 수 있다. AI를 쓰는 것은 문제가 아니다 — 검증 없이 쓰는 것이 문제다.</div></div></section><div class="wrap"><div class="summary"><div class="eyebrow">이 장의 요약</div><ul><li>명제는 귀납적 축적(사례의 반복) 또는 연역적 검증(가설 시험)으로 자란다. 토대 명제의 지지 방식과 편수를 셀 수 있어야 한다.</li><li>인용 네트워크는 개념의 진화 지도다. 군집의 분화는 분야별 변형을, 원저와의 거리는 의미 변형 가능성을 시사한다.</li><li>대량 문헌은 수집→AI 필터→군집 시각화→선별 정독의 4단계로 다루되, 스팟 체크로 필터 오류율을 스스로 추정한다.</li></ul></div></div><div class="wrap" style="padding-top:30px"><div class="refs"><h3>참고문헌</h3><ol><li>국내·외 선행연구를 통한 CPTED 범죄예방 효과에 관한 연구. KCI 등재 학술지. — 귀납적 축적을 종합한 고찰 연구의 예.</li><li>유효은·고가영 (2021). 주거지역의 취약수준에 따른 CPTED 효과성에 관한 연구. <i>환경디자인과 안전</i>, 12(3). — 일반 명제에 조건이 붙는 연역적 검증의 예.</li></ol><div class="find"><b>더 찾아보려면</b> — Scopus 접근이 어렵다면 OpenAlex(openalex.org)의 무료 API로 같은 파이프라인을 구축할 수 있다. 'CPTED'로 시험 수집을 해 보라.</div></div></div></main>
+<div class="wrap"><div class="pager"><a href="week09.html"><span class="dir">← 제9장</span><div class="ti">원문 읽고 판단하기</div></a><a class="next" href="week11.html"><span class="dir">제11장 →</span><div class="ti">내 연구의 한 줄</div></a>
+<a class="home" href="index.html"><span class="dir">INDEX</span><div class="ti">강의 개요로 돌아가기</div></a>
+</div></div>
+<footer>연구방법론 강의 교재 · 제10장 · 본문 예시의 수치는 교육용 가상 데이터이며, 인용 논문의 결과는 해당 원문을 따릅니다</footer>
+</body></html>

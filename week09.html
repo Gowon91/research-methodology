@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>9주차 · 원문 읽고 판단하기 — 연구방법론 교재</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Noto+Sans+KR:wght@300;400;500;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#1B2635;--paper:#F5F4EF;--grid:#D8DFE6;--graph:#3D6B8E;--hl:#FFD447;--sub:#6B7683;--gold:#C7A008;--card:#FFF}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Noto Sans KR',sans-serif;color:var(--ink);background:var(--paper);
+background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);
+background-size:32px 32px;line-height:1.95;font-size:16.5px}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+.wrap{max-width:820px;margin:0 auto;padding:0 24px}
+.eyebrow{font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.22em;color:var(--graph);text-transform:uppercase}
+h1,h2,h3,h4{font-family:'Gowun Batang',serif;font-weight:700;line-height:1.45}
+.mark{background:linear-gradient(transparent 62%,var(--hl) 62%,var(--hl) 94%,transparent 94%);padding:0 2px}
+header.page{padding:66px 0 46px;border-bottom:2px solid var(--ink);background:linear-gradient(rgba(245,244,239,.5),rgba(245,244,239,.9))}
+.crumb{font-family:'IBM Plex Mono',monospace;font-size:12px;margin-bottom:20px}
+.crumb a{color:var(--graph);text-decoration:none}
+.crumb a:hover{text-decoration:underline}
+.wk-badge{display:inline-block;font-family:'IBM Plex Mono',monospace;font-size:13px;font-weight:500;background:var(--hl);border:2px solid var(--ink);padding:4px 14px;margin-bottom:16px}
+header.page h1{font-size:clamp(27px,4.2vw,40px)}
+.lead{margin-top:16px;color:var(--sub);font-size:17px;max-width:660px}
+main{padding:24px 0 40px}
+section.ch{padding:44px 0;border-bottom:1px dashed var(--grid)}
+section.ch:last-of-type{border-bottom:none}
+.sec-no{font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--graph);letter-spacing:.18em;margin-bottom:8px}
+section.ch h2{font-size:25px;margin-bottom:20px}
+section.ch p{margin-bottom:18px;color:#2c3542;text-align:justify}
+section.ch p b{color:var(--ink)}
+.case{background:var(--card);border:2px solid var(--ink);box-shadow:6px 6px 0 rgba(27,38,53,.11);padding:26px 26px 20px;margin:28px 0}
+.case .case-tag{display:inline-block;font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.2em;background:var(--ink);color:var(--hl);padding:4px 12px;margin-bottom:12px}
+.case h4{font-size:17px;margin-bottom:10px}
+.case p{font-size:14.5px;color:#3a4350;margin-bottom:10px;line-height:1.85}
+.case .src{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--sub);border-top:1px dashed var(--grid);padding-top:10px;margin-top:6px}
+.note{border-left:4px solid var(--hl);background:rgba(255,212,71,.13);padding:16px 20px;margin:24px 0;font-size:15px}
+.note b{font-family:'Gowun Batang',serif}
+.vis{background:var(--card);border:2px solid var(--ink);padding:18px;margin:26px 0;box-shadow:6px 6px 0 rgba(27,38,53,.11)}
+.vis svg{width:100%;height:auto;display:block}
+.vis .cap{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--sub);margin-top:8px;text-align:right}
+.axis-label{font-family:'IBM Plex Mono',monospace;font-size:10px;fill:var(--sub)}
+table.terms{width:100%;border-collapse:collapse;margin:22px 0;background:var(--card);border:2px solid var(--ink);box-shadow:6px 6px 0 rgba(27,38,53,.11)}
+table.terms th{background:var(--ink);color:var(--card);font-family:'Gowun Batang',serif;font-size:14px;padding:11px 16px;text-align:left}
+table.terms td{padding:11px 16px;border-top:1px dashed var(--grid);font-size:14px;vertical-align:top}
+table.terms td:first-child{font-family:'Gowun Batang',serif;font-weight:700;white-space:nowrap;color:var(--graph);width:170px}
+.refs{background:var(--card);border:2px solid var(--ink);padding:26px 28px;margin-top:10px;box-shadow:6px 6px 0 rgba(27,38,53,.11)}
+.refs h3{font-size:18px;margin-bottom:14px}
+.refs ol{margin-left:20px}
+.refs li{font-size:13.5px;color:#3a4350;margin-bottom:9px;line-height:1.7}
+.refs .find{margin-top:16px;padding:13px 16px;background:var(--paper);border-left:4px solid var(--hl);font-size:13px;color:var(--sub)}
+.refs .find b{color:var(--ink)}
+.summary{background:var(--ink);color:var(--paper);padding:30px 30px;margin-top:34px}
+.summary .eyebrow{color:var(--hl)}
+.summary ul{margin:12px 0 0 20px}
+.summary li{font-size:15px;margin-bottom:9px;line-height:1.8}
+.pager{display:flex;justify-content:space-between;gap:14px;padding:44px 0 72px;flex-wrap:wrap}
+.pager a{flex:1;min-width:220px;text-decoration:none;color:var(--ink);background:var(--card);border:2px solid var(--ink);padding:18px 20px;transition:transform .15s,box-shadow .15s}
+.pager a:hover{transform:translate(-2px,-2px);box-shadow:5px 5px 0 rgba(27,38,53,.15)}
+.pager a .dir{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--graph);letter-spacing:.14em}
+.pager a .ti{font-family:'Gowun Batang',serif;font-weight:700;font-size:16px;margin-top:6px}
+.pager a.next{text-align:right}
+.pager a.home{flex:0 0 100%;text-align:center;background:var(--paper)}
+footer{border-top:1px solid var(--grid);padding:24px 0;text-align:center;font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--sub)}
+</style>
+</head>
+<body>
+<header class="page">
+  <div class="wrap">
+    <div class="crumb"><a href="index.html">← 강의 개요</a> / 제2부 · 개념 추적 / 강의 교재</div>
+    <span class="wk-badge">제9장 · 9주차</span>
+    <h1>원문 읽고 판단하기</h1>
+    <p class="lead">원문 앞에 섰다면 물어야 한다 — 이 문장은 논문이 증명한 가설인가, 결론에서 스치듯 제안한 생각인가. 문장의 위치가 문장의 무게를 결정한다.</p>
+  </div>
+</header>
+<main>
+<section class="ch"><div class="wrap"><div class="sec-no">9.1</div><h2>주장의 위치가 주장의 무게를 결정한다</h2><p>학술 논문의 모든 문장이 같은 무게를 갖는 것은 아니다. 서론에서 가설로 제시되고(H1), 방법 절에서 검증 설계가 서술되고, 결과 절에서 통계적 증거와 함께 '지지되었다'고 판정된 문장 — 이것이 그 논문이 <b>증명한 명제</b>다. 반면 결론이나 논의의 끝자락에서 '~일 가능성이 있다', '후속 연구가 필요하다'는 형태로 등장하는 문장은 저자의 <b>제안</b>일 뿐, 그 논문 안에서 아무런 검증도 거치지 않았다.</p><p>문제는 후대의 인용에서 이 구분이 자주 무너진다는 것이다. 어떤 논문의 결론부 제안이 다른 논문의 서론에서 '△△(2010)에 따르면 A는 B를 향상시킨다'는 단정문으로 인용되고, 그 논문이 다시 인용되면서 제안은 어느새 정설이 된다. 제7장에서 말한 개념의 변형이 명제 수준에서도 일어나는 것이다. 여러분이 어떤 명제를 논문의 토대로 삼으려 한다면, 그 명제가 원문에서 어느 위치에 있었는지 반드시 확인해야 한다.</p><p>판별 신호를 기억해 두면 빠르다. 검증된 명제의 신호: 가설 번호(H1, H2), 구체적 통계치, 'supported/지지되었다'. 제안의 신호: 'may', 'might', 'suggest', 'future research', '~로 보인다', '~할 것으로 기대된다'.</p></div></section><section class="ch"><div class="wrap"><div class="sec-no">9.2</div><h2>판단 목적의 읽기 순서 — 앞에서부터 읽지 않는다</h2><p>명제의 지위를 판단하는 것이 목적이라면, 논문을 1페이지부터 정독하는 것은 비효율적이다. 순서는 이렇다.</p><table class="terms"><tr><th>용어</th><th>정의</th></tr><tr><td>① 초록</td><td>이 논문이 무엇을 주장하는지 30초 안에 파악한다</td></tr><tr><td>② 결론</td><td>저자의 최종 문장들을 확인한다 — 여기 있는 문장이 검증인지 제안인지가 관심사</td></tr><tr><td>③ 결과 역추적</td><td>결론의 각 문장이 결과 절의 어떤 증거(표·그림·통계치)와 연결되는지 확인한다</td></tr><tr><td>④ 분류</td><td>증거와 연결되면 '검증된 명제', 연결이 없으면 '제안'으로 분류하고 기록한다</td></tr></table><p>전체 정독은 이 판단이 끝난 뒤, 내 연구에 핵심적인 논문에 대해서만 한다. 대학원생의 시간은 유한하고, 읽어야 할 문헌은 수백 편이다. 모든 논문을 같은 깊이로 읽는 것은 미덕이 아니라 전략의 부재다.</p></div></section><section class="ch"><div class="wrap"><div class="sec-no">9.3</div><h2>AI 요약의 3항 대조 검증</h2><p>논문 PDF를 AI에게 주고 요약을 시키는 것은 이제 일상적인 작업 방식이다. 좋은 출발이지만, 요약을 연구노트에 적립하기 전에 세 가지를 원문과 대조해야 한다.</p><div class="note"><b>3항 대조</b> — ① AI가 말한 '핵심 주장'이 실제로 원문의 그 위치(가설–결과 사슬)에 있는가. ② AI가 인용한 수치·통계치가 원문과 일치하는가. ③ AI가 '증명되었다'고 표현한 것이 원문에서도 검증인가, 아니면 결론부의 제안을 격상시킨 것인가. — 세 항목을 통과한 요약만 연구노트에 남긴다.</div><p>이 절차가 번거로워 보일 수 있으나, 실제로는 논문당 5분이면 충분하다. 그리고 이 5분이, 존재하지 않는 근거 위에 6개월짜리 연구를 쌓는 사고를 막는다.</p></div></section><div class="wrap"><div class="summary"><div class="eyebrow">이 장의 요약</div><ul><li>가설–방법–결과의 사슬로 지지된 문장만이 그 논문이 증명한 명제다. 결론부의 제안이 후대 인용에서 정설로 격상되는 왜곡을 경계하라.</li><li>판단 목적의 읽기는 초록 → 결론 → 결과 역추적 → 분류의 순서로 하며, 정독은 핵심 논문에만 한다.</li><li>AI 요약은 주장의 위치·수치·검증 여부의 3항 대조를 통과한 것만 적립한다.</li></ul></div></div><div class="wrap" style="padding-top:30px"><div class="refs"><h3>참고문헌</h3><ol><li>연습 자료 — 제6장에서 소개한 도시재생-무질서-범죄두려움 매개 연구를 직접 KCI/DBpia에서 찾아, 초록→결론→결과의 순서로 읽고 '검증된 명제'와 '제안'을 각각 한 문장씩 추출해 보라.</li></ol><div class="find"><b>더 찾아보려면</b> — 이 장의 기술은 특정 문헌이 아니라 절차 자체다. 어떤 논문이든 좋으니 이번 주에 세 편에 적용해 보라.</div></div></div></main>
+<div class="wrap"><div class="pager"><a href="week08.html"><span class="dir">← 제8장</span><div class="ti">원문 찾는 법 — 국내외 DB와 저널</div></a><a class="next" href="week10.html"><span class="dir">제10장 →</span><div class="ti">검증 흐름 읽기 — 명제는 어떻게 자라는가</div></a>
+<a class="home" href="index.html"><span class="dir">INDEX</span><div class="ti">강의 개요로 돌아가기</div></a>
+</div></div>
+<footer>연구방법론 강의 교재 · 제9장 · 본문 예시의 수치는 교육용 가상 데이터이며, 인용 논문의 결과는 해당 원문을 따릅니다</footer>
+</body></html>
