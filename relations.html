@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>상관, 영향, 인과 — 무엇을 말할 수 있나</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Noto+Sans+KR:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#1B2635;--paper:#F5F4EF;--grid:#D8DFE6;--graph:#3D6B8E;--hl:#FFD447;--sub:#5C6774;--card:#fff;--warn:#B4492F;--gold:#9A7B00}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Noto Sans KR',sans-serif;color:var(--ink);background:var(--paper);background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);background-size:32px 32px;line-height:1.85;font-size:16px}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
+.wrap{max-width:920px;margin:0 auto;padding:0 24px}
+a{color:var(--graph)}
+.topbar{background:var(--paper);border-bottom:2px solid var(--ink);font-family:'IBM Plex Mono',monospace;font-size:12px}
+.topbar .wrap{display:flex;gap:18px;flex-wrap:wrap;padding-top:4px;padding-bottom:4px}
+.topbar a{display:inline-block;padding:8px 0;text-decoration:none}
+.topbar a:hover{text-decoration:underline}
+.eyebrow{font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.22em;color:var(--graph);margin-bottom:12px}
+h1,h2,h3{font-family:'Gowun Batang',serif;line-height:1.4}
+h1{font-size:clamp(28px,5vw,46px)}
+h2{font-size:clamp(23px,3.4vw,32px)}
+h3{font-size:19px}
+.mark{background:linear-gradient(transparent 62%,var(--hl) 62%,var(--hl) 94%,transparent 94%);padding:0 2px}
+header.hero{padding:64px 0 48px;border-bottom:2px solid var(--ink);background:linear-gradient(rgba(245,244,239,.55),rgba(245,244,239,.88))}
+.lead{color:var(--sub);margin-top:14px;max-width:620px}
+.quote{display:inline-block;margin-top:22px;background:var(--card);border:2px solid var(--ink);box-shadow:6px 6px 0 rgba(27,38,53,.11);padding:14px 20px;font-family:'Gowun Batang',serif;font-size:clamp(18px,2.6vw,23px)}
+section.blk{padding:64px 0;border-bottom:1px solid var(--grid)}
+.sec-no{font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.2em;color:var(--graph)}
+.blk h2{margin:6px 0 10px}
+.blk>.wrap>p.intro{color:var(--sub);max-width:660px;margin-bottom:26px}
+.panel{background:var(--card);border:2px solid var(--ink);box-shadow:6px 6px 0 rgba(27,38,53,.11);padding:22px}
+.two{display:grid;grid-template-columns:1.1fr .9fr;gap:24px;align-items:start}
+.two.even{grid-template-columns:1fr 1fr}
+.three{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+svg{display:block;width:100%;height:auto}
+.ax{font-family:'IBM Plex Mono',monospace;font-size:10px;fill:var(--sub)}
+.lab{font-family:'Noto Sans KR',sans-serif;font-size:11px;fill:var(--ink)}
+.ctrl{margin-top:14px}
+.ctrl label{display:block;font-family:'IBM Plex Mono',monospace;font-size:12px;margin-bottom:6px}
+input[type=range]{width:100%;height:36px;accent-color:var(--graph)}
+.btns{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.tbtn{font-family:'Noto Sans KR',sans-serif;font-size:14px;padding:10px 14px;min-height:44px;border:2px solid var(--ink);background:var(--card);color:var(--ink);cursor:pointer}
+.tbtn.on{background:var(--ink);color:var(--hl)}
+.tbtn:focus-visible,input:focus-visible,a:focus-visible,summary:focus-visible{outline:3px solid var(--graph);outline-offset:2px}
+.read{font-family:'IBM Plex Mono',monospace;font-size:13px;background:#FFFBE6;border:2px solid var(--ink);padding:10px 12px;margin-top:14px;line-height:1.7}
+.yes,.no{margin-top:12px;font-size:15px;padding:10px 12px;border-left:6px solid}
+.yes{border-color:var(--graph);background:#EEF3F7}
+.no{border-color:var(--warn);background:#FBEFEA}
+.tagline{font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.14em;color:var(--graph)}
+.step{background:var(--card);border:2px solid var(--ink);box-shadow:6px 6px 0 rgba(27,38,53,.11);padding:20px;position:relative}
+.step .lv{font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--sub)}
+.step h3{margin:4px 0 6px}
+.step .say{font-family:'Gowun Batang',serif;font-size:17px;margin:6px 0 10px}
+.step ul{margin:6px 0 0 1.1em;font-size:15px}
+.step.top{background:#FFFBE6}
+.badge{display:inline-block;font-family:'IBM Plex Mono',monospace;font-size:11px;padding:2px 8px;border:2px solid var(--ink);background:var(--hl);margin-top:10px}
+.cap{font-size:14px;color:var(--sub);margin-top:10px}
+table{width:100%;border-collapse:collapse;background:var(--card);border:2px solid var(--ink);min-width:560px}
+th,td{border:1px solid var(--grid);padding:10px 14px;text-align:left;vertical-align:top;font-size:15px}
+thead th{background:var(--ink);color:#fff;font-weight:500}
+tbody th{background:#FFFBE6;font-weight:500}
+.tscroll{overflow-x:auto}
+.ok{color:var(--graph);font-weight:700}
+.bad{color:var(--warn);font-weight:700}
+.note{margin-top:22px;background:#FFFBE6;border:2px solid var(--ink);border-left-width:8px;padding:16px 18px;font-size:15px}
+.pager{display:flex;gap:16px;flex-wrap:wrap;padding:40px 0 56px}
+.pager a{flex:1;min-width:220px;border:2px solid var(--ink);background:var(--card);box-shadow:6px 6px 0 rgba(27,38,53,.11);padding:16px 18px;text-decoration:none;color:var(--ink)}
+.pager .dir{font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--graph)}
+footer{border-top:2px solid var(--ink);padding:18px 0;font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--sub)}
+@media(max-width:760px){.two,.two.even{grid-template-columns:1fr}.three{grid-template-columns:1fr}section.blk{padding:44px 0}header.hero{padding:44px 0 34px}.wrap{padding:0 16px}.panel{padding:16px}}
+</style>
+</head>
+<body>
+<nav class="topbar" aria-label="이동"><div class="wrap"><a href="index.html">← 첫 화면</a><a href="methods.html#corr-vs-effect">← 연구방법론 홈</a></div></nav>
+
+<header class="hero"><div class="wrap">
+<div class="eyebrow">PART 1 — 보충 · 데이터 해석</div>
+<h1>산점도의 <span class="mark">방향과 강도</span>,<br>인과라고 말해도 될까</h1>
+<p class="lead">점이 오른쪽 위로 흐르고 선에 바짝 모여 있어도, 그것만으로 “원인과 결과”를 말할 수는 없습니다. 무엇을 말할 수 있고 무엇을 말할 수 없는지 그래프로 하나씩 확인합니다.</p>
+<div class="quote">“x가 높을수록 y가 커진다” — 이 문장은 어떤 관계를 말하는가?</div>
+</div></header>
+
+<main>
+<!-- 1. 방향과 강도 -->
+<section class="blk" id="s1"><div class="wrap">
+<div class="sec-no">01</div>
+<h2>방향과 강도는 무엇을 알려 주나</h2>
+<p class="intro">슬라이더로 상관계수 r을 바꿔 보세요. 점의 모양이 변하는 것은 <b>함께 움직이는 정도</b>입니다. 누가 누구를 움직였는지는 어디에도 나타나지 않습니다.</p>
+<div class="two">
+  <div class="panel">
+    <svg viewBox="0 0 400 280" role="img" aria-label="상관계수에 따라 모양이 바뀌는 산점도" id="s1svg">
+      <line x1="48" y1="20" x2="48" y2="244" stroke="#1B2635" stroke-width="2"/>
+      <line x1="48" y1="244" x2="388" y2="244" stroke="#1B2635" stroke-width="2"/>
+      <text class="ax" x="388" y="266" text-anchor="end">x →</text><text class="ax" x="10" y="26">y</text>
+      <g id="s1dots" fill="#3D6B8E" opacity=".85"></g>
+      <line id="s1line" stroke="#C7A008" stroke-width="3.5" stroke-linecap="round"/>
+    </svg>
+  </div>
+  <div>
+    <div class="ctrl"><label for="s1r">상관계수 r = <span id="s1rv">+0.70</span></label>
+      <input type="range" id="s1r" min="-100" max="100" step="5" value="70"></div>
+    <div class="read" id="s1read" role="status" aria-live="polite"></div>
+    <div class="yes"><b>알려 주는 것</b> · 부호(방향)와 |r|(강도), 즉 함께 움직이는 정도. 한쪽 값을 알면 다른 쪽을 얼마나 잘 맞힐 수 있는지.</div>
+    <div class="no"><b>알려 주지 않는 것</b> · x가 y의 원인인지, y가 x의 원인인지, 제3의 요인이 둘을 함께 움직이는지. r이 ±1에 가까워도 마찬가지입니다.</div>
+  </div>
+</div>
+<p class="cap">※ 이 그래프의 점은 설명용 가상 자료입니다. “방향”은 부호(양·음)이지 “원인 → 결과”의 방향이 아닙니다. 강도 구분(약함·중간·강함)은 관례일 뿐 분야마다 기준이 다릅니다.</p>
+</div></section>
+
+<!-- 2. 세 명제 -->
+<section class="blk" id="s2"><div class="wrap">
+<div class="sec-no">02</div>
+<h2>세 가지 명제는 필요한 근거가 다르다</h2>
+<p class="intro">같은 산점도에서 시작해도 “무엇이라고 쓸 수 있는가”는 근거에 따라 한 칸씩 올라갑니다.</p>
+<div class="three">
+  <article class="step">
+    <div class="lv">STEP 1</div><h3>상관 명제</h3>
+    <svg viewBox="0 0 200 90" role="img" aria-label="A와 B 사이의 양방향 연결"><rect x="14" y="30" width="56" height="32" fill="#fff" stroke="#1B2635" stroke-width="2"/><text class="lab" x="42" y="51" text-anchor="middle">A</text><rect x="130" y="30" width="56" height="32" fill="#fff" stroke="#1B2635" stroke-width="2"/><text class="lab" x="158" y="51" text-anchor="middle">B</text><line x1="72" y1="46" x2="128" y2="46" stroke="#3D6B8E" stroke-width="3" stroke-dasharray="6 5"/></svg>
+    <p class="say">“A와 B는 함께 변한다.”</p>
+    <ul><li>대칭입니다. 순서를 바꿔도 같은 말입니다.</li><li>근거: 자료의 패턴(r)</li></ul>
+  </article>
+  <article class="step">
+    <div class="lv">STEP 2</div><h3>영향(회귀) 명제</h3>
+    <svg viewBox="0 0 200 90" role="img" aria-label="A에서 B로 향하는 화살표, 가정된 방향"><rect x="14" y="30" width="56" height="32" fill="#fff" stroke="#1B2635" stroke-width="2"/><text class="lab" x="42" y="51" text-anchor="middle">A</text><rect x="130" y="30" width="56" height="32" fill="#fff" stroke="#1B2635" stroke-width="2"/><text class="lab" x="158" y="51" text-anchor="middle">B</text><defs><marker id="a2" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto"><path d="M0,0L9,4.5L0,9Z" fill="#1B2635"/></marker></defs><line x1="72" y1="46" x2="126" y2="46" stroke="#1B2635" stroke-width="2.5" marker-end="url(#a2)"/><text class="ax" x="100" y="26" text-anchor="middle">가정</text></svg>
+    <p class="say">“A가 1 큰 사례는 B가 평균 b 크다.”</p>
+    <ul><li>방향은 연구자가 모형에 넣은 <b>가정</b>입니다.</li><li>근거: 모형과 자료. 아직 연관 진술입니다.</li></ul>
+  </article>
+  <article class="step top">
+    <div class="lv">STEP 3</div><h3>인과 명제</h3>
+    <svg viewBox="0 0 200 90" role="img" aria-label="A를 바꾸면 B가 바뀌는 개입"><rect x="14" y="30" width="56" height="32" fill="#FFD447" stroke="#1B2635" stroke-width="2"/><text class="lab" x="42" y="51" text-anchor="middle">A 바꿈</text><rect x="130" y="30" width="56" height="32" fill="#fff" stroke="#1B2635" stroke-width="2"/><text class="lab" x="158" y="51" text-anchor="middle">B 변화?</text><line x1="72" y1="46" x2="126" y2="46" stroke="#1B2635" stroke-width="2.5" marker-end="url(#a2)"/></svg>
+    <p class="say">“A를 바꾸면 B가 바뀐다.”</p>
+    <ul><li>개입(반사실)에 대한 말입니다.</li><li>근거: 시간 순서, 교란 통제, 이론·메커니즘, 실험·준실험 설계</li></ul>
+    <span class="badge">설계가 있어야 쓸 수 있음</span>
+  </article>
+</div>
+</div></section>
+
+<!-- 3. 두 가지 읽기 -->
+<section class="blk" id="s3"><div class="wrap">
+<div class="sec-no">03</div>
+<h2>“x가 높을수록 y가 커진다”의 두 가지 읽기</h2>
+<p class="intro">같은 문장도 <b>무엇끼리 비교하느냐</b>에 따라 다른 주장이 됩니다. 산점도가 보여 주는 것은 왼쪽뿐입니다.</p>
+<div class="two even">
+  <div class="panel">
+    <div class="tagline">읽기 A · 사례끼리 비교 → 연관(상관)</div>
+    <svg viewBox="0 0 300 200" role="img" aria-label="서로 다른 동네들의 점이 우상향으로 놓인 그림">
+      <line x1="30" y1="20" x2="30" y2="170" stroke="#1B2635" stroke-width="2"/><line x1="30" y1="170" x2="290" y2="170" stroke="#1B2635" stroke-width="2"/>
+      <text class="ax" x="290" y="190" text-anchor="end">녹지율 →</text><text class="ax" x="6" y="16">지가</text>
+      <g fill="#3D6B8E"><circle cx="60" cy="150" r="6"/><circle cx="100" cy="132" r="6"/><circle cx="140" cy="118" r="6"/><circle cx="185" cy="88" r="6"/><circle cx="225" cy="70" r="6"/><circle cx="262" cy="46" r="6"/></g>
+      <line x1="44" y1="158" x2="276" y2="40" stroke="#C7A008" stroke-width="3"/>
+      <text class="lab" x="150" y="38" text-anchor="middle">서로 다른 여섯 동네</text>
+    </svg>
+    <p class="cap">“녹지율이 높은 <b>동네일수록</b> 지가가 높다.” 이미 있는 차이를 비교한 말입니다. 자료로 말할 수 있습니다.</p>
+  </div>
+  <div class="panel">
+    <div class="tagline">읽기 B · 한 사례를 바꿈 → 인과(개입)</div>
+    <svg viewBox="0 0 300 200" role="img" aria-label="한 동네의 녹지를 늘렸을 때 지가가 어떻게 되는지 물음표로 표시한 그림">
+      <line x1="30" y1="20" x2="30" y2="170" stroke="#1B2635" stroke-width="2"/><line x1="30" y1="170" x2="290" y2="170" stroke="#1B2635" stroke-width="2"/>
+      <text class="ax" x="290" y="190" text-anchor="end">녹지율 →</text><text class="ax" x="6" y="16">지가</text>
+      <circle cx="100" cy="120" r="7" fill="#3D6B8E"/><text class="lab" x="100" y="146" text-anchor="middle">이 동네</text>
+      <defs><marker id="a3" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto"><path d="M0,0L9,4.5L0,9Z" fill="#B4492F"/></marker></defs>
+      <line x1="110" y1="120" x2="196" y2="120" stroke="#B4492F" stroke-width="2.5" stroke-dasharray="6 5" marker-end="url(#a3)"/>
+      <text class="lab" x="153" y="108" text-anchor="middle">녹지를 늘리면?</text>
+      <circle cx="210" cy="120" r="7" fill="none" stroke="#B4492F" stroke-width="2" stroke-dasharray="3 3"/><text x="210" y="124" text-anchor="middle" font-size="12" fill="#B4492F" font-weight="700">?</text>
+      <text class="lab" x="210" y="146" text-anchor="middle">자료에 없음</text>
+    </svg>
+    <p class="cap">“이 동네의 <b>녹지를 늘리면</b> 지가가 오른다.” 아직 일어나지 않은 일에 대한 말입니다. 사례 간 비교만으로는 알 수 없습니다.</p>
+  </div>
+</div>
+<div class="note"><b>정리</b> · 회귀의 b도 기본적으로는 읽기 A로 읽습니다. “녹지율이 10%p 높은 동네는 지가가 평균 b만큼 높다.” 읽기 B로 올리려면 아래의 교란을 다룰 수 있는 설계가 필요합니다.</div>
+</div></section>
+
+<!-- 4. 교란 -->
+<section class="blk" id="s4"><div class="wrap">
+<div class="sec-no">04</div>
+<h2>강한 상관이 있어도 인과가 아닌 이유 ① 교란</h2>
+<p class="intro">전체로 보면 뚜렷한 우상향인데, 제3의 요인(역세권 여부)으로 나누면 각 그룹 안에서는 관계가 사라지는 경우입니다. 버튼으로 확인하세요.</p>
+<div class="two">
+  <div class="panel">
+    <svg viewBox="0 0 400 280" role="img" aria-label="역세권 여부로 나누면 그룹 안에서는 기울기가 사라지는 산점도" id="s4svg">
+      <line x1="48" y1="20" x2="48" y2="244" stroke="#1B2635" stroke-width="2"/>
+      <line x1="48" y1="244" x2="388" y2="244" stroke="#1B2635" stroke-width="2"/>
+      <text class="ax" x="388" y="266" text-anchor="end">녹지율 →</text><text class="ax" x="10" y="26">지가</text>
+      <g id="s4dots"></g>
+      <line id="s4all" stroke="#5C6774" stroke-width="3.5" stroke-linecap="round"/>
+      <line id="s4a" stroke="#3D6B8E" stroke-width="3.5" stroke-linecap="round" opacity="0"/>
+      <line id="s4b" stroke="#9A7B00" stroke-width="3.5" stroke-linecap="round" opacity="0"/>
+      <g id="s4leg" opacity="0"><circle cx="300" cy="34" r="5" fill="#3D6B8E"/><text class="lab" x="310" y="38">역세권 ○</text><circle cx="300" cy="54" r="5" fill="#C7A008"/><text class="lab" x="310" y="58">역세권 ✕</text></g>
+    </svg>
+  </div>
+  <div>
+    <div class="btns" role="group" aria-label="보기 선택">
+      <button class="tbtn on" type="button" id="s4b1" aria-pressed="true">전체만 보기</button>
+      <button class="tbtn" type="button" id="s4b2" aria-pressed="false">역세권 여부로 나눠 보기</button>
+    </div>
+    <div class="read" id="s4read" role="status" aria-live="polite"></div>
+    <div class="no"><b>읽는 법</b> · 역세권이면 녹지율도 지가도 함께 높은 구조라면, 녹지율과 지가의 상관은 역세권이 만든 것일 수 있습니다. 이때 “녹지가 지가를 올린다”는 말은 근거가 없습니다.</div>
+  </div>
+</div>
+<p class="cap">※ 설명용 가상 자료입니다. 실제 연구에서는 그룹 안의 관계가 완전히 0이 되는 일은 드물고, 교란을 통제한 뒤에도 남는 부분을 따져 봅니다.</p>
+</div></section>
+
+<!-- 5. 도식 -->
+<section class="blk" id="s5"><div class="wrap">
+<div class="sec-no">05</div>
+<h2>② 역방향, ③ 제3변수, 그리고 우연</h2>
+<p class="intro">같은 상관을 만드는 서로 다른 이야기가 있습니다. 자료의 점은 똑같이 보입니다.</p>
+<div class="three">
+  <div class="panel"><h3>A → B</h3>
+    <svg viewBox="0 0 200 110" role="img" aria-label="A가 B의 원인"><rect x="14" y="40" width="58" height="32" fill="#fff" stroke="#1B2635" stroke-width="2"/><text class="lab" x="43" y="61" text-anchor="middle">녹지율</text><rect x="128" y="40" width="58" height="32" fill="#fff" stroke="#1B2635" stroke-width="2"/><text class="lab" x="157" y="61" text-anchor="middle">지가</text><line x1="74" y1="56" x2="124" y2="56" stroke="#1B2635" stroke-width="2.5" marker-end="url(#a2)"/></svg>
+    <p class="cap">녹지가 지가를 올린다. 우리가 말하고 싶은 이야기입니다.</p></div>
+  <div class="panel"><h3>B → A (역방향)</h3>
+    <svg viewBox="0 0 200 110" role="img" aria-label="B가 A의 원인"><rect x="14" y="40" width="58" height="32" fill="#fff" stroke="#1B2635" stroke-width="2"/><text class="lab" x="43" y="61" text-anchor="middle">녹지율</text><rect x="128" y="40" width="58" height="32" fill="#fff" stroke="#1B2635" stroke-width="2"/><text class="lab" x="157" y="61" text-anchor="middle">지가</text><line x1="126" y1="56" x2="76" y2="56" stroke="#B4492F" stroke-width="2.5" marker-end="url(#a3)"/></svg>
+    <p class="cap">지가가 높은 곳이 녹지에 투자할 여력이 있어서 녹지율이 높은 것일 수도 있습니다.</p></div>
+  <div class="panel"><h3>C → A, C → B (교란)</h3>
+    <svg viewBox="0 0 200 110" role="img" aria-label="제3변수 C가 A와 B 모두의 원인"><rect x="14" y="68" width="58" height="30" fill="#fff" stroke="#1B2635" stroke-width="2"/><text class="lab" x="43" y="87" text-anchor="middle">녹지율</text><rect x="128" y="68" width="58" height="30" fill="#fff" stroke="#1B2635" stroke-width="2"/><text class="lab" x="157" y="87" text-anchor="middle">지가</text><rect x="71" y="8" width="58" height="30" fill="#FFD447" stroke="#1B2635" stroke-width="2"/><text class="lab" x="100" y="27" text-anchor="middle">역세권</text><line x1="86" y1="40" x2="56" y2="66" stroke="#B4492F" stroke-width="2.5" marker-end="url(#a3)"/><line x1="114" y1="40" x2="144" y2="66" stroke="#B4492F" stroke-width="2.5" marker-end="url(#a3)"/><line x1="74" y1="84" x2="124" y2="84" stroke="#9AAABB" stroke-width="2" stroke-dasharray="5 5"/></svg>
+    <p class="cap">둘 사이에 직접 연결이 없어도, 공통 원인 때문에 상관이 생깁니다.</p></div>
+</div>
+<div class="note"><b>우연과 선택도 점검 대상</b> · 표본이 작거나 특정 사례만 뽑힌 경우에는 인과가 아니라 우연이나 선택 때문에 패턴이 생길 수 있습니다. 표본 크기와 선정 방식을 함께 보고합니다.</div>
+</div></section>
+
+<!-- 6. 표현 가이드 -->
+<section class="blk" id="s6"><div class="wrap">
+<div class="sec-no">06</div>
+<h2>논문에서는 근거만큼만 쓴다</h2>
+<p class="intro">자료와 설계가 허락하는 칸까지만 올라가서 씁니다.</p>
+<div class="tscroll"><table>
+<caption class="tagline" style="text-align:left;padding-bottom:8px">근거 수준별 표현</caption>
+<thead><tr><th scope="col">내가 가진 근거</th><th scope="col" class="ok" style="color:#fff">쓸 수 있는 표현</th><th scope="col">피할 표현</th></tr></thead>
+<tbody>
+<tr><th scope="row">관찰 자료의 산점도·상관분석</th><td>“A가 높은 곳일수록 B도 높게 나타났다.” “A와 B는 양의 상관이 있었다(r = …).”</td><td>“A가 B를 높인다.” “A는 B의 원인이다.”</td></tr>
+<tr><th scope="row">관찰 자료의 회귀분석</th><td>“A가 1단위 높은 사례는 B가 평균 b 높았다.” “A는 B를 예측했다.”</td><td>“A가 B에 영향을 미쳤다(인과적 의미로).”</td></tr>
+<tr><th scope="row">교란을 통제한 회귀</th><td>“역세권 여부를 통제한 뒤에도 A와 B의 연관이 남았다.”</td><td>“통제했으니 인과가 증명되었다.” (통제하지 못한 요인이 남을 수 있음)</td></tr>
+<tr><th scope="row">실험·준실험 설계, 이론과 메커니즘</th><td>“A를 늘렸을 때 B가 증가했다.” 설계의 한계를 함께 적는다.</td><td>설계를 밝히지 않은 단정</td></tr>
+</tbody></table></div>
+<div class="note"><b>한 줄로</b> · 산점도의 방향과 강도는 “함께 움직이는가”에 답합니다. “왜”에 답하려면 자료가 아니라 설계와 이론이 필요합니다.</div>
+</div></section>
+</main>
+
+<div class="wrap"><div class="pager">
+<a href="methods.html#corr-vs-effect"><span class="dir">← 돌아가기</span><div>상관관계와 영향관계 요약</div></a>
+<a href="week03.html"><span class="dir">3주 →</span><div>상관관계 읽기</div></a>
+</div></div>
+<footer><div class="wrap">연구방법론 강의 교재 · 그래프의 점은 설명용 가상 자료입니다</div></footer>
+
+<script>
+(function(){
+  // 재현 가능한 난수(시드 고정)와 정규분포 표본
+  function mk(seed){var s=seed;return function(){s=(s*16807)%2147483647;return s/2147483647}}
+  function gauss(rnd){var u=rnd()||1e-9,v=rnd();return Math.sqrt(-2*Math.log(u))*Math.cos(2*Math.PI*v)}
+  function mean(a){return a.reduce(function(s,v){return s+v},0)/a.length}
+  function std(a){var m=mean(a);return Math.sqrt(mean(a.map(function(v){return (v-m)*(v-m)})))}
+  function zs(a){var m=mean(a),s=std(a);return a.map(function(v){return (v-m)/s})}
+  // 평균 0, 분산 1이고 서로 정확히 직교하는 (x, e) 쌍을 만든다
+  function basis(n,seed){
+    var r=mk(seed),x=[],e=[],i;
+    for(i=0;i<n;i++){x.push(gauss(r));e.push(gauss(r))}
+    x=zs(x);e=zs(e);
+    var d=mean(x.map(function(v,k){return v*e[k]}));
+    e=zs(e.map(function(v,k){return v-d*x[k]}));
+    return {x:x,e:e};
+  }
+  function corr(a,b){var ma=mean(a),mb=mean(b),sab=0,saa=0,sbb=0;for(var i=0;i<a.length;i++){sab+=(a[i]-ma)*(b[i]-mb);saa+=(a[i]-ma)*(a[i]-ma);sbb+=(b[i]-mb)*(b[i]-mb)}return sab/Math.sqrt(saa*sbb)}
+  function slope(a,b){var ma=mean(a),mb=mean(b),sab=0,saa=0;for(var i=0;i<a.length;i++){sab+=(a[i]-ma)*(b[i]-mb);saa+=(a[i]-ma)*(a[i]-ma)}return sab/saa}
+  function sgn(v){var t=Math.abs(v).toFixed(2);return (v>=0||t==='0.00'?'+':'−')+t}
+  var PX0=56,PX1=380,PY0=236,PY1=28;
+  function px(z,lo,hi){return PX0+(z-lo)/(hi-lo)*(PX1-PX0)}
+  function py(z,lo,hi){return PY0-(z-lo)/(hi-lo)*(PY0-PY1)}
+
+  // ---- 1. 방향과 강도 ----
+  (function(){
+    var g=document.getElementById('s1dots'),ln=document.getElementById('s1line');
+    var rng=document.getElementById('s1r'),rv=document.getElementById('s1rv'),rd=document.getElementById('s1read');
+    var B=basis(60,11),LO=-3,HI=3;
+    function strength(r){var a=Math.abs(r);return a<0.1?'거의 없음':a<0.3?'약함':a<0.5?'중간':'강함'}
+    function draw(){
+      var r=rng.value/100,html='',i,y=[];
+      var c=Math.sqrt(Math.max(0,1-r*r));
+      for(i=0;i<B.x.length;i++){y.push(r*B.x[i]+c*B.e[i])}
+      for(i=0;i<B.x.length;i++){html+='<circle cx="'+px(B.x[i],LO,HI).toFixed(1)+'" cy="'+py(y[i],LO,HI).toFixed(1)+'" r="4.5"/>'}
+      g.innerHTML=html;
+      ln.setAttribute('x1',px(-2.6,LO,HI));ln.setAttribute('x2',px(2.6,LO,HI));
+      ln.setAttribute('y1',py(r*-2.6,LO,HI).toFixed(1));ln.setAttribute('y2',py(r*2.6,LO,HI).toFixed(1));
+      rv.textContent=sgn(r);
+      rd.textContent='방향(부호): '+(Math.abs(r)<0.05?'없음':r>0?'양 (함께 커짐)':'음 (한쪽이 커지면 다른 쪽은 작아짐)')+'  /  강도: '+strength(r)+'  /  r² = '+(r*r).toFixed(2);
+    }
+    rng.addEventListener('input',draw);draw();
+  })();
+
+  // ---- 4. 교란 ----
+  (function(){
+    var g=document.getElementById('s4dots'),bAll=document.getElementById('s4all'),bA=document.getElementById('s4a'),bB=document.getElementById('s4b');
+    var leg=document.getElementById('s4leg'),rd=document.getElementById('s4read'),b1=document.getElementById('s4b1'),b2=document.getElementById('s4b2');
+    var n=30,A=basis(n,5),B=basis(n,9);
+    // 그룹 안에서는 x와 y가 직교(관계 없음). 그룹 평균만 서로 다르게 둔다.
+    var ax=[],ay=[],bx=[],by=[],i;
+    for(i=0;i<n;i++){ax.push(1.1+0.55*A.x[i]);ay.push(1.1+0.55*A.e[i]);bx.push(-1.1+0.55*B.x[i]);by.push(-1.1+0.55*B.e[i])}
+    var allx=ax.concat(bx),ally=ay.concat(by),LO=-2.6,HI=2.6;
+    var rAll=corr(allx,ally),rA=corr(ax,ay),rB=corr(bx,by),sAll=slope(allx,ally);
+    function seg(el,xs,ys,s){var m1=mean(xs),m2=mean(ys),x0=Math.min.apply(null,xs),x1=Math.max.apply(null,xs);
+      el.setAttribute('x1',px(x0,LO,HI));el.setAttribute('x2',px(x1,LO,HI));
+      el.setAttribute('y1',py(m2+s*(x0-m1),LO,HI).toFixed(1));el.setAttribute('y2',py(m2+s*(x1-m1),LO,HI).toFixed(1))}
+    function draw(split){
+      var h='';
+      for(i=0;i<n;i++){h+='<circle cx="'+px(ax[i],LO,HI).toFixed(1)+'" cy="'+py(ay[i],LO,HI).toFixed(1)+'" r="4.5" fill="'+(split?'#3D6B8E':'#6B8CA8')+'" opacity=".85"/>'}
+      for(i=0;i<n;i++){h+='<circle cx="'+px(bx[i],LO,HI).toFixed(1)+'" cy="'+py(by[i],LO,HI).toFixed(1)+'" r="4.5" fill="'+(split?'#C7A008':'#6B8CA8')+'" opacity=".85"/>'}
+      g.innerHTML=h;
+      seg(bAll,allx,ally,sAll);seg(bA,ax,ay,slope(ax,ay));seg(bB,bx,by,slope(bx,by));
+      bAll.setAttribute('opacity',split?0.25:1);bA.setAttribute('opacity',split?1:0);bB.setAttribute('opacity',split?1:0);
+      leg.setAttribute('opacity',split?1:0);
+      b1.classList.toggle('on',!split);b2.classList.toggle('on',split);
+      b1.setAttribute('aria-pressed',String(!split));b2.setAttribute('aria-pressed',String(split));
+      rd.textContent=split?('역세권 ○ 안에서 r = '+sgn(rA)+'  /  역세권 ✕ 안에서 r = '+sgn(rB)+'  → 그룹 안에서는 관계가 거의 없음'):('전체 r = '+sgn(rAll)+'  → 녹지율이 높을수록 지가도 높아 보임');
+    }
+    b1.addEventListener('click',function(){draw(false)});b2.addEventListener('click',function(){draw(true)});draw(false);
+  })();
+})();
+</script>
+</body>
+</html>
