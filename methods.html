@@ -439,6 +439,101 @@ footer{
   </div>
 </section>
 
+<!-- ================= 보충: 상관관계 vs 영향관계 ================= -->
+<section id="corr-vs-effect" style="border-top:1px solid var(--grid)">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow">Part 1 — 보충</div>
+      <h2>상관관계와 영향관계, 무엇이 다른가</h2>
+      <p>둘 다 점 구름에서 출발하지만 묻는 질문이 다릅니다. 하나는 “같이 움직이는가”, 다른 하나는 “A가 한 단위 달라질 때 B는 얼마나 달라지는가”입니다.</p>
+    </div>
+
+    <div class="cve-grid reveal">
+      <article class="cve-card">
+        <span class="tag">상관관계</span>
+        <h3>함께 움직이는 정도</h3>
+        <p class="plain">“상가 연면적과 임대료는 같이 오르내리는가?”</p>
+        <ul>
+          <li>두 변수를 <b>대등하게</b> 놓습니다. 누가 원인인지 묻지 않습니다.</li>
+          <li>결과는 상관계수 <b>r</b> 하나(−1 ~ +1)입니다. 부호는 방향, 크기는 선에 가까운 정도입니다.</li>
+          <li>축을 서로 바꿔도 r은 <b>같습니다</b>. 단위(원, ㎡)가 바뀌어도 같습니다.</li>
+        </ul>
+      </article>
+      <article class="cve-card">
+        <span class="tag">영향관계</span>
+        <h3>한 변수가 다른 변수를 설명하는 정도</h3>
+        <p class="plain">“녹지율이 10%p 늘면 지가는 얼마나 달라지는가?”</p>
+        <ul>
+          <li>원인 쪽(독립변수)과 결과 쪽(종속변수)을 <b>연구자가 정합니다</b>.</li>
+          <li>결과는 기울기 <b>b</b>입니다. “A가 1 늘 때 B가 b만큼 변한다”는 크기를 단위와 함께 말합니다.</li>
+          <li>축을 바꾸면 b는 <b>달라집니다</b>. 단위가 바뀌어도 달라집니다.</li>
+        </ul>
+      </article>
+    </div>
+
+    <div class="demo-block reveal" style="margin-top:36px">
+      <div class="demo-text">
+        <span class="tag">직접 확인</span>
+        <h3>축을 바꿔 보세요</h3>
+        <p>같은 점 30개로 r과 b를 계산합니다. 가로축과 세로축을 맞바꾸면 <b>r은 그대로, b는 바뀌는 것</b>을 볼 수 있습니다. 관계의 세기와 방향은 상관이, 한 변수가 다른 변수를 얼마나 움직이는지는 영향관계가 알려 줍니다.</p>
+        <div class="toggle-row" role="group" aria-label="축 선택">
+          <button class="tbtn on" id="cveA" type="button" aria-pressed="true">녹지율 → 지가</button>
+          <button class="tbtn" id="cveB" type="button" aria-pressed="false">지가 → 녹지율</button>
+        </div>
+        <p class="cve-read" id="cveRead" role="status" aria-live="polite"></p>
+      </div>
+      <div class="demo-vis">
+        <svg viewBox="0 0 400 260" role="img" aria-label="축을 바꿔도 상관계수는 같고 기울기는 달라지는 산점도" id="cveSvg">
+          <line x1="40" y1="12" x2="40" y2="226" stroke="#1B2635" stroke-width="2"/>
+          <line x1="40" y1="226" x2="388" y2="226" stroke="#1B2635" stroke-width="2"/>
+          <text id="cveX" x="388" y="246" text-anchor="end" class="axis-label"></text>
+          <text id="cveY" x="12" y="22" class="axis-label"></text>
+          <g id="cveDots" fill="#3D6B8E" opacity=".85"></g>
+          <line id="cveLine" stroke="#C7A008" stroke-width="3.5"/>
+        </svg>
+      </div>
+    </div>
+
+    <div class="cve-tablewrap reveal">
+      <table class="cve-table">
+        <caption>한눈에 비교</caption>
+        <thead><tr><th scope="col"></th><th scope="col">상관관계</th><th scope="col">영향관계</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">묻는 것</th><td>같이 움직이는가</td><td>A가 B를 얼마나 움직이는가</td></tr>
+          <tr><th scope="row">변수의 위치</th><td>대등함</td><td>독립변수 → 종속변수 (방향을 가정)</td></tr>
+          <tr><th scope="row">대표 수치</th><td>상관계수 r</td><td>기울기 b, 설명력 R²</td></tr>
+          <tr><th scope="row">축·단위를 바꾸면</th><td>r 불변</td><td>b 변함</td></tr>
+          <tr><th scope="row">대표 분석</th><td>상관분석</td><td>회귀분석</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <aside class="cve-note reveal">
+      <b>주의 — 영향관계는 인과 증명이 아닙니다.</b>
+      회귀분석에서 말하는 “영향”은 연구자가 세운 방향을 모형에 넣어 크기를 추정한 것입니다. 그 방향이 사실인지는 연구 설계와 이론이 뒷받침해야 합니다. 관찰 자료만으로 “영향을 미친다”고 단정하지 말고, “~와 관련이 있다”, “~를 예측한다”처럼 근거만큼만 말합니다.
+      <span class="cve-sub">참고: 한 개의 독립변수만 쓰는 단순회귀에서 b = r × (종속변수의 표준편차 ÷ 독립변수의 표준편차)이고, R² = r²입니다.</span>
+    </aside>
+  </div>
+</section>
+
+<style>
+.cve-grid{display:grid;grid-template-columns:1fr 1fr;gap:28px}
+.cve-card{background:var(--card);border:2px solid var(--ink);box-shadow:6px 6px 0 rgba(27,38,53,.11);padding:26px 24px}
+.cve-card h3{font-size:21px;margin:6px 0 8px}
+.cve-card ul{margin:12px 0 0 1.1em;color:var(--ink)}
+.cve-card li{margin-bottom:6px}
+.cve-read{font-family:'IBM Plex Mono',monospace;font-size:13px;margin-top:14px;background:var(--card);border:2px solid var(--ink);padding:10px 12px}
+.cve-tablewrap{margin-top:36px;overflow-x:auto}
+.cve-table{width:100%;border-collapse:collapse;background:var(--card);border:2px solid var(--ink);min-width:520px}
+.cve-table caption{caption-side:top;text-align:left;font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.18em;color:var(--graph);padding-bottom:8px}
+.cve-table th,.cve-table td{border:1px solid var(--grid);padding:10px 14px;text-align:left;vertical-align:top}
+.cve-table thead th{background:var(--ink);color:#fff;font-weight:500}
+.cve-table tbody th{background:#FFFBE6;font-weight:500;white-space:nowrap}
+.cve-note{margin-top:32px;background:#FFFBE6;border:2px solid var(--ink);border-left-width:8px;padding:18px 20px;box-shadow:6px 6px 0 rgba(27,38,53,.11)}
+.cve-sub{display:block;margin-top:8px;color:var(--sub);font-size:14px}
+@media(max-width:700px){.cve-grid{grid-template-columns:1fr}}
+</style>
+
 <!-- ================= 이미지 배너 2: 아카이브 ================= -->
 <div class="img-banner reveal">
   <img src="https://images.unsplash.com/photo-1775229106888-dca42d0c9f4f?fm=jpg&q=60&w=1800&auto=format&fit=crop" alt="오래된 도서관 서가 — 층층이 쌓인 고서" loading="lazy">
@@ -691,6 +786,34 @@ footer{
     es.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('show'); io.unobserve(e.target);} });
   },{threshold:.12});
   document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+})();
+
+// ---------- 상관 vs 영향: 축 바꾸기 ----------
+(function(){
+  const g=document.getElementById('cveDots'); if(!g) return;
+  let seed=7; function rnd(){seed=(seed*16807)%2147483647;return seed/2147483647}
+  const P=[]; for(let i=0;i<30;i++){const x=rnd();const e=(rnd()+rnd()+rnd()-1.5)*0.55;P.push([x,Math.min(1,Math.max(0,0.25+0.6*x+e*0.5))]);}
+  const mean=a=>a.reduce((s,v)=>s+v,0)/a.length;
+  function stats(pts){const mx=mean(pts.map(p=>p[0])),my=mean(pts.map(p=>p[1]));let sxy=0,sxx=0,syy=0;pts.forEach(p=>{sxy+=(p[0]-mx)*(p[1]-my);sxx+=(p[0]-mx)**2;syy+=(p[1]-my)**2});return{mx,my,b:sxy/sxx,r:sxy/Math.sqrt(sxx*syy)}}
+  const X0=52,X1=376,Y0=214,Y1=24;
+  const line=document.getElementById('cveLine'),read=document.getElementById('cveRead'),bA=document.getElementById('cveA'),bB=document.getElementById('cveB');
+  function draw(flip){
+    const pts=flip?P.map(p=>[p[1],p[0]]):P, st=stats(pts);
+    const xs=pts.map(p=>p[0]),ys=pts.map(p=>p[1]);
+    const nx=v=>(v-Math.min(...xs))/(Math.max(...xs)-Math.min(...xs)), ny=v=>(v-Math.min(...ys))/(Math.max(...ys)-Math.min(...ys));
+    g.innerHTML=pts.map(p=>'<circle cx="'+(X0+nx(p[0])*(X1-X0)).toFixed(1)+'" cy="'+(Y0-ny(p[1])*(Y0-Y1)).toFixed(1)+'" r="4.5"/>').join('');
+    const xa=Math.min(...xs),xb=Math.max(...xs);
+    const ya=st.my+st.b*(xa-st.mx),yb=st.my+st.b*(xb-st.mx);
+    line.setAttribute('x1',X0);line.setAttribute('x2',X1);
+    line.setAttribute('y1',(Y0-ny(ya)*(Y0-Y1)).toFixed(1));line.setAttribute('y2',(Y0-ny(yb)*(Y0-Y1)).toFixed(1));
+    document.getElementById('cveX').textContent=(flip?'지가':'녹지율')+' →';
+    document.getElementById('cveY').textContent=flip?'녹지율':'지가';
+    read.textContent='r = '+st.r.toFixed(2)+'   b = '+st.b.toFixed(2)+'  (가로축 1 늘 때 세로축 변화, 0~1 척도 기준)';
+    bA.classList.toggle('on',!flip);bB.classList.toggle('on',flip);
+    bA.setAttribute('aria-pressed',String(!flip));bB.setAttribute('aria-pressed',String(flip));
+  }
+  bA.addEventListener('click',()=>draw(false));bB.addEventListener('click',()=>draw(true));
+  draw(false);
 })();
 </script>
 </body>
