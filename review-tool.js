@@ -1,4 +1,4 @@
-/* 수정 메모 도구 — 페이지에 하이라이트·박스로 메모를 남기고 사이드바에 모아 본다.
+/* 내 메모 — 페이지에 하이라이트·박스로 메모를 남기고 사이드바에 모아 본다.
    켜기: 주소 끝에 ?review=1  /  끄기: 사이드바의 '끄기' 또는 ?review=0
    저장: 이 브라우저(localStorage). 다른 기기와 공유되지 않으므로 '내보내기'로 백업한다. */
 (function () {
@@ -9,7 +9,7 @@
   var q = new URLSearchParams(location.search).get('review');
   if (q === '1') lset('rv:on', '1');
   if (q === '0') lset('rv:on', '0');
-  if (lget('rv:on') !== '1') return;
+  if (lget('rv:on') === '0') return;
   if (window.__rv) return;
   window.__rv = true;
 
@@ -186,6 +186,7 @@
     '.tab{position:fixed;right:0;top:40%;pointer-events:auto;background:#FFD447;border:2px solid #1B2635;border-right:0;padding:10px 8px;writing-mode:vertical-rl;font:700 13px "Noto Sans KR",sans-serif;cursor:pointer;color:#1B2635}' +
     '.side{position:fixed;top:0;right:0;bottom:0;width:min(360px,100vw);background:#F5F4EF;border-left:2px solid #1B2635;box-shadow:-6px 0 0 rgba(27,38,53,.1);display:flex;flex-direction:column;pointer-events:auto}' +
     '.side.hide{display:none}.tab.hide{display:none}' +
+    '#body{display:flex;flex-direction:column;flex:1;min-height:0}#body[hidden],.gate[hidden]{display:none}.gate{padding:14px;background:#FFFBE6;border-bottom:2px solid #1B2635;font-size:14px}.who{font-size:12px;color:#5C6774;margin-top:6px}' +
     'header{padding:12px 14px;border-bottom:2px solid #1B2635;background:#fff}' +
     'h1{font:700 16px "Gowun Batang",serif;margin:0 0 8px;display:flex;justify-content:space-between;align-items:center}' +
     '.row{display:flex;flex-wrap:wrap;gap:6px}' +
@@ -209,17 +210,19 @@
     '.toast{position:fixed;left:50%;bottom:20px;transform:translateX(-50%);background:#1B2635;color:#FFD447;padding:8px 14px;font-size:13px;pointer-events:none;display:none}' +
     '@media(max-width:700px){.side{top:auto;height:55vh;width:100vw;border-left:0;border-top:2px solid #1B2635}.tab{top:auto;bottom:0;right:10px;writing-mode:horizontal-tb;border:2px solid #1B2635;border-bottom:0}}' +
     '</style>' +
-    '<button class="tab hide" id="tab" type="button" aria-label="수정 메모 열기">✎ 수정 메모 <span id="cnt"></span></button>' +
-    '<aside class="side" id="side" aria-label="수정 메모 사이드바">' +
-    '<header><h1><span>✎ 수정 메모 <small id="cnt2"></small></span><span class="row"><button class="sm" id="fold" type="button">접기 ▸</button></span></h1>' +
+    '<button class="tab hide" id="tab" type="button" aria-label="내 메모 열기">✎ 내 메모 <span id="cnt"></span></button>' +
+    '<aside class="side" id="side" aria-label="내 메모 사이드바">' +
+    '<header><h1><span>✎ 내 메모 <small id="cnt2"></small></span><span class="row"><button class="sm" id="fold" type="button">접기 ▸</button></span></h1>' +
     '<div class="row"><button id="mText" class="on" type="button" aria-pressed="true">하이라이트</button><button id="mBox" type="button" aria-pressed="false">박스 그리기</button></div>' +
-    '<div class="hint" id="hint">본문 글자를 드래그하면 하이라이트가 잡히고, [박스 그리기]를 누르면 영역을 끌어서 지정합니다. 페이지 주소와 위치는 자동으로 기록됩니다.</div></header>' +
-    '<section class="form" id="form" hidden><div class="pv" id="pv"></div><textarea id="ta" placeholder="무엇을 어떻게 고칠지 적으세요 (Ctrl+Enter로 저장)" aria-label="메모"></textarea>' +
+    '<div class="hint" id="hint">사이드바가 열려 있을 때 본문 글자를 드래그하면 하이라이트가 잡히고, [박스 그리기]를 누르면 영역을 끌어서 지정합니다. 페이지 주소와 위치는 자동으로 기록되고, 메모는 이 브라우저에만 저장됩니다.</div><div class="who" id="who"></div></header>' +
+    '<section class="gate" id="gate"><p><b>메모를 남기려면 이름을 정해 주세요.</b><br>이름은 이 브라우저에만 저장되고 서버로 전송되지 않습니다. 메모에 작성자로 표시됩니다.</p><label for="nm" style="font-size:12px">이름 또는 별칭</label><input id="nm" maxlength="30" autocomplete="off" style="width:100%;border:2px solid #1B2635;padding:8px;font:14px sans-serif;margin:4px 0 8px"><button class="pri" id="nmOk" type="button">시작하기</button></section>' +
+    '<div id="body">' +
+    '<section class="form" id="form" hidden><div class="pv" id="pv"></div><textarea id="ta" placeholder="메모를 적으세요 (Ctrl+Enter로 저장)" aria-label="메모"></textarea>' +
     '<div class="act"><button class="pri" id="save" type="button">저장</button><button id="cancel" type="button">취소</button></div></section>' +
     '<div class="row" style="padding:8px 14px 0"><button class="sm on" id="fThis" type="button">이 페이지</button><button class="sm" id="fAll" type="button">전체</button></div>' +
     '<div class="list" id="list" role="list"></div>' +
-    '<footer style="padding:10px 14px;border-top:2px solid #1B2635;background:#fff"><div class="row"><button class="sm" id="exMd" type="button">복사(Markdown)</button><button class="sm" id="exJson" type="button">JSON 저장</button><button class="sm" id="imp" type="button">가져오기</button><button class="sm" id="off" type="button">끄기</button></div>' +
-    '<input type="file" id="file" accept="application/json" hidden></footer></aside><div class="toast" id="toast" role="status"></div>';
+    '<footer style="padding:10px 14px;border-top:2px solid #1B2635;background:#fff"><div class="row"><button class="sm" id="exMd" type="button">복사(Markdown)</button><button class="sm" id="exJson" type="button">JSON 저장</button><button class="sm" id="imp" type="button">가져오기</button><button class="sm" id="nmChg" type="button">이름 변경</button></div>' +
+    '<input type="file" id="file" accept="application/json" hidden></footer></div></aside><div class="toast" id="toast" role="status"></div>';
   function $(id) { return root.getElementById(id); }
   var mode = 'text', filter = 'this', pending = null, editing = null;
   function toast(t) { var e = $('toast'); e.textContent = t; e.style.display = 'block'; setTimeout(function () { e.style.display = 'none'; }, 1800); }
@@ -229,16 +232,25 @@
     $('mText').setAttribute('aria-pressed', String(m === 'text')); $('mBox').setAttribute('aria-pressed', String(m === 'box'));
     if (m === 'box') startDraw();
   }
-  function showSide(v) { $('side').classList.toggle('hide', !v); $('tab').classList.toggle('hide', v); lset('rv:open', v ? '1' : '0'); }
+  var isOpen = false;
+  function getName() { return (lget('rv:name') || '').trim(); }
+  function refreshGate() {
+    var n = getName();
+    $('gate').hidden = !!n; $('body').hidden = !n;
+    $('who').textContent = n ? '작성자: ' + n : '';
+    if (!n) { $('mText').disabled = true; $('mBox').disabled = true; } else { $('mText').disabled = false; $('mBox').disabled = false; }
+  }
+  function showSide(v) { isOpen = v; $('side').classList.toggle('hide', !v); $('tab').classList.toggle('hide', v); lset('rv:open', v ? '1' : '0'); if (v) { refreshGate(); if (!getName()) setTimeout(function () { $('nm').focus(); }, 0); } }
+  function doName() { var v = $('nm').value.trim().slice(0, 30); if (!v) { toast('이름을 입력해 주세요'); return; } lset('rv:name', v); refreshGate(); renderList(); toast(v + ' 님, 시작합니다'); }
+  $('nmOk').addEventListener('click', doName);
+  $('nm').addEventListener('keydown', function (e) { if (e.key === 'Enter') doName(); });
+  $('nmChg').addEventListener('click', function () { var v = prompt('작성자 이름을 바꿉니다', getName()); if (v != null && v.trim()) { lset('rv:name', v.trim().slice(0, 30)); refreshGate(); renderList(); } });
   $('fold').addEventListener('click', function () { showSide(false); });
   $('tab').addEventListener('click', function () { showSide(true); });
   $('mText').addEventListener('click', function () { setMode('text'); });
   $('mBox').addEventListener('click', function () { setMode('box'); });
   $('fThis').addEventListener('click', function () { filter = 'this'; $('fThis').classList.add('on'); $('fAll').classList.remove('on'); renderList(); });
   $('fAll').addEventListener('click', function () { filter = 'all'; $('fAll').classList.add('on'); $('fThis').classList.remove('on'); renderList(); });
-  $('off').addEventListener('click', function () {
-    if (confirm('수정 메모 모드를 끕니다. 저장된 메모는 지워지지 않습니다. 다시 켜려면 주소 끝에 ?review=1을 붙이세요.')) { lset('rv:on', '0'); location.href = location.pathname; }
-  });
 
   function openForm(t, existing) {
     pending = t; editing = existing || null;
@@ -251,10 +263,11 @@
   function doSave() {
     var c = $('ta').value.trim();
     if (!pending) return;
+    if (!getName()) { toast('먼저 이름을 정해 주세요'); return; }
     if (!c) { toast('메모 내용을 적어 주세요'); return; }
     if (editing) { editing.comment = c; }
     else {
-      items.push({ id: uid(), type: pending.type, url: pageKey(), path: location.pathname, title: document.title,
+      items.push({ id: uid(), author: getName(), type: pending.type, url: pageKey(), path: location.pathname, title: document.title,
         quote: pending.quote || '', prefix: pending.prefix || '', suffix: pending.suffix || '', sel: pending.sel, rel: pending.rel, abs: pending.abs,
         pageW: pending.pageW, ctx: pending.ctx || '', vw: innerWidth || document.documentElement.clientWidth, scrollY: Math.round(scrollY), comment: c, done: false, created: new Date().toISOString() });
     }
@@ -264,8 +277,8 @@
   $('ta').addEventListener('keydown', function (e) { if ((e.ctrlKey || e.metaKey) && e.key === 'Enter') doSave(); if (e.key === 'Escape') closeForm(); });
 
   /* 텍스트 선택 → 폼 */
-  document.addEventListener('mouseup', function (e) { setTimeout(function () { if (e.composedPath && e.composedPath().indexOf(host) > -1) return; if (mode !== 'text') return; var t = textTarget(getSelection()); if (t) openForm(t); }, 10); });
-  document.addEventListener('touchend', function (e) { setTimeout(function () { if (e.composedPath && e.composedPath().indexOf(host) > -1) return; if (mode !== 'text') return; var t = textTarget(getSelection()); if (t) openForm(t); }, 300); });
+  document.addEventListener('mouseup', function (e) { setTimeout(function () { if (e.composedPath && e.composedPath().indexOf(host) > -1) return; if (!isOpen || !getName() || mode !== 'text') return; var t = textTarget(getSelection()); if (t) openForm(t); }, 10); });
+  document.addEventListener('touchend', function (e) { setTimeout(function () { if (e.composedPath && e.composedPath().indexOf(host) > -1) return; if (!isOpen || !getName() || mode !== 'text') return; var t = textTarget(getSelection()); if (t) openForm(t); }, 300); });
 
   /* 박스 그리기 */
   function startDraw() {
@@ -294,6 +307,7 @@
   }
 
   /* 목록 */
+  function esc(t) { return String(t).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
   function short(p) { return p.replace(/^\/research-methodology/, '') || '/'; }
   function renderList() {
     var n = pageItems().length;
@@ -306,7 +320,7 @@
       if (filter === 'all' && it.url !== lastUrl) { var s = document.createElement('div'); s.className = 'sep'; s.textContent = short(it.path); L.appendChild(s); lastUrl = it.url; }
       var cur = it.url === pageKey(), d = document.createElement('div');
       d.className = 'it' + (it.done ? ' done' : '') + (cur && it._ok === false ? ' orphan' : ''); d.setAttribute('role', 'listitem');
-      var meta = (cur ? '<span class="n">' + (it._n || '') + '</span>' : '') + (it.type === 'text' ? '하이라이트' : '박스') + ' · ' + short(it.path) + (cur && it._ok === false ? ' · ⚠ 위치를 찾지 못함' : '');
+      var meta = (cur ? '<span class="n">' + (it._n || '') + '</span>' : '') + (it.type === 'text' ? '하이라이트' : '박스') + (it.author ? ' · ' + esc(it.author) : '') + ' · ' + esc(short(String(it.path || ''))) + (cur && it._ok === false ? ' · ⚠ 위치를 찾지 못함' : '');
       d.innerHTML = '<div class="meta"></div>' + (it.quote ? '<span class="q"></span>' : '') + '<div class="c"></div><div class="act"></div>';
       d.querySelector('.meta').innerHTML = meta;
       if (it.quote) d.querySelector('.q').textContent = '“' + it.quote.slice(0, 80) + (it.quote.length > 80 ? '…' : '') + '”';
@@ -335,13 +349,13 @@
 
   /* 내보내기·가져오기 */
   function mdOut() {
-    var out = ['# 수정 요청 목록 (' + items.length + '건)', '', '생성: ' + new Date().toLocaleString('ko-KR'), ''];
+    var out = ['# 내 메모 (' + items.length + '건)', '', '작성자: ' + (getName() || '-') + ' · 생성: ' + new Date().toLocaleString('ko-KR'), ''];
     var by = {}; items.forEach(function (x) { (by[x.url] = by[x.url] || []).push(x); });
     Object.keys(by).forEach(function (u) {
       out.push('## ' + (by[u][0].title || u) + ' — ' + u, '');
       by[u].forEach(function (x, i) {
         var link = x.type === 'text' && x.quote ? u + '#:~:text=' + encodeURIComponent(x.quote.slice(0, 60)).replace(/-/g, '%2D') : u + '?review=1#rv-' + x.id;
-        out.push((i + 1) + '. [' + (x.done ? '완료' : '미완료') + '] ' + (x.type === 'text' ? '하이라이트' : '박스'));
+        out.push((i + 1) + '. [' + (x.done ? '완료' : '미완료') + '] ' + (x.type === 'text' ? '하이라이트' : '박스') + (x.author ? ' (' + x.author + ')' : ''));
         out.push('   - 메모: ' + x.comment.replace(/\n/g, ' / '));
         if (x.quote) out.push('   - 인용: "' + x.quote.slice(0, 200).replace(/\n/g, ' ') + '"');
         if (x.type === 'box' && x.ctx) out.push('   - 영역 근처 텍스트: "' + x.ctx + '"');
@@ -374,7 +388,7 @@
   });
 
   /* ---------- 시작 ---------- */
-  showSide(lget('rv:open') !== '0');
+  showSide(lget('rv:open') === '1');
   function init() {
     render();
     var m = /^#rv-(.+)$/.exec(location.hash);
