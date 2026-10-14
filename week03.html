@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>3주차 · 상관관계: 같이 움직이는가 | </title>
+<title>3주차 · 상관관계: 같이 움직이는가 | 연구방법론 교재</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Noto+Sans+KR:wght@300;400;500;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
@@ -40,7 +40,7 @@ section.ch p b{color:var(--ink)}
 .note{border-left:4px solid var(--hl);background:rgba(255,212,71,.13);padding:16px 20px;margin:24px 0;font-size:15px}
 .note b{font-family:'Gowun Batang',serif}
 .vis{background:var(--card);border:2px solid var(--ink);padding:18px;margin:26px 0;box-shadow:6px 6px 0 rgba(27,38,53,.11)}
-.vis svg{width:100%;height:auto;display:block}
+.vis svg{width:100%;height:auto;display:block}.vis svg .axis-label{font-size:16px}
 .vis .cap{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--sub);margin-top:8px;text-align:right}
 .axis-label{font-family:'IBM Plex Mono',monospace;font-size:10px;fill:var(--sub)}
 table.terms{width:100%;border-collapse:collapse;margin:22px 0;background:var(--card);border:2px solid var(--ink);box-shadow:6px 6px 0 rgba(27,38,53,.11)}
@@ -65,6 +65,41 @@ table.terms td:first-child{font-family:'Gowun Batang',serif;font-weight:700;whit
 .pager a.next{text-align:right}
 .pager a.home{flex:0 0 100%;text-align:center;background:var(--paper)}
 footer{border-top:1px solid var(--grid);padding:24px 0;text-align:center;font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--sub)}
+/* week03 인과 표현 위젯 */
+.c3-wd{--wsub:#5C6774;--wpos:#1d6b43;--wmid:#8a6a00;--wneg:#a8402a}
+.c3-wd svg .axis-label{font-size:14.5px;fill:var(--wsub)}
+.wcap{font-family:'IBM Plex Mono',monospace;font-size:11px;color:#5C6774;margin-top:8px;text-align:right}
+.c3-wd{background:var(--card);border:2px solid var(--ink);box-shadow:6px 6px 0 rgba(27,38,53,.11);padding:20px 20px 16px;margin:26px 0}
+.c3-wd .tag{display:inline-block;font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.16em;background:var(--ink);color:var(--hl);padding:3px 10px;margin-bottom:10px}
+.c3-wd h4{font-size:17px;margin-bottom:8px}
+.c3-tabs{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:12px 0}
+.c3-tabs button,.c3-btn{min-height:44px;font-family:'Noto Sans KR',sans-serif;font-size:13.5px;font-weight:500;color:var(--ink);background:var(--paper);border:2px solid var(--ink);padding:6px 8px;cursor:pointer;line-height:1.4}
+.c3-tabs button[aria-pressed="true"]{background:var(--hl)}
+.c3-tabs button:focus-visible,.c3-btn:focus-visible,.c3-sl input:focus-visible{outline:3px solid var(--graph);outline-offset:2px}
+.c3-meta{font-size:13.5px;color:#3a4350;line-height:1.75;margin-bottom:10px}
+.c3-rows{border:2px solid var(--ink)}
+.c3-row{display:grid;grid-template-columns:150px 74px 1fr;gap:10px;align-items:start;padding:9px 12px;border-top:1px dashed var(--grid);font-size:13.5px;line-height:1.65}
+.c3-row:first-child{border-top:none}
+.c3-row .nm{font-family:'Gowun Batang',serif;font-weight:700}
+.c3-row .st{font-family:'IBM Plex Mono',monospace;font-weight:500;font-size:12.5px;white-space:nowrap}
+.c3-row .st.y{color:var(--wpos)}.c3-row .st.p{color:var(--wmid)}.c3-row .st.n{color:var(--wneg)}
+.c3-say{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:12px}
+.c3-say div{border:2px solid var(--ink);padding:10px 12px;font-size:13.5px;line-height:1.7}
+.c3-say .use{background:rgba(255,212,71,.2)}
+.c3-say .avoid{background:var(--paper)}
+.c3-say b{display:block;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.08em;margin-bottom:4px}
+.c3-tot{font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--wsub);margin-top:10px}
+.c3-wd .badge{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--wsub);margin-top:10px}
+.c3-grid{display:grid;grid-template-columns:1.25fr 1fr;gap:18px;align-items:start}
+.c3-wd svg{width:100%;height:auto;display:block}
+.c3-sl{display:grid;grid-template-columns:1fr;gap:10px}
+.c3-sl label{display:flex;justify-content:space-between;font-size:13px;font-weight:500;margin-bottom:2px}
+.c3-sl output{font-family:'IBM Plex Mono',monospace}
+.c3-sl input[type=range]{width:100%;min-height:44px;padding:6px 0;accent-color:var(--graph)}
+.c3-read{margin-top:12px;border-left:4px solid var(--hl);background:rgba(255,212,71,.13);padding:10px 14px;font-size:13.5px;line-height:1.75}
+.c3-read .eq{font-family:'IBM Plex Mono',monospace;font-size:12.5px}
+.c3-btn{width:100%;margin-top:6px}
+@media (max-width:760px){.c3-tabs{grid-template-columns:1fr 1fr}.c3-row{grid-template-columns:1fr;gap:2px}.c3-say{grid-template-columns:1fr}.c3-grid{grid-template-columns:1fr}.c3-wd{padding:16px 14px 14px}}
 </style>
 </head>
 <body>
@@ -77,29 +112,149 @@ footer{border-top:1px solid var(--grid);padding:24px 0;text-align:center;font-fa
   </div>
 </header>
 <main>
-<section class="ch"><div class="wrap"><div class="sec-no">3.1</div><h2>2×2 분할표: 가설 검증의 가장 단순한 형태</h2><p>두 변수가 모두 '있다/없다'로 나뉠 때, 세상에서 가장 단순한 가설 검증이 가능하다. 어느 자치구가 골목길 환경개선 사업을 시행했다고 하자. 사업 시행 여부(시행/미시행)와 주민 불안감 변화(감소/유지)를 교차하면 네 칸의 표가 만들어진다.</p><div class="vis"><svg viewBox="0 0 400 240" role="img" aria-label="2x2 분할표">
+<section class="ch"><div class="wrap"><div class="sec-no">3.1</div><h2>2×2 분할표: 가설 검증의 가장 단순한 형태</h2><p>두 변수가 모두 '있다/없다'로 나뉠 때, 세상에서 가장 단순한 가설 검증이 가능하다. 어느 자치구가 골목길 환경개선 사업을 시행했다고 하자. 사업 시행 여부(시행/미시행)와 주민 불안감 변화(감소/유지)를 교차하면 네 칸의 표가 만들어진다.</p><div class="vis"><svg viewBox="-24 0 424 250" role="img" aria-label="2x2 분할표">
 <rect x="90" y="40" width="130" height="70" fill="#FFF" stroke="#1B2635" stroke-width="2"/>
 <rect x="220" y="40" width="130" height="70" fill="#FFD447" stroke="#1B2635" stroke-width="2"/>
 <rect x="90" y="110" width="130" height="70" fill="#FFD447" stroke="#1B2635" stroke-width="2"/>
 <rect x="220" y="110" width="130" height="70" fill="#FFF" stroke="#1B2635" stroke-width="2"/>
-<text x="155" y="82" text-anchor="middle" font-size="15" font-weight="700">32</text>
-<text x="285" y="82" text-anchor="middle" font-size="15" font-weight="700">8</text>
-<text x="155" y="152" text-anchor="middle" font-size="15" font-weight="700">9</text>
-<text x="285" y="152" text-anchor="middle" font-size="15" font-weight="700">31</text>
+<text x="155" y="82" text-anchor="middle" font-size="17" font-weight="700">32</text>
+<text x="285" y="82" text-anchor="middle" font-size="17" font-weight="700">8</text>
+<text x="155" y="152" text-anchor="middle" font-size="17" font-weight="700">9</text>
+<text x="285" y="152" text-anchor="middle" font-size="17" font-weight="700">31</text>
 <text x="155" y="28" text-anchor="middle" class="axis-label">개선사업 시행</text>
 <text x="285" y="28" text-anchor="middle" class="axis-label">미시행</text>
 <text x="78" y="80" text-anchor="end" class="axis-label">불안감 감소</text>
 <text x="78" y="150" text-anchor="end" class="axis-label">불안감 유지</text>
-<text x="220" y="215" text-anchor="middle" class="axis-label">대각선에 빈도가 몰리면 두 변수는 관련이 있다</text>
+<text x="220" y="208" text-anchor="middle" class="axis-label">대각선에 빈도가 몰리면</text><text x="220" y="230" text-anchor="middle" class="axis-label">두 변수는 관련이 있다</text>
 </svg><div class="cap">그림 3-2. 2×2 분할표의 직관 (교육용 가상 데이터)</div></div><p>읽는 법은 하나다. <b>대각선을 보라.</b> '시행–감소'와 '미시행–유지' 칸에 빈도가 몰려 있으면 두 변수는 관련이 있다. 네 칸에 빈도가 고르게 퍼져 있으면 관련이 없다. 카이제곱 검정이라는 통계 절차는 이 대각선 쏠림이 우연으로 보기 어려운 정도인지를 숫자 하나로 확인해 주는 도구일 뿐, 판단의 본체는 여러분의 눈이 이미 하고 있다.</p></div></section><section class="ch"><div class="wrap"><div class="sec-no">3.2</div><h2>산점도: 방향과 강도를 읽는다</h2><p>두 변수가 모두 연속형이면 산점도를 그린다. 아파트의 전용면적과 매매가를 찍은 아래 그림을 보자.</p><div class="vis"><svg viewBox="0 0 400 260" role="img" aria-label="우상향 산점도">
 <line x1="40" y1="12" x2="40" y2="226" stroke="#1B2635" stroke-width="2"/>
 <line x1="40" y1="226" x2="388" y2="226" stroke="#1B2635" stroke-width="2"/>
 <text x="388" y="246" text-anchor="end" class="axis-label">전용면적 →</text>
-<text x="12" y="22" class="axis-label">매매가</text><circle cx="130" cy="175" r="4.5" fill="#3D6B8E" opacity=".85"/><circle cx="172" cy="157" r="4.5" fill="#3D6B8E" opacity=".85"/><circle cx="253" cy="92" r="4.5" fill="#3D6B8E" opacity=".85"/><circle cx="58" cy="218" r="4.5" fill="#3D6B8E" opacity=".85"/><circle cx="136" cy="158" r="4.5" fill="#3D6B8E" opacity=".85"/><circle cx="371" cy="51" r="4.5" fill="#3D6B8E" opacity=".85"/><circle cx="320" cy="77" r="4.5" fill="#3D6B8E" opacity=".85"/><circle cx="257" cy="93" r="4.5" fill="#3D6B8E" opacity=".85"/><circle cx="256" cy="127" r="4.5" fill="#3D6B8E" opacity=".85"/><circle cx="220" cy="139" r="4.5" fill="#3D6B8E" opacity=".85"/><circle cx="268" cy="84" r="4.5" fill="#3D6B8E" opacity=".85"/><circle cx="295" cy="95" r="4.5" fill="#3D6B8E" opacity=".85"/><circle cx="150" cy="142" r="4.5" fill="#3D6B8E" opacity=".85"/><circle cx="329" cy="72" r="4.5" fill="#3D6B8E" opacity=".85"/><circle cx="283" cy="114" r="4.5" fill="#3D6B8E" opacity=".85"/><circle cx="281" cy="117" r="4.5" fill="#3D6B8E" opacity=".85"/><circle cx="180" cy="162" r="4.5" fill="#3D6B8E" opacity=".85"/><circle cx="195" cy="160" r="4.5" fill="#3D6B8E" opacity=".85"/><circle cx="333" cy="53" r="4.5" fill="#3D6B8E" opacity=".85"/><circle cx="97" cy="176" r="4.5" fill="#3D6B8E" opacity=".85"/><circle cx="361" cy="55" r="4.5" fill="#3D6B8E" opacity=".85"/><circle cx="253" cy="102" r="4.5" fill="#3D6B8E" opacity=".85"/><circle cx="215" cy="125" r="4.5" fill="#3D6B8E" opacity=".85"/><circle cx="166" cy="159" r="4.5" fill="#3D6B8E" opacity=".85"/><circle cx="240" cy="137" r="4.5" fill="#3D6B8E" opacity=".85"/><circle cx="271" cy="122" r="4.5" fill="#3D6B8E" opacity=".85"/><circle cx="326" cy="97" r="4.5" fill="#3D6B8E" opacity=".85"/><circle cx="267" cy="89" r="4.5" fill="#3D6B8E" opacity=".85"/><circle cx="328" cy="96" r="4.5" fill="#3D6B8E" opacity=".85"/><circle cx="342" cy="70" r="4.5" fill="#3D6B8E" opacity=".85"/><circle cx="281" cy="84" r="4.5" fill="#3D6B8E" opacity=".85"/><circle cx="318" cy="82" r="4.5" fill="#3D6B8E" opacity=".85"/><circle cx="145" cy="146" r="4.5" fill="#3D6B8E" opacity=".85"/><circle cx="326" cy="98" r="4.5" fill="#3D6B8E" opacity=".85"/></svg>
-<div class="cap">그림 3-1. 양의 상관을 보이는 산점도 (교육용 가상 데이터)</div></div><p>산점도에서 읽을 것은 정확히 두 가지다. 첫째, <b>방향</b>. 점들이 오른쪽 위로 흐르면 양(+)의 관계, 오른쪽 아래로 흐르면 음(−)의 관계다. 면적이 클수록 가격이 높고(양), 역에서 멀수록 유동인구가 적다(음). 둘째, <b>강도</b>. 점들이 하나의 띠처럼 가늘게 모여 있으면 강한 관계, 구름처럼 넓게 흩어져 있으면 약한 관계다. 상관계수 r은 이 방향과 강도를 −1에서 +1 사이의 숫자 하나로 요약한 것에 지나지 않는다. r을 계산하기 전에 산점도를 먼저 그리는 습관은, r이 놓치는 것(곡선 관계, 극단값, 두 덩어리로 갈라진 분포)을 잡아내는 유일한 방법이기도 하다.</p></div></section><section class="ch"><div class="wrap"><div class="sec-no">3.3</div><h2>상관은 인과가 아니다</h2><p>이 장에서 가장 중요한 문장은 이것이다. <b>같이 움직인다는 것은 하나가 다른 하나의 원인이라는 뜻이 아니다.</b> 카페가 많은 동네일수록 지가가 높다는 상관을 발견했다고 하자. 카페가 지가를 올렸는가? 지가가 높은 곳에 카페가 몰렸는가? 아니면 유동인구라는 제3의 변수가 카페와 지가를 동시에 끌어올렸는가? 산점도는 이 세 가지 이야기를 구별해 주지 못한다.</p><div class="case"><span class="case-tag">국내 연구 사례</span><h4>어메니티 요소와 주택가격: 상관에서 출발한 연구들</h4><p>주택가격 연구에서는 한강 조망, 공원 인접성, 지하철역 거리 같은 어메니티 요소와 가격의 관계가 오래 탐구되어 왔다. 김진유·이창무(2005)는 어메니티 요소가 주택가격에 미치는 영향력이 시간에 따라 어떻게 변화하는지를 분석하였는데, 이는 단순히 '관련이 있다'를 넘어 그 관련의 크기가 시기별로 달라짐을 추적한 것이다.</p><p>이런 연구들이 상관 관찰에서 멈추지 않고 제4장에서 다룰 헤도닉 가격모형으로 나아가는 이유는, 다른 조건을 통제하지 않으면 '공원 때문에 비싼 것'인지 '공원 근처 아파트가 마침 새 아파트라 비싼 것'인지 구별할 수 없기 때문이다.</p><div class="src">김진유·이창무 (2005). 어메니티요소가 주택가격에 미치는 영향력의 시계열적 변화. <i>국토계획</i>, 40(1), 59-74.</div></div><div class="note"><b>강의 노트</b>: 학생들이 가장 자주 저지르는 오류는 산점도에서 양의 관계를 발견한 순간 'A가 B를 높인다'고 써 버리는 것이다. 이 장 이후로 여러분의 보고서에서 '영향을 준다'는 표현은 인과를 뒷받침할 설계(통제, 시간 선행, 메커니즘)가 있을 때만 허용된다. 그 전까지는 '관련이 있다'라고 쓰라.</div></div></section><div class="wrap"><div class="summary"><div class="eyebrow">이 장의 요약</div><ul><li>2×2 분할표는 대각선 쏠림으로 읽는다. 카이제곱 검정은 그 직관의 확인 도구다.</li><li>산점도에서는 방향(양/음)과 강도(밀집/분산) 두 가지를 읽으며, r은 그 요약일 뿐이다.</li><li>상관은 인과가 아니다. 역인과와 제3변수의 가능성을 배제하기 전에는 '영향'이라는 단어를 쓰지 않는다.</li></ul></div></div><div class="wrap" style="padding-top:30px"><div class="refs"><h3>참고문헌</h3><ol><li>김진유·이창무 (2005). 어메니티요소가 주택가격에 미치는 영향력의 시계열적 변화. <i>국토계획</i>, 40(1), 59-74.</li><li>이한울·안건혁 (2011). 상업지역 장소정체성에 영향을 주는 가로공간 구성요소: 명동의 상업가로를 중심으로. <i>한국도시설계학회지 도시설계</i>.</li></ol><div class="find"><b>더 찾아보려면</b>: DBpia에서 '상관분석 + 도시' 또는 '주택가격 + 접근성'으로 검색하면 상관 관찰에서 출발한 국내 실증연구의 서론-분석 구조를 볼 수 있다.</div></div></div></main>
+<text x="48" y="24" class="axis-label">매매가</text><circle cx="130" cy="175" r="4.5" fill="#3D6B8E" opacity=".85"/><circle cx="172" cy="157" r="4.5" fill="#3D6B8E" opacity=".85"/><circle cx="253" cy="92" r="4.5" fill="#3D6B8E" opacity=".85"/><circle cx="58" cy="218" r="4.5" fill="#3D6B8E" opacity=".85"/><circle cx="136" cy="158" r="4.5" fill="#3D6B8E" opacity=".85"/><circle cx="371" cy="51" r="4.5" fill="#3D6B8E" opacity=".85"/><circle cx="320" cy="77" r="4.5" fill="#3D6B8E" opacity=".85"/><circle cx="257" cy="93" r="4.5" fill="#3D6B8E" opacity=".85"/><circle cx="256" cy="127" r="4.5" fill="#3D6B8E" opacity=".85"/><circle cx="220" cy="139" r="4.5" fill="#3D6B8E" opacity=".85"/><circle cx="268" cy="84" r="4.5" fill="#3D6B8E" opacity=".85"/><circle cx="295" cy="95" r="4.5" fill="#3D6B8E" opacity=".85"/><circle cx="150" cy="142" r="4.5" fill="#3D6B8E" opacity=".85"/><circle cx="329" cy="72" r="4.5" fill="#3D6B8E" opacity=".85"/><circle cx="283" cy="114" r="4.5" fill="#3D6B8E" opacity=".85"/><circle cx="281" cy="117" r="4.5" fill="#3D6B8E" opacity=".85"/><circle cx="180" cy="162" r="4.5" fill="#3D6B8E" opacity=".85"/><circle cx="195" cy="160" r="4.5" fill="#3D6B8E" opacity=".85"/><circle cx="333" cy="53" r="4.5" fill="#3D6B8E" opacity=".85"/><circle cx="97" cy="176" r="4.5" fill="#3D6B8E" opacity=".85"/><circle cx="361" cy="55" r="4.5" fill="#3D6B8E" opacity=".85"/><circle cx="253" cy="102" r="4.5" fill="#3D6B8E" opacity=".85"/><circle cx="215" cy="125" r="4.5" fill="#3D6B8E" opacity=".85"/><circle cx="166" cy="159" r="4.5" fill="#3D6B8E" opacity=".85"/><circle cx="240" cy="137" r="4.5" fill="#3D6B8E" opacity=".85"/><circle cx="271" cy="122" r="4.5" fill="#3D6B8E" opacity=".85"/><circle cx="326" cy="97" r="4.5" fill="#3D6B8E" opacity=".85"/><circle cx="267" cy="89" r="4.5" fill="#3D6B8E" opacity=".85"/><circle cx="328" cy="96" r="4.5" fill="#3D6B8E" opacity=".85"/><circle cx="342" cy="70" r="4.5" fill="#3D6B8E" opacity=".85"/><circle cx="281" cy="84" r="4.5" fill="#3D6B8E" opacity=".85"/><circle cx="318" cy="82" r="4.5" fill="#3D6B8E" opacity=".85"/><circle cx="145" cy="146" r="4.5" fill="#3D6B8E" opacity=".85"/><circle cx="326" cy="98" r="4.5" fill="#3D6B8E" opacity=".85"/></svg>
+<div class="cap">그림 3-1. 양의 상관을 보이는 산점도 (교육용 가상 데이터)</div></div><p>산점도에서 읽을 것은 정확히 두 가지다. 첫째, <b>방향</b>. 점들이 오른쪽 위로 흐르면 양(+)의 관계, 오른쪽 아래로 흐르면 음(−)의 관계다. 면적이 클수록 가격이 높고(양), 역에서 멀수록 유동인구가 적다(음). 둘째, <b>강도</b>. 점들이 하나의 띠처럼 가늘게 모여 있으면 강한 관계, 구름처럼 넓게 흩어져 있으면 약한 관계다. 상관계수 r은 이 방향과 강도를 −1에서 +1 사이의 숫자 하나로 요약한 것에 지나지 않는다. r을 계산하기 전에 산점도를 먼저 그리는 습관은, r이 놓치는 것(곡선 관계, 극단값, 두 덩어리로 갈라진 분포)을 잡아내는 유일한 방법이기도 하다.</p></div></section><section class="ch"><div class="wrap"><div class="sec-no">3.3</div><h2>상관은 인과가 아니다</h2><p>이 장에서 가장 중요한 문장은 이것이다. <b>같이 움직인다는 것은 하나가 다른 하나의 원인이라는 뜻이 아니다.</b> 카페가 많은 동네일수록 지가가 높다는 상관을 발견했다고 하자. 카페가 지가를 올렸는가? 지가가 높은 곳에 카페가 몰렸는가? 아니면 유동인구라는 제3의 변수가 카페와 지가를 동시에 끌어올렸는가? 산점도는 이 세 가지 이야기를 구별해 주지 못한다.</p><div class="case"><span class="case-tag">국내 연구 사례</span><h4>어메니티 요소와 주택가격: 상관에서 출발한 연구들</h4><p>주택가격 연구에서는 한강 조망, 공원 인접성, 지하철역 거리 같은 어메니티 요소와 가격의 관계가 오래 탐구되어 왔다. 김진유·이창무(2005)는 어메니티 요소가 주택가격에 미치는 영향력이 시간에 따라 어떻게 변화하는지를 분석하였는데, 이는 단순히 '관련이 있다'를 넘어 그 관련의 크기가 시기별로 달라짐을 추적한 것이다.</p><p>이런 연구들이 상관 관찰에서 멈추지 않고 제4장에서 다룰 헤도닉 가격모형으로 나아가는 이유는, 다른 조건을 통제하지 않으면 '공원 때문에 비싼 것'인지 '공원 근처 아파트가 마침 새 아파트라 비싼 것'인지 구별할 수 없기 때문이다.</p><div class="src">김진유·이창무 (2005). 어메니티요소가 주택가격에 미치는 영향력의 시계열적 변화. <i>국토계획</i>, 40(1), 59-74.</div></div><div class="note"><b>강의 노트</b>: 학생들이 가장 자주 저지르는 오류는 산점도에서 양의 관계를 발견한 순간 'A가 B를 높인다'고 써 버리는 것이다. 이 장 이후로 여러분의 보고서에서 '영향을 준다'는 표현은 인과를 뒷받침할 설계(통제, 시간 선행, 가능하면 메커니즘 설명)가 있을 때만 허용된다. 그 전까지는 '관련이 있다'라고 쓰라.</div></div></section><section class="ch" id="causal-design"><div class="wrap"><div class="sec-no">3.4</div><h2>인과로 말하려면 무엇이 있어야 하는가</h2><p>앞의 강의 노트는 '영향을 준다'라는 표현을 설계가 있을 때만 쓰라고 했다. 여기서 말하는 설계가 무엇인지를 세 가지 조건과 보조 고려 사항 하나로 풀어 보자. 이 절의 자료는 모두 <b>개념 설명용 가상 자료</b>이며 실제 연구 결과가 아니다.</p>
+<p>인과를 주장하려면 표준적으로 세 가지를 따진다. <b>시간 선행</b>(원인이 결과보다 먼저 일어났는가), <b>공변</b>(원인이 달라질 때 결과도 달라지는가), <b>교란 통제</b>(제3의 요인이 둘을 함께 움직인 것은 아닌가, 곧 대안 설명을 배제했는가)이다. 여기에 <b>메커니즘</b>(왜 그렇게 되는지 경로를 설명할 수 있는가)은 Hill(1965)이 든 여러 고려 사항(viewpoints) 가운데 하나로, 필수 조건이 아니라 판단을 돕는 <b>보조</b> 고려 사항이다. 아래 패널은 이 네 칸을 나란히 보여 준다. 어느 칸이 얼마나 갖춰졌는지는 연구 설계마다 다르고, 그 정도가 문장에 쓸 수 있는 동사를 결정한다.</p>
+<div class="c3-wd" id="c3-scn"><span class="tag">설명용 가상 자료</span><h4>시나리오를 고르면 조건 충족 여부와 쓸 수 있는 표현이 바뀐다</h4><p class="c3-meta" style="margin-bottom:0">같은 질문('카페가 늘면 지가가 오르는가')을 네 가지 자료로 다룬다고 가정한다. 버튼을 눌러 세 조건과 보조 고려 사항(메커니즘)의 충족 여부(✓ 충족, △ 부분, ✗ 미충족)를 확인해 보라.</p>
+<div class="c3-tabs" role="group" aria-label="자료 설계 시나리오 선택"><button type="button" data-k="A" aria-pressed="true">A 단면 관찰자료</button><button type="button" data-k="B" aria-pressed="false">B 패널자료</button><button type="button" data-k="C" aria-pressed="false">C 준실험</button><button type="button" data-k="D" aria-pressed="false">D 무작위 실험</button></div>
+<div id="c3-scn-out" role="status" aria-live="polite"></div></div>
+<p><b>읽는 법.</b> 이 패널이 알려 주는 것은 설계가 어느 조건을 뒷받침하는가이고, 알려 주지 않는 것은 실제 효과의 크기다. 또한 ✓가 많다고 결론이 자동으로 옳아지는 것은 아니다. 무작위 실험에서도 보조 칸인 메커니즘이 △인 점을 눈여겨보라. 효과가 있다는 것과 왜 있는지를 아는 것은 서로 다른 일이다.</p>
+<h3 style="font-size:19px;margin:30px 0 12px">준실험의 핵심 도구: 차이의 차이(DID)</h3>
+<p>시나리오 C의 계산 방식을 직접 만져 보자. 정책을 시행한 지역(처치 지역)과 시행하지 않은 지역(비교 지역)의 평균 지가를 정책 전후로 관찰한다고 하자. <b>차이의 차이</b>(difference-in-differences, DID)는 '처치 지역의 전후 변화'에서 '비교 지역의 전후 변화'를 빼서 정책 이외의 공통된 변화를 걷어 낸다. 아래 슬라이더 네 개를 움직여 점선(처치가 없었다면 처치 지역이 걸었을 길)과 추정치가 어떻게 달라지는지 보라. 특히 '추세 차이'를 0이 아닌 값으로 두면 어떻게 되는지 확인해 보기 바란다.</p>
+<div class="c3-wd" id="c3-did"><span class="tag">설명용 가상 자료</span><h4>DID 그래프: 처치 지역과 비교 지역의 평균 지가(가상 지수)</h4>
+<div class="c3-grid"><div><svg id="c3-did-svg" viewBox="0 0 420 372" role="img" aria-label="처치 지역과 비교 지역의 처치 전후 평균 지가 변화를 보여 주는 선그래프. 슬라이더에 따라 반사실 점선과 DID 추정치가 바뀐다."></svg></div>
+<div><div class="c3-sl"><div><label for="c3-gap"><span>사전 격차(처치 지역 − 비교 지역)</span><output id="c3-gap-o" for="c3-gap"></output></label><input type="range" id="c3-gap" min="-30" max="30" step="1" value="20"></div>
+<div><label for="c3-trend"><span>공통 추세(두 지역에 똑같이 일어난 변화)</span><output id="c3-trend-o" for="c3-trend"></output></label><input type="range" id="c3-trend" min="-20" max="30" step="1" value="10"></div>
+<div><label for="c3-eff"><span>처치 효과(정책만의 참 효과)</span><output id="c3-eff-o" for="c3-eff"></output></label><input type="range" id="c3-eff" min="-20" max="30" step="1" value="15"></div>
+<div><label for="c3-td"><span>추세 차이(처치 지역이 원래 더 빨리 오르던 정도)</span><output id="c3-td-o" for="c3-td"></output></label><input type="range" id="c3-td" min="-20" max="20" step="1" value="0"></div></div>
+<button type="button" class="c3-btn" id="c3-reset">초기값으로 되돌리기</button></div></div>
+<div class="c3-read" id="c3-did-out" role="status" aria-live="polite"></div>
+<div class="wcap">그림 3-3. 차이의 차이 (개념 설명용 가상 자료, 실제 문헌 아님)</div></div>
+<p><b>읽는 법.</b> 추세 차이가 0이면 DID 추정치는 슬라이더로 정한 처치 효과와 정확히 같다. 이 경우는 두 지역이 정책이 없었다면 나란히 움직였을 것이라는 <b>평행 추세 가정</b>이 맞는 세계다. 추세 차이를 0이 아닌 값으로 바꾸면 추정치는 참 효과에 추세 차이만큼이 그대로 더해져 어긋난다. 그런데 현실의 분석자는 '참 효과'도 '참 반사실'도 보지 못한다. 그래서 평행 추세는 자료만으로 증명되지 않고, 정책 이전 여러 시점의 추세를 비교하는 식으로 정황을 확인하며 한계로 밝혀야 하는 가정이다. 한편 '사전 격차' 슬라이더를 움직여도 DID는 변하지 않는다. DID가 요구하는 것은 같은 수준이 아니라 같은 추세다.</p>
+<h3 style="font-size:19px;margin:30px 0 12px">그래서 논문에서는</h3>
+<div class="note"><b>문장 쓰기의 원칙</b><br>첫째, 설계가 없으면 연관 표현을 쓴다('~와 관련이 있다', '~가 높은 경향이 있다'). 둘째, 설계가 있으면 그 설계가 허락하는 만큼 효과 표현을 쓴다('~로 추정된다', '~를 높였다'). 셋째, 효과 표현에는 그것을 가능하게 한 가정을 같은 문장이나 바로 다음 문장에 적는다(예: '평행 추세 가정 아래에서 정책 시행이 지가를 높인 것으로 추정된다'). 인과 판단의 고려 사항을 정리한 고전적 논의로 Hill(1965)이 있다. 다만 이 목록은 체크리스트가 아니라 판단의 참고 자료라는 점을 기억하라.</div>
+</div></section><div class="wrap"><div class="summary"><div class="eyebrow">이 장의 요약</div><ul><li>2×2 분할표는 대각선 쏠림으로 읽는다. 카이제곱 검정은 그 직관의 확인 도구다.</li><li>산점도에서는 방향(양/음)과 강도(밀집/분산) 두 가지를 읽으며, r은 그 요약일 뿐이다.</li><li>상관은 인과가 아니다. '영향'이라는 표현은 역인과와 제3변수의 가능성을 다룬 설계가 뒷받침할 때만 인과의 뜻으로 쓴다.</li></ul></div></div><div class="wrap" style="padding-top:30px"><div class="refs"><h3>참고문헌</h3><ol><li>김진유·이창무 (2005). 어메니티요소가 주택가격에 미치는 영향력의 시계열적 변화. <i>국토계획</i>, 40(1), 59-74.</li><li>Hill, A. B. (1965). The environment and disease: Association or causation? <i>Proceedings of the Royal Society of Medicine</i>, 58(5), 295-300.</li><li>이한울·안건혁 (2011). 상업지역 장소정체성에 영향을 주는 가로공간 구성요소: 명동의 상업가로를 중심으로. <i>한국도시설계학회지 도시설계</i>.</li></ol><div class="find"><b>더 찾아보려면</b>: DBpia에서 '상관분석 + 도시' 또는 '주택가격 + 접근성'으로 검색하면 상관 관찰에서 출발한 국내 실증연구의 서론-분석 구조를 볼 수 있다.</div></div></div></main>
 <div class="wrap"><div class="pager"><a href="week02.html"><span class="dir">← 제2장</span><div class="ti">변수란 무엇인가</div></a><a class="next" href="week04.html"><span class="dir">제4장 →</span><div class="ti">영향관계: 얼마나 끌고 가는가</div></a>
 <a class="home" href="methods.html"><span class="dir">INDEX</span><div class="ti">강의 개요로 돌아가기</div></a>
 </div></div>
 <footer>연구방법론 강의 교재 · 제3장 · 본문 예시의 수치는 교육용 가상 데이터이며, 인용 논문의 결과는 해당 원문을 따릅니다</footer>
+<script>
+(function(){
+  var K={ink:'#1B2635',graph:'#3D6B8E',grid:'#D8DFE6',neg:'#B5532B',sub:'#5C6774',gold:'#C7A008'};
+  /* 계산 함수(순수 함수) */
+  function didCalc(gap,trend,eff,td){
+    var C0=100, C1=C0+trend;
+    var T0=C0+gap, T1=T0+trend+td+eff;
+    var cfAssumed=T0+trend;      /* 평행 추세를 가정한 반사실 */
+    var cfTrue=T0+trend+td;      /* 참 반사실(설명용으로만 알 수 있음) */
+    var did=(T1-T0)-(C1-C0);
+    return {C0:C0,C1:C1,T0:T0,T1:T1,cfAssumed:cfAssumed,cfTrue:cfTrue,did:did,bias:did-eff};
+  }
+  var api={didCalc:didCalc};
+  if(typeof document==='undefined'){ if(typeof module!=='undefined')module.exports=api; return; }
+
+  /* 1. 시나리오 패널 */
+  var NAMES=['시간 선행','공변','교란 통제','메커니즘(보조)'];
+  var Q={
+    n:['✗','미충족'],p:['△','부분'],y:['✓','충족']
+  };
+  var S={
+    A:{title:'A 단면 관찰자료',ex:'한 해의 동 단위 자료에서 카페 수와 평균 지가를 비교한다(가상).',
+      data:'자료의 모양: 행은 동, 열은 카페 수와 지가이며 시점은 한 번뿐이다.',
+      c:[['n','한 시점뿐이라 무엇이 먼저인지 알 수 없다.'],['y','카페가 많은 동에서 지가가 높게 나타났다.'],['n','유동인구 같은 제3변수를 배제하지 못했다.'],['p','그럴듯한 이야기는 있으나 자료로 확인하지 못했다.']],
+      use:'카페 수가 많은 동일수록 지가가 높은 경향이 있다(관련이 있다).',avoid:'카페가 지가를 높였다. 카페는 지가에 영향을 준다.'},
+    B:{title:'B 패널자료(같은 동네의 변화)',ex:'같은 동네를 여러 해 따라가며 카페 수와 지가의 변화를 본다(가상).',
+      data:'자료의 모양: 행은 동네와 연도의 조합이고, 같은 동네가 여러 해에 걸쳐 반복 등장한다.',
+      c:[['p','카페 수가 늘어난 해와 지가가 오른 해의 순서는 볼 수 있다. 다만 지가 상승을 예상한 카페가 먼저 들어왔을 가능성(기대에 의한 역인과)은 남는다.'],['y','같은 동네 안에서 카페가 늘 때 지가도 오르는지 본다.'],['p','동네 고유의 변하지 않는 특성은 비교에서 빠지지만, 시간에 따라 변하는 요인(재개발 등)은 남는다.'],['p','경로를 보여 주는 변수를 따로 측정해야 한다.']],
+      use:'카페 수가 늘어난 이후 해당 동네의 지가가 높아졌다.',avoid:'카페 때문에 지가가 올랐다.'},
+    C:{title:'C 준실험(정책 시행 지역과 비교 지역의 전후 비교)',ex:'가로 환경 정비 정책을 시행한 지역과 시행하지 않은 지역의 지가를 정책 전후로 비교한다(가상).',
+      data:'자료의 모양: 처치 지역과 비교 지역 각각에 대해 정책 이전과 이후의 평균값이 있다.',
+      c:[['y','정책 시행 시점이 분명해 이전과 이후를 구분할 수 있다.'],['y','처치 지역의 변화가 비교 지역보다 크게 나타났다.'],['p','두 지역이 정책이 없었다면 나란히 움직였을 것이라는 평행 추세 가정에 기댄다. 정책 효과가 비교 지역으로 번지지 않았다는 가정도 필요하다.'],['p','정책이 어떤 경로로 작용했는지는 별도 자료가 필요하다.']],
+      use:'정책의 효과로 추정된다(평행 추세 가정과 그 한계를 함께 적는다).',avoid:'정책이 지가를 올렸음이 입증되었다.'},
+    D:{title:'D 무작위 실험',ex:'시범사업 대상 구역을 추첨으로 정하고 지가 변화를 비교한다고 가정한다(도시 연구에서는 드문 설계).',
+      data:'자료의 모양: 추첨으로 나뉜 처치군과 대조군에 대해 처치 이후의 결과가 있다.',
+      c:[['y','처치를 배정한 뒤에 결과를 측정한다.'],['y','처치군과 대조군의 평균 결과를 직접 비교한다.'],['y','무작위 배정으로 두 집단이 평균적으로 같아지도록 만든다.'],['p','효과는 알아도 왜 그런지는 매개변수를 따로 재야 한다.']],
+      use:'처치가 결과를 높였다(표본과 조건의 범위 안에서).',avoid:'어느 지역에서나 같은 효과가 나타날 것이다(일반화 과장).'}
+  };
+  var out=document.getElementById('c3-scn-out');
+  var tabs=document.querySelectorAll('#c3-scn .c3-tabs button');
+  function showScn(k){
+    var s=S[k],cnt={y:0,p:0,n:0},h='';
+    h+='<p class="c3-meta" style="margin-top:4px"><b>'+s.title+'</b><br>'+s.ex+'<br>'+s.data+'</p><div class="c3-rows">';
+    for(var i=0;i<4;i++){
+      var q=s.c[i][0];cnt[q]++;
+      h+='<div class="c3-row"><div class="nm">'+NAMES[i]+'</div><div class="st '+q+'">'+Q[q][0]+' '+Q[q][1]+'</div><div>'+s.c[i][1]+'</div></div>';
+    }
+    h+='</div><div class="c3-tot">네 칸 중 ✓ '+cnt.y+'개, △ '+cnt.p+'개, ✗ '+cnt.n+'개</div>';
+    h+='<div class="c3-say"><div class="use"><b>쓸 수 있는 표현</b>'+s.use+'</div><div class="avoid"><b>피할 표현</b>'+s.avoid+'</div></div>';
+    out.innerHTML=h;
+    for(var j=0;j<tabs.length;j++)tabs[j].setAttribute('aria-pressed',tabs[j].getAttribute('data-k')===k?'true':'false');
+  }
+  for(var t=0;t<tabs.length;t++)tabs[t].addEventListener('click',function(){showScn(this.getAttribute('data-k'));});
+  showScn('A');
+
+  /* 2. DID 그래프 */
+  var svg=document.getElementById('c3-did-svg'),rd=document.getElementById('c3-did-out');
+  var ids=['gap','trend','eff','td'],el={},ou={};
+  ids.forEach(function(k){el[k]=document.getElementById('c3-'+k);ou[k]=document.getElementById('c3-'+k+'-o');});
+  var X0=135,X1=315,YB=250,YT=26,VMAX=230;
+  function ro(v){var c=String(v).replace(/[^0-9]/g,'').slice(-1);return v+('036'.indexOf(c)>=0&&c!==''?'으로':'로');} /* 수 뒤 '로/으로': 영·삼·육은 으로 */
+  function pr(n){return n<0?'('+n+')':String(n);} /* 음수는 괄호 */
+  function jos(v,a,b){var c=String(v).replace(/[^0-9]/g,'').slice(-1);return v+('013678'.indexOf(c)>=0?a:b);} /* 숫자 뒤 조사: 받침 있으면 a, 없으면 b */
+  function Y(v){return YB-(v/VMAX)*(YB-YT);}
+  function sg(v){return (v>0?'+':'')+v;}
+  function draw(){
+    var g=+el.gap.value,tr=+el.trend.value,ef=+el.eff.value,td=+el.td.value;
+    ids.forEach(function(k){ou[k].textContent=sg(+el[k].value);});
+    var r=didCalc(g,tr,ef,td),s='';
+    for(var v=0;v<=200;v+=50)s+='<line x1="48" x2="400" y1="'+Y(v)+'" y2="'+Y(v)+'" stroke="'+K.grid+'" stroke-width="1"/><text x="42" y="'+(Y(v)+5)+'" text-anchor="end" class="axis-label">'+v+'</text>';
+    s+='<line x1="48" y1="'+YT+'" x2="48" y2="'+YB+'" stroke="'+K.ink+'" stroke-width="2"/><line x1="48" y1="'+YB+'" x2="400" y2="'+YB+'" stroke="'+K.ink+'" stroke-width="2"/>';
+    s+='<text x="'+X0+'" y="271" text-anchor="middle" class="axis-label">처치 전</text><text x="'+X1+'" y="271" text-anchor="middle" class="axis-label">처치 후</text><text x="48" y="15" class="axis-label">평균 지가(가상 지수)</text>';
+    /* 비교 지역 */
+    s+='<line x1="'+X0+'" y1="'+Y(r.C0)+'" x2="'+X1+'" y2="'+Y(r.C1)+'" stroke="'+K.sub+'" stroke-width="3"/>';
+    /* DID가 가정하는 반사실 */
+    s+='<line x1="'+X0+'" y1="'+Y(r.T0)+'" x2="'+X1+'" y2="'+Y(r.cfAssumed)+'" stroke="'+K.graph+'" stroke-width="2.5" stroke-dasharray="2 5" stroke-linecap="round"/>';
+    /* 참 반사실 */
+    if(td!==0)s+='<line x1="'+X0+'" y1="'+Y(r.T0)+'" x2="'+X1+'" y2="'+Y(r.cfTrue)+'" stroke="'+K.neg+'" stroke-width="2" stroke-dasharray="7 5"/>';
+    /* 처치 지역 */
+    s+='<line x1="'+X0+'" y1="'+Y(r.T0)+'" x2="'+X1+'" y2="'+Y(r.T1)+'" stroke="'+K.graph+'" stroke-width="3.5"/>';
+    /* DID 간격 표시 */
+    s+='<line x1="'+(X1+16)+'" y1="'+Y(r.cfAssumed)+'" x2="'+(X1+16)+'" y2="'+Y(r.T1)+'" stroke="'+K.gold+'" stroke-width="5"/>';
+    s+='<text x="'+(X1+24)+'" y="'+(Y((r.cfAssumed+r.T1)/2)+4)+'" class="axis-label" fill="'+K.ink+'">DID '+sg(r.did)+'</text>';
+    s+='<circle cx="'+X0+'" cy="'+Y(r.C0)+'" r="5" fill="'+K.sub+'"/><circle cx="'+X1+'" cy="'+Y(r.C1)+'" r="5" fill="'+K.sub+'"/><circle cx="'+X0+'" cy="'+Y(r.T0)+'" r="5.5" fill="'+K.graph+'"/><circle cx="'+X1+'" cy="'+Y(r.T1)+'" r="5.5" fill="'+K.graph+'"/>';
+    var tUp=r.T0>=r.C0;
+    s+='<text x="'+(X0-8)+'" y="'+(tUp?Y(r.T0)-9:Y(r.T0)+19)+'" text-anchor="end" class="axis-label" fill="'+K.graph+'">처치 '+r.T0+'</text><text x="'+(X0-8)+'" y="'+(tUp?Y(r.C0)+19:Y(r.C0)-9)+'" text-anchor="end" class="axis-label">비교 '+r.C0+'</text>';
+    /* 범례 */
+    s+='<g class="axis-label"><line x1="48" x2="72" y1="294" y2="294" stroke="'+K.graph+'" stroke-width="3.5"/><text x="80" y="299">처치 지역</text><line x1="48" x2="72" y1="316" y2="316" stroke="'+K.sub+'" stroke-width="3"/><text x="80" y="321">비교 지역</text><line x1="48" x2="72" y1="338" y2="338" stroke="'+K.graph+'" stroke-width="2.5" stroke-dasharray="2 5"/><text x="80" y="343">반사실(평행 추세 가정)</text>'+(td!==0?'<line x1="48" x2="72" y1="360" y2="360" stroke="'+K.neg+'" stroke-width="2" stroke-dasharray="7 5"/><text x="80" y="365">참 반사실(실제론 모름)</text>':'')+'</g>';
+    svg.innerHTML=s;
+    var h='<span class="eq">DID = (처치 후 − 처치 전) − (비교 후 − 비교 전)<br>= ('+r.T1+' − '+r.T0+') − ('+r.C1+' − '+r.C0+') = '+(r.T1-r.T0)+' − '+pr(r.C1-r.C0)+' = <b>'+r.did+'</b></span><br>';
+    if(td===0){h+='추세 차이가 0이므로 추정치 '+jos(r.did,'은','는')+' 슬라이더로 정한 처치 효과 '+jos(ef,'과','와')+' 같다. 평행 추세 가정이 맞는 세계다.';}
+    else{h+='참 효과는 '+ef+'이지만 추정치는 '+r.did+'이다. 추세 차이 '+jos(sg(td),'이','가')+' 그대로 더해져 '+sg(r.bias)+'만큼 어긋났다. 평행 추세 가정이 깨지면 DID는 효과와 원래 추세 차이를 구별하지 못한다.';}
+    rd.innerHTML=h;
+    svg.setAttribute('aria-label','처치 지역 '+r.T0+'에서 '+r.T1+', 비교 지역 '+r.C0+'에서 '+ro(r.C1)+' 변했고 DID 추정치는 '+r.did+'이다.');
+  }
+  ids.forEach(function(k){el[k].addEventListener('input',draw);});
+  document.getElementById('c3-reset').addEventListener('click',function(){el.gap.value=20;el.trend.value=10;el.eff.value=15;el.td.value=0;draw();});
+  draw();
+})();
+</script>
 <script src="review-tool.js" defer></script>
 </body></html>

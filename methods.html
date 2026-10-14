@@ -333,8 +333,8 @@ footer{
   <div class="wrap">
     <div class="section-head reveal">
       <div class="eyebrow">Part 1: 데이터 해석</div>
-      <h2>네 가지 관계, 네 장의 그림</h2>
-      <p>매 수업은 그래프를 먼저 띄우는 것으로 시작합니다. 이름은 나중에 붙입니다.</p>
+      <h2>네 가지 관계, 네 장의 그래프로 이해하기</h2>
+      <p>매 수업은 그래프를 먼저 띄우는 것으로 시작합니다.</p>
     </div>
 
     <!-- 상관 -->
@@ -450,7 +450,7 @@ footer{
 
     <div class="cve-grid reveal">
       <article class="cve-card">
-        <span class="tag">상관관계</span>
+        <span class="tag"><b class="mark">상관관계</b></span>
         <h3>함께 움직이는 정도</h3>
         <p class="plain">“상가 연면적과 임대료는 같이 오르내리는가?”</p>
         <ul>
@@ -460,7 +460,7 @@ footer{
         </ul>
       </article>
       <article class="cve-card">
-        <span class="tag">영향관계</span>
+        <span class="tag"><b class="mark">영향관계</b></span>
         <h3>한 변수가 다른 변수를 설명하는 정도</h3>
         <p class="plain">“녹지율이 10%p 늘면 지가는 얼마나 달라지는가?”</p>
         <ul>
@@ -481,6 +481,14 @@ footer{
           <button class="tbtn" id="cveB" type="button" aria-pressed="false">지가 → 녹지율</button>
         </div>
         <p class="cve-read" id="cveRead" role="status" aria-live="polite"></p>
+        <div class="cve-gloss">
+          <p class="cve-gloss-t">용어 설명 <span>(이 데모의 b는 0~1로 맞춘 척도 기준)</span></p>
+          <dl>
+            <div><dt>r</dt><dd><b>상관계수</b>(correlation coefficient, 피어슨 상관계수). −1~+1 사이 값입니다. 부호는 방향, 절댓값은 점이 직선에 모인 정도입니다. 축을 바꿔도 같습니다.</dd></div>
+            <div><dt>b</dt><dd><b>회귀계수</b>(regression coefficient), 곧 <b>기울기</b>(slope)입니다. 독립변수가 1 큰 사례에서 종속변수가 평균적으로 얼마나 다른지를 뜻합니다. 이 데모는 0~1 척도라 ‘1’은 최솟값에서 최댓값까지의 차이입니다. 축을 바꾸면 달라집니다.</dd></div>
+            <div><dt>R²</dt><dd><b>결정계수</b>(설명력). 종속변수 변동 중 모형이 설명하는 비율이며, 단순회귀에서는 r의 제곱과 같습니다.</dd></div>
+          </dl>
+        </div>
       </div>
       <div class="demo-vis">
         <svg viewBox="0 0 400 260" role="img" aria-label="축을 바꿔도 상관계수는 같고 기울기는 달라지는 산점도" id="cveSvg">
@@ -525,6 +533,12 @@ footer{
 .cve-card h3{font-size:21px;margin:6px 0 8px}
 .cve-card ul{margin:12px 0 0 1.1em;color:var(--ink)}
 .cve-card li{margin-bottom:6px}
+.cve-gloss{margin-top:12px;background:#FFFBE6;border:2px solid var(--ink);padding:12px 14px;font-size:14px}
+.cve-gloss-t{font-weight:700;margin-bottom:8px;color:var(--ink)}.cve-gloss-t span{font-weight:400;color:#5C6774;font-size:13px}
+.cve-gloss dl>div{display:grid;grid-template-columns:44px 1fr;gap:8px;padding:6px 0;border-top:1px dashed var(--grid)}
+.cve-gloss dt{font-family:'IBM Plex Mono',monospace;font-weight:700;color:var(--graph)}
+.cve-gloss dd{margin:0}
+@media(max-width:760px){.cve-gloss dl>div{grid-template-columns:1fr;gap:2px}}
 .cve-read{font-family:'IBM Plex Mono',monospace;font-size:13px;margin-top:14px;background:var(--card);border:2px solid var(--ink);padding:10px 12px}
 .cve-tablewrap{margin-top:36px;overflow-x:auto}
 .cve-table{width:100%;border-collapse:collapse;background:var(--card);border:2px solid var(--ink);min-width:520px}
@@ -533,7 +547,7 @@ footer{
 .cve-table thead th{background:var(--ink);color:#fff;font-weight:500}
 .cve-table tbody th{background:#FFFBE6;font-weight:500;white-space:nowrap}
 .cve-note{margin-top:32px;background:#FFFBE6;border:2px solid var(--ink);border-left-width:8px;padding:18px 20px;box-shadow:6px 6px 0 rgba(27,38,53,.11)}
-.cve-sub{display:block;margin-top:8px;color:var(--sub);font-size:14px}
+.cve-sub{display:block;margin-top:8px;color:#5C6774;font-size:14px}
 @media(max-width:700px){.cve-grid{grid-template-columns:1fr}}
 </style>
 
@@ -604,7 +618,7 @@ footer{
       <p>서론부터 결론까지, 독자를 끌고 가는 하나의 곡선을 설계합니다.</p>
     </div>
     <div class="story-arc reveal">
-      <svg viewBox="0 0 880 300" role="img" aria-label="논문 스토리 아크: 한 줄 요약에서 투고까지 이어지는 곡선">
+      <svg viewBox="0 0 880 300" role="img" aria-label="논문 이야기 흐름: 한 줄 요약에서 투고까지 이어지는 곡선">
         <path d="M 60 240 C 220 235, 300 120, 440 90 C 570 62, 660 100, 820 70"
               fill="none" stroke="#3D6B8E" stroke-width="4" stroke-linecap="round"/>
         <g>

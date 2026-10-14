@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>2주차 · 변수란 무엇인가 | </title>
+<title>2주차 · 변수란 무엇인가 | 연구방법론 교재</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Noto+Sans+KR:wght@300;400;500;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
@@ -65,6 +65,74 @@ table.terms td:first-child{font-family:'Gowun Batang',serif;font-weight:700;whit
 .pager a.next{text-align:right}
 .pager a.home{flex:0 0 100%;text-align:center;background:var(--paper)}
 footer{border-top:1px solid var(--grid);padding:24px 0;text-align:center;font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--sub)}
+.vl{margin:34px 0 8px;--pos:#1d6b3a;--neg:#a33a2a;--cream:#f0efe9;--vl-sub:#5C6774;--pos-bg:#d6ecd9;--neg-bg:#f3d5d0}
+.vl-h{font-size:20px;margin-bottom:10px}
+.vl-intro{font-size:14.5px;color:#3a4350;margin-bottom:16px}
+.vl-tabs{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px}
+.vl-tab{flex:1 1 120px;min-height:44px;font-family:'Gowun Batang',serif;font-weight:700;font-size:16px;color:var(--ink);background:var(--card);border:2px solid var(--ink);cursor:pointer;padding:6px 10px}
+.vl-tab[aria-selected="true"]{background:var(--hl);box-shadow:4px 4px 0 rgba(27,38,53,.11)}
+.vl-tab:focus-visible,.vl-btn:focus-visible,.vl-opt:focus-visible,.vl-card:focus-visible{outline:3px solid var(--graph);outline-offset:2px}
+.vl-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px}
+.vl-card{background:var(--card);border:2px solid var(--ink);box-shadow:6px 6px 0 rgba(27,38,53,.11);padding:18px 20px;min-width:0}
+.vl-wide{margin-bottom:16px}
+.vl-lab{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.16em;color:var(--graph);margin-bottom:10px}
+.vl-def{font-size:15px;line-height:1.8;margin-bottom:12px}
+.vl-case{border-top:1px dashed var(--grid);padding:8px 0}
+.vl-case b{font-family:'Gowun Batang',serif;font-size:15px}
+.vl-case span.d{display:block;font-size:13px;color:var(--vl-sub);line-height:1.6}
+.vl-chips{display:flex;flex-wrap:wrap;gap:5px;margin-top:5px}
+.vl-chip{font-family:'IBM Plex Mono',monospace;font-size:11.5px;border:1.5px solid var(--ink);background:var(--paper);padding:1px 7px;line-height:1.6}
+.vl-tbl{width:100%;border-collapse:collapse;table-layout:fixed;font-size:13px}
+.vl-tbl th,.vl-tbl td{border:1px solid var(--grid);padding:6px 4px;text-align:center;line-height:1.4}
+.vl-tbl th:first-child,.vl-tbl td:first-child{text-align:left;width:34%;padding-left:8px}
+.vl-tbl th{font-family:'Gowun Batang',serif;background:var(--paper);font-size:13px}
+.vl-tbl .cur{background:rgba(255,212,71,.35)}
+.vl-tbl .yes{font-weight:700;color:var(--pos)}
+.vl-tbl .no{color:var(--neg)}
+.vl-tbl .new{display:block;font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--ink)}
+.vl-small{font-size:13px;color:var(--vl-sub);line-height:1.7;margin-top:8px}
+.vl-ctrl{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0}
+.vl-btn{min-height:44px;font-family:'Noto Sans KR',sans-serif;font-size:14px;color:var(--ink);background:var(--card);border:2px solid var(--ink);padding:6px 14px;cursor:pointer}
+.vl-btn[aria-pressed="true"]{background:var(--hl)}
+.vl-data{display:flex;flex-wrap:wrap;gap:5px;margin:8px 0 14px}
+.vl-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.vl-stat{border:2px solid var(--ink);padding:10px;min-width:0;background:var(--paper)}
+.vl-stat.off{border-style:dashed;border-color:var(--vl-sub);color:var(--vl-sub);background:var(--cream)}
+.vl-stat .n{font-family:'Gowun Batang',serif;font-weight:700;font-size:14px}
+.vl-stat .v{font-family:'IBM Plex Mono',monospace;font-size:16px;margin:4px 0;overflow-wrap:anywhere}
+.vl-stat .w{font-size:12px;line-height:1.55}
+.vl-stat.forced .v{text-decoration:line-through;text-decoration-thickness:1px}
+.vl-read{font-size:14px;margin:12px 0 0;padding:10px 14px;border-left:4px solid var(--hl);background:rgba(255,212,71,.13);min-height:1.5em}
+.vl-q{border-top:1px dashed var(--grid);padding:12px 0}
+.vl-q:first-child{border-top:none}
+.vl-qt{font-size:15px;margin-bottom:8px}
+.vl-opts{display:flex;flex-wrap:wrap;gap:8px}
+.vl-opt{flex:1 1 90px;min-height:44px;font-family:inherit;font-size:14px;color:var(--ink);background:var(--card);border:2px solid var(--ink);cursor:pointer}
+.vl-opt.right{background:var(--pos-bg)}
+.vl-opt.wrong{background:var(--neg-bg)}
+.vl-why{font-size:13.5px;margin-top:8px;color:#3a4350;line-height:1.7}
+.vl-after{font-size:14px;color:#3a4350;margin-top:6px}
+.vl-card.vl-det{padding:0}
+.vl-sum{display:flex;align-items:center;gap:10px;min-height:44px;padding:8px 20px;cursor:pointer;list-style:none;font-family:'Noto Sans KR',sans-serif}
+.vl-sum::-webkit-details-marker{display:none}
+.vl-sum::before{content:"▸";font-size:14px;color:var(--ink);flex:none}
+.vl-det[open]>.vl-sum::before{content:"▾"}
+.vl-sum .vl-lab{margin:0}
+.vl-sum .vl-hint{font-size:12.5px;color:var(--vl-sub);margin-left:auto;text-align:right}
+.vl-sum:focus-visible{outline:3px solid var(--graph);outline-offset:-3px}
+.vl-det[open]>.vl-sum{border-bottom:1px dashed var(--grid)}
+.vl-det-body{padding:14px 20px 18px}
+.vl-sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+@media (max-width:760px){
+ .vl-grid{grid-template-columns:1fr}
+ .vl-stats{grid-template-columns:1fr 1fr}
+}
+@media (max-width:420px){
+ .vl-stats{grid-template-columns:1fr}
+ .vl-card{padding:14px}
+ .vl-sum{padding:8px 14px}
+ .vl-det-body{padding:12px 14px 14px}
+}
 </style>
 </head>
 <body>
@@ -77,10 +145,249 @@ footer{border-top:1px solid var(--grid);padding:24px 0;text-align:center;font-fa
   </div>
 </header>
 <main>
-<section class="ch"><div class="wrap"><div class="sec-no">2.1</div><h2>조작적 정의: 연구의 절반이 결정되는 곳</h2><p>'살기 좋은 동네'를 연구하고 싶다고 하자. 그러나 '살기 좋음'은 그 자체로는 측정할 수 없다. 연구가 가능해지는 것은 이 추상적 개념을 '보행 10분 내 공원 면적', '주민 만족도 5점 척도', '1인당 생활SOC 개수' 같은 측정 가능한 형태로 바꾸는 순간부터다. 이 변환의 약속을 <b>조작적 정의(operational definition)</b>라 한다.</p><p>조작적 정의가 중요한 이유는, 같은 개념이라도 어떻게 조작화하느냐에 따라 전혀 다른 것을 재게 되기 때문이다. 예컨대 '장소성'이라는 개념을 생각해 보자. 어떤 연구자는 방문객의 평균 체류 시간으로, 어떤 연구자는 재방문 의사 척도로, 또 어떤 연구자는 장소 애착(place attachment) 설문 점수로 이를 측정한다. 세 연구는 모두 '장소성 연구'를 표방하지만, 실제로 잰 것은 서로 다른 측면이다. 논문을 읽을 때 결과보다 먼저 변수의 조작적 정의를 확인해야 하는 이유가 여기에 있다.</p><p>국내 연구의 실례를 보자. 명동 상업가로의 장소정체성을 다룬 연구에서는 Relph의 장소정체성 이론에 근거하여 장소정체성을 종속변수로, 가로공간의 물리적 구성요소들(도로 폭과 건물 높이의 비율(D/H), 바닥 포장, 건물 폭 등)을 독립변수로 조작화하였다. '정체성'이라는 추상 개념이 측정 가능한 설문 점수로, '가로의 물리적 성격'이 구체적인 수치들로 번역된 것이다.</p></div></section><section class="ch"><div class="wrap"><div class="sec-no">2.2</div><h2>변수의 네 가지 수준</h2><p>변수는 담고 있는 정보의 양에 따라 네 수준으로 구분한다. 이 구분은 단순한 분류학이 아니라, <b>어떤 분석이 가능한지를 결정하는 규칙</b>이다.</p><table class="terms"><tr><th>용어</th><th>정의</th></tr><tr><td>명목 변수 (nominal)</td><td>이름만 구분된다. 용도지역(주거/상업/공업), 구조 형식(RC/철골/목구조). 빈도 세기만 가능</td></tr><tr><td>서열 변수 (ordinal)</td><td>순서는 있으나 간격이 일정하지 않다. 만족도(상/중/하), 에너지효율등급(1~5). 크고 작음은 말할 수 있으나 '두 배'는 말할 수 없다</td></tr><tr><td>등간 변수 (interval)</td><td>간격이 일정하나 절대 0점이 없다. 온도(℃), 준공연도. 차이는 의미 있으나 비율은 무의미</td></tr><tr><td>비율 변수 (ratio)</td><td>절대 0점이 있어 배수 비교가 가능하다. 연면적, 임대료, 유동인구, 녹지율. 가장 많은 분석이 가능</td></tr></table><p>여기서 한 가지 실무적 교훈이 나온다. 비율 변수로 수집할 수 있는 것을 굳이 서열 변수로 뭉개지 말라는 것이다. 설문에서 응답자의 나이를 '20대/30대/40대'로 묻는 순간, 나중에 평균을 내거나 정밀한 관계를 볼 가능성이 사라진다. 정보는 한번 버리면 되돌릴 수 없다.</p></div></section><section class="ch"><div class="wrap"><div class="sec-no">2.3</div><h2>변수 유형이 그래프를 결정한다</h2><p>변수 두 개의 관계를 보고 싶을 때, 어떤 그림을 그려야 하는가는 두 변수의 유형이 결정한다. 범주형 × 범주형이면 분할표, 범주형 × 연속형이면 그룹별 비교(상자그림·평균 막대), 연속형 × 연속형이면 산점도다. 제3장부터 제6장까지는 정확히 이 순서를 따라간다: 가장 단순한 2×2 분할표에서 출발해, 산점도, 그룹으로 나눈 산점도, 그리고 경로도까지.</p><div class="note"><b>건축·도시 변수 카탈로그</b>: 층수(비율) · 연면적(비율) · 준공연도(등간) · 용도지역(명목) · 에너지효율등급(서열) · 녹지율(비율) · 역세권 여부(명목·이진) · 공시지가(비율) · 유동인구(비율) · 범죄 발생 건수(비율). 자신의 연구 주제에서 이런 카탈로그를 만들어 보는 것이 정량 연구의 첫걸음이다.</div></div></section><div class="wrap"><div class="summary"><div class="eyebrow">이 장의 요약</div><ul><li>조작적 정의는 추상 개념을 측정 가능한 변수로 바꾸는 약속이며, 여기서 연구의 절반이 결정된다.</li><li>변수는 명목–서열–등간–비율의 네 수준으로 나뉘고, 위로 갈수록 가능한 분석이 많아진다. 정보를 뭉개지 말라.</li><li>두 변수의 유형 조합이 그래프의 종류를 결정한다: 분할표, 그룹 비교, 산점도.</li></ul></div></div><div class="wrap" style="padding-top:30px"><div class="refs"><h3>참고문헌</h3><ol><li>이한울·안건혁 (2011). 상업지역 장소정체성에 영향을 주는 가로공간 구성요소: 명동의 상업가로를 중심으로. <i>한국도시설계학회지 도시설계</i>. (Relph 이론을 회귀모형의 변수로 조작화한 국내 사례)</li><li>Relph, E. (1976). <i>Place and Placelessness</i>. Pion.</li></ol><div class="find"><b>더 찾아보려면</b>: KCI(kci.go.kr)에서 '조작적 정의 + 장소성' 또는 '측정도구 개발 + 건축'으로 검색하면 개념을 변수로 번역한 국내 연구들을 확인할 수 있다.</div></div></div></main>
+<section class="ch"><div class="wrap"><div class="sec-no">2.1</div><h2>조작적 정의: 연구의 절반이 결정되는 곳</h2><p><b>'살기 좋은 동네'</b>를 연구하고 싶다고 하자. 그러나 '살기 좋음'은 그 자체로는 측정할 수 없다.</p><p>연구가 가능해지는 것은 이 추상적 개념을 '보행 10분 내 공원 면적', '주민 만족도 5점 척도', '1인당 생활SOC 개수' 같은 측정 가능한 형태로 바꾸는 순간부터다. 이 변환의 약속을 <b>조작적 정의(operational definition)</b>라 한다.</p><p>조작적 정의가 중요한 이유는, 같은 개념이라도 어떻게 조작화하느냐에 따라 전혀 다른 것을 재게 되기 때문이다. 예컨대 '장소성'이라는 개념을 생각해 보자. 어떤 연구자는 방문객의 평균 체류 시간으로, 어떤 연구자는 재방문 의사 척도로, 또 어떤 연구자는 장소 애착(place attachment) 설문 점수로 이를 측정한다. 세 연구는 모두 '장소성 연구'를 표방하지만, 실제로 잰 것은 서로 다른 측면이다. 논문을 읽을 때 결과보다 먼저 변수의 조작적 정의를 확인해야 하는 이유가 여기에 있다.</p><p>국내 연구의 실례를 보자. 명동 상업가로의 장소정체성을 다룬 연구에서는 <b class="mark">Relph의 장소정체성 이론</b>에 근거하여 장소정체성을 종속변수로, 가로공간의 물리적 구성요소들(도로 폭과 건물 높이의 비율(D/H), 바닥 포장, 건물 폭 등)을 독립변수로 조작화하였다. '정체성'이라는 추상 개념이 측정 가능한 설문 점수로, '가로의 물리적 성격'이 구체적인 수치들로 번역된 것이다.</p></div></section><section class="ch"><div class="wrap"><div class="sec-no">2.2</div><h2>변수의 네 가지 수준</h2><p>변수는 담고 있는 정보의 양에 따라 네 수준으로 구분한다. 이 구분은 단순한 분류학이 아니라, <b>어떤 분석이 가능한지를 결정하는 규칙</b>이다.</p><table class="terms"><tr><th>용어</th><th>정의</th></tr><tr><td>명목 변수 (nominal)</td><td>이름만 구분된다. 용도지역(주거/상업/공업), 구조 형식(RC/철골/목구조). 빈도 세기만 가능</td></tr><tr><td>서열 변수 (ordinal)</td><td>순서는 있으나 간격이 일정하지 않다. 만족도(상/중/하), 에너지효율등급(1~5). 크고 작음은 말할 수 있으나 '두 배'는 말할 수 없다</td></tr><tr><td>등간 변수 (interval)</td><td>간격이 일정하나 절대 0점이 없다. 온도(℃), 준공연도. 차이는 의미 있으나 비율은 무의미</td></tr><tr><td>비율 변수 (ratio)</td><td>절대 0점이 있어 배수 비교가 가능하다. 연면적, 임대료, 유동인구, 녹지율. 가장 많은 분석이 가능</td></tr></table><p>여기서 한 가지 실무적 교훈이 나온다. 비율 변수로 수집할 수 있는 것을 굳이 서열 변수로 뭉개지 말라는 것이다. 설문에서 응답자의 나이를 '20대/30대/40대'로 묻는 순간, 나중에 평균을 내거나 정밀한 관계를 볼 가능성이 사라진다. 정보는 한번 버리면 되돌릴 수 없다.</p><div class="vl" id="vl-root">
+<h3 class="vl-h">직접 눌러 보며 익히는 네 가지 수준</h3>
+<p class="vl-intro">아래 탭을 눌러 수준을 바꾸면 정의, 건축·도시 사례, 할 수 있는 일, 그 수준에서 써도 되는 통계량이 함께 바뀐다. 사례와 자료 값은 모두 <b>개념 설명용 가상 자료(실제 문헌 아님)</b>다. 수준 구분은 Stevens(1946)식 분류를 따르는 일반 교재의 설명 수준이다.</p>
+
+<div class="vl-tabs" role="tablist" aria-label="변수 수준 선택" id="vl-tabs"></div>
+
+<div class="vl-grid">
+  <div class="vl-card" id="vl-panel" role="tabpanel" tabindex="0" aria-live="polite"></div>
+  <div class="vl-card">
+    <div class="vl-lab">할 수 있는 일 (누적 구조)</div>
+    <table class="vl-tbl" id="vl-abil"></table>
+    <p class="vl-small" id="vl-abil-note" role="status" aria-live="polite"></p>
+  </div>
+</div>
+
+<details class="vl-card vl-wide vl-det" id="vl-det-lab">
+<summary class="vl-sum"><span class="vl-lab">이 값에 평균을 써도 되나?</span><span class="vl-hint">눌러서 펼치기</span></summary>
+<div class="vl-det-body">
+  <p class="vl-small">선택한 수준의 가상 자료에서 최빈값, 중앙값, 평균, 기하평균을 화면에서 직접 계산한다. 그 수준에서 의미 있는 통계량만 값이 나오고, 나머지는 이유와 함께 '의미 없음'으로 표시된다.</p>
+  <div class="vl-ctrl">
+    <button type="button" class="vl-btn" id="vl-redraw">다른 자료 뽑기</button>
+    <button type="button" class="vl-btn" id="vl-force" aria-pressed="false">의미 없는 통계량도 억지로 계산해 보기</button>
+  </div>
+  <div class="vl-data" id="vl-data" aria-label="가상 자료 값"></div>
+  <div class="vl-stats" id="vl-stats"></div>
+  <p class="vl-read" id="vl-read" role="status" aria-live="polite"></p>
+</div></details>
+
+<details class="vl-card vl-wide vl-det" id="vl-det-quiz">
+<summary class="vl-sum"><span class="vl-lab">미니 퀴즈 3문항</span><span class="vl-hint">눌러서 펼치기</span></summary>
+<div class="vl-det-body">
+  <div id="vl-quiz"></div>
+  <p class="vl-read" id="vl-score" role="status" aria-live="polite"></p>
+</div></details>
+
+<p class="vl-after"><b>읽는 법</b>: 수준이 올라갈수록 할 수 있는 일은 누적되어 늘어난다(비율 변수는 위의 모든 능력을 갖는다). 반대로 수준이 낮은 변수에 높은 수준의 계산을 적용하면 숫자는 나오지만 해석할 수 없다. 이 위젯은 어떤 통계량이 의미를 갖는지를 알려 줄 뿐, 실제 연구에서 어떤 척도가 적절한지(예: 리커트 합산 점수를 등간으로 간주할 수 있는지)는 연구 분야의 관행과 측정 근거를 따로 따져야 한다.</p>
+</div></div></section><section class="ch"><div class="wrap"><div class="sec-no">2.3</div><h2>변수 유형이 그래프를 결정한다</h2><p>변수 두 개의 관계를 보고 싶을 때, 어떤 그림을 그려야 하는가는 두 변수의 유형이 결정한다. 범주형 × 범주형이면 분할표, 범주형 × 연속형이면 그룹별 비교(상자그림·평균 막대), 연속형 × 연속형이면 산점도다. 제3장부터 제6장까지는 정확히 이 순서를 따라간다: 가장 단순한 2×2 분할표에서 출발해, 산점도, 그룹으로 나눈 산점도, 그리고 경로도까지.</p><div class="note"><b>건축·도시 변수 카탈로그</b>: 층수(비율) · 연면적(비율) · 준공연도(등간) · 용도지역(명목) · 에너지효율등급(서열) · 녹지율(비율) · 역세권 여부(명목·이진) · 공시지가(비율) · 유동인구(비율) · 범죄 발생 건수(비율). 자신의 연구 주제에서 이런 카탈로그를 만들어 보는 것이 정량 연구의 첫걸음이다.</div></div></section><div class="wrap"><div class="summary"><div class="eyebrow">이 장의 요약</div><ul><li>조작적 정의는 추상 개념을 측정 가능한 변수로 바꾸는 약속이며, 여기서 연구의 절반이 결정된다.</li><li>변수는 명목–서열–등간–비율의 네 수준으로 나뉘고, 위로 갈수록 가능한 분석이 많아진다. 정보를 뭉개지 말라.</li><li>두 변수의 유형 조합이 그래프의 종류를 결정한다: 분할표, 그룹 비교, 산점도.</li></ul></div></div><div class="wrap" style="padding-top:30px"><div class="refs"><h3>참고문헌</h3><ol><li>이한울·안건혁 (2011). 상업지역 장소정체성에 영향을 주는 가로공간 구성요소: 명동의 상업가로를 중심으로. <i>한국도시설계학회지 도시설계</i>. (Relph 이론을 회귀모형의 변수로 조작화한 국내 사례)</li><li>Relph, E. (1976). <i>Place and Placelessness</i>. Pion.</li></ol><div class="find"><b>더 찾아보려면</b>: KCI(kci.go.kr)에서 '조작적 정의 + 장소성' 또는 '측정도구 개발 + 건축'으로 검색하면 개념을 변수로 번역한 국내 연구들을 확인할 수 있다.</div></div></div></main>
 <div class="wrap"><div class="pager"><a href="week01.html"><span class="dir">← 제1장</span><div class="ti">연구자의 세 가지 기본 소양</div></a><a class="next" href="week03.html"><span class="dir">제3장 →</span><div class="ti">상관관계: 같이 움직이는가</div></a>
 <a class="home" href="methods.html"><span class="dir">INDEX</span><div class="ti">강의 개요로 돌아가기</div></a>
 </div></div>
 <footer>연구방법론 강의 교재 · 제2장 · 본문 예시의 수치는 교육용 가상 데이터이며, 인용 논문의 결과는 해당 원문을 따릅니다</footer>
+<script>
+(function(){
+'use strict';
+function mk(seed){var a=seed>>>0;return function(){a=(a+0x6D2B79F5)>>>0;var t=a;t=Math.imul(t^(t>>>15),t|1);t^=t+Math.imul(t^(t>>>7),t|61);return((t^(t>>>14))>>>0)/4294967296;};}
+function gauss(r){var u=0,v=0;while(u===0)u=r();v=r();return Math.sqrt(-2*Math.log(u))*Math.cos(2*Math.PI*v);}
+
+var ABIL=['같다/다르다 판별 (=, ≠)','순서 비교 (<, >)','차이의 의미 (덧셈·뺄셈)','비율의 의미 (곱셈·나눗셈)'];
+var LV=[
+ {key:'nominal',name:'명목',en:'nominal',
+  def:'이름표만 있는 변수다. 같은지 다른지만 말할 수 있고, 순서나 크기는 없다. 숫자 코드(1, 2, 3)를 붙여도 이름표일 뿐이다.',
+  cases:[
+   {t:'용도지역',d:'주거, 상업, 공업, 녹지로 구분된다. 상업이 주거보다 크다고 할 수 없다.',c:['주거','상업','공업','녹지']},
+   {t:'건물 용도',d:'단독주택, 공동주택, 업무시설 등 범주 이름이다.',c:['단독주택','공동주택','업무시설']},
+   {t:'구조 형식',d:'RC, 철골, 목구조는 서로 다른 종류일 뿐 순위가 아니다.',c:['RC','철골','목구조']},
+   {t:'역세권 여부',d:'예/아니오 두 범주(이진 변수)로 코딩한다.',c:['예','아니오']}],
+  abil:[1,0,0,0]},
+ {key:'ordinal',name:'서열',en:'ordinal',
+  def:'순서가 있는 변수다. 어느 쪽이 더 큰지는 말할 수 있으나 칸 사이의 간격이 같다는 보장이 없어, 차이나 배수는 말할 수 없다.',
+  cases:[
+   {t:'에너지효율등급',d:'1등급이 2등급보다 좋다. 그러나 1등급과 2등급의 차이가 2등급과 3등급의 차이와 같다고 할 수 없다.',c:['1등급','2등급','3등급','4등급','5등급']},
+   {t:'도시 규모 순위',d:'인구 기준 1위, 2위, 3위. 순위만 남고 실제 인구 차이는 사라진다.',c:['1위','2위','3위']},
+   {t:'만족도 5점 척도',d:'매우 불만(1)부터 매우 만족(5)까지 순서만 보장된다.',c:['1','2','3','4','5']},
+   {t:'소음 체감',d:'조용함, 보통, 시끄러움 세 단계로 응답한다.',c:['조용함','보통','시끄러움']}],
+  abil:[1,1,0,0]},
+ {key:'interval',name:'등간',en:'interval',
+  def:'순서가 있고 간격도 일정하지만 절대 0점이 없는 변수다. 차이는 의미 있으나 0은 \'없음\'이 아니라서 \'몇 배\'는 말할 수 없다.',
+  cases:[
+   {t:'준공연도',d:'2000년과 2010년의 차이(10년)는 의미 있다. 0년은 \'시간이 없음\'이 아니므로 2010년이 1000년의 2배라고 할 수 없다.',c:['1985','2000','2015']},
+   {t:'섭씨 온도',d:'20℃와 10℃의 차이는 10℃지만, 20℃가 10℃보다 두 배 따뜻한 것은 아니다. 0℃는 열이 없다는 뜻이 아니다.',c:['0℃','10℃','20℃']},
+   {t:'리커트 합산 점수',d:'문항 점수를 더한 값이다. 간격이 같다고 가정하고 등간처럼 다루는 일이 많지만, 이 가정은 연구자가 근거를 대야 하는 해석상의 주의점이다.',c:['합계 12','합계 18','합계 25']}],
+  abil:[1,1,1,0]},
+ {key:'ratio',name:'비율',en:'ratio',
+  def:'절대 0점이 있어 0이 \'없음\'을 뜻하는 변수다. 같다/다르다, 순서, 차이, 배수가 모두 의미를 가지므로 가장 많은 분석이 가능하다.',
+  cases:[
+   {t:'층수',d:'20층은 10층보다 층의 개수가 두 배다. 0층은 층이 없다는 뜻이다.',c:['5층','10층','20층']},
+   {t:'연면적',d:'1,000㎡는 500㎡의 두 배다. 0㎡는 면적이 없음이다.',c:['500㎡','1,000㎡','2,000㎡']},
+   {t:'공시지가',d:'원/㎡ 단위의 금액으로, 두 배 비싼 땅을 말할 수 있다.',c:['원/㎡']},
+   {t:'보행 10분 내 공원 면적',d:'0㎡면 걸어서 닿는 공원이 없다는 뜻이다. 면적의 배수 비교가 가능하다.',c:['0㎡','3,000㎡','12,000㎡']}],
+  abil:[1,1,1,1]}
+];
+
+var STAT=[
+ {key:'mode',name:'최빈값',from:0,why:''},
+ {key:'median',name:'중앙값',from:1,why:'순서가 없어 \'가운데\'를 정할 수 없다.'},
+ {key:'mean',name:'평균',from:2,whyOrd:'칸 사이 간격이 같다는 보장이 없어 더하고 나눈 값을 해석할 수 없다.',whyNom:'숫자 코드는 이름표라서 더하고 나눈 값에 의미가 없다.'},
+ {key:'geo',name:'기하평균',from:3,why:'절대 0점이 없어 곱하고 나눈 값(배수)을 해석할 수 없다.'}
+];
+
+/* 시드 고정 가상 자료 */
+var NCAT=['주거','상업','공업','녹지'];
+function makeData(level,variant){
+  var r=mk(100+level*37+variant*101),i,out=[],n;
+  if(level===0){n=10;for(i=0;i<n;i++){var x=r();out.push(x<.5?1:x<.75?2:x<.85?3:4);}}
+  else if(level===1){n=11;for(i=0;i<n;i++){out.push(Math.max(1,Math.min(5,Math.round(3+1.1*gauss(r)))));}}
+  else if(level===2){n=9;for(i=0;i<n;i++){out.push(1985+Math.floor(r()*36));}}
+  else{n=10;for(i=0;i<n;i++){out.push(Math.round(Math.exp(Math.log(800)+.9*gauss(r))/10)*10);}}
+  return out;
+}
+function sortNum(a){return a.slice().sort(function(x,y){return x-y;});}
+function modeOf(a){var c={},m=0,k,res=[];a.forEach(function(v){c[v]=(c[v]||0)+1;if(c[v]>m)m=c[v];});
+  for(k in c){if(c[k]===m)res.push(+k);}res.sort(function(x,y){return x-y;});
+  return {values:res,count:m,none:m===1&&res.length===a.length};}
+function medianOf(a){var s=sortNum(a),n=s.length,h=n>>1;return n%2?s[h]:(s[h-1]+s[h])/2;}
+function meanOf(a){var t=0;a.forEach(function(v){t+=v;});return t/a.length;}
+function geoOf(a){var t=0;a.forEach(function(v){t+=Math.log(v);});return Math.exp(t/a.length);}
+function ratioOf(a){return Math.max.apply(null,a)/Math.min.apply(null,a);}
+
+function fmtVal(level,v){
+  if(level===0)return NCAT[v-1];
+  if(level===1)return v+'점';
+  if(level===2)return v+'년';
+  return v.toLocaleString('ko-KR')+'㎡';
+}
+function fmtNum(level,x,dec){
+  if(level===2&&dec===undefined)return (Math.round(x*10)/10)+'년';
+  if(level===3)return (Math.round(x*10)/10).toLocaleString('ko-KR')+'㎡';
+  return (Math.round(x*100)/100)+'';
+}
+function fmtMode(level,m){
+  if(m.none)return '없음(모두 1회)';
+  return m.values.map(function(v){return fmtVal(level,v);}).join(', ')+' ('+m.count+'회)';
+}
+
+/* 퀴즈 데이터 */
+var QUIZ=[
+ {q:'아파트 단지의 동 번호(101동, 102동, 103동)는 어떤 수준의 변수인가?',a:0,
+  why:'동 번호는 건물을 구분하는 이름표다. 102동이 101동보다 크거나 두 배라는 뜻이 아니므로 숫자 모양이어도 명목 변수다.'},
+ {q:'실내 온도 24℃는 어떤 수준의 변수인가?',a:2,
+  why:'온도 눈금의 간격은 일정해서 차이(4℃ 차이)는 의미 있다. 그러나 0℃는 열이 전혀 없다는 뜻이 아니므로 24℃가 12℃의 두 배 따뜻하다고 할 수 없다. 등간 변수다.'},
+ {q:'어린이집 반경 500m 안의 CCTV 대수(0대, 1대, 2대, ...)는 어떤 수준의 변수인가?',a:3,
+  why:'0대는 CCTV가 없다는 뜻이고 4대는 2대의 두 배다. 절대 0점이 있고 배수 비교도 되므로 비율 변수다.'}
+];
+
+function init(){
+  var root=document.getElementById('vl-root');if(!root)return;
+  var $=function(id){return document.getElementById(id);};
+  var cur=0,variant=0,force=false;
+  var tabs=$('vl-tabs');
+  LV.forEach(function(L,i){
+    var b=document.createElement('button');b.type='button';b.className='vl-tab';b.id='vl-tab'+i;
+    b.setAttribute('role','tab');b.setAttribute('aria-controls','vl-panel');
+    b.textContent=L.name+' ('+L.en+')';
+    b.addEventListener('click',function(){sel(i,false);});
+    b.addEventListener('keydown',function(e){
+      var k=e.key,n=-1;
+      if(k==='ArrowRight')n=(cur+1)%4;else if(k==='ArrowLeft')n=(cur+3)%4;else if(k==='Home')n=0;else if(k==='End')n=3;
+      if(n>=0){e.preventDefault();sel(n,true);}
+    });
+    tabs.appendChild(b);
+  });
+  function sel(i,focus){cur=i;variant=0;render();if(focus)$('vl-tab'+i).focus();}
+
+  function renderPanel(){
+    var L=LV[cur],h='<div class="vl-lab">'+L.name.toUpperCase()+' · '+L.en.toUpperCase()+'</div><p class="vl-def">'+L.def+'</p>';
+    L.cases.forEach(function(c){
+      h+='<div class="vl-case"><b>'+c.t+'</b><span class="d">'+c.d+'</span><div class="vl-chips" aria-label="자료 미리보기">';
+      c.c.forEach(function(x){h+='<span class="vl-chip">'+x+'</span>';});
+      h+='</div></div>';
+    });
+    h+='<p class="vl-small">위 사례의 값은 개념 설명용 가상 자료(실제 문헌 아님)다.</p>';
+    var p=$('vl-panel');p.innerHTML=h;p.setAttribute('aria-labelledby','vl-tab'+cur);
+  }
+  function renderAbil(){
+    var h='<tr><th scope="col">능력</th>';
+    LV.forEach(function(L,j){h+='<th scope="col" class="'+(j===cur?'cur':'')+'">'+L.name+'</th>';});
+    h+='</tr>';
+    ABIL.forEach(function(a,r){
+      h+='<tr><td>'+a+'</td>';
+      LV.forEach(function(L,j){
+        var ok=L.abil[r]===1,added=ok&&(j===0||LV[j-1].abil[r]===0);
+        h+='<td class="'+(j===cur?'cur ':'')+(ok?'yes':'no')+'" aria-label="'+(ok?'가능':'불가능')+'">'+(ok?'✓':'✗')+(added&&j===cur?'<span class="new">새로 추가</span>':'')+'</td>';
+      });
+      h+='</tr>';
+    });
+    $('vl-abil').innerHTML=h;
+    var n=LV[cur].abil.reduce(function(s,v){return s+v;},0);
+    $('vl-abil-note').textContent=(cur===0?'명목 변수는 가장 기본 능력인 같다/다르다 판별만 갖는다.':LV[cur].name+' 변수는 아래 수준의 능력을 모두 포함하고 '+ABIL[n-1]+'을(를) 더한다.')+' 현재 '+n+'/4개 가능.';
+  }
+  function renderLab(){
+    var L=LV[cur],d=makeData(cur,variant),h='',i;
+    var show=cur===0?d:sortNum(d);
+    $('vl-data').innerHTML=(cur===0?d:show).map(function(v){return '<span class="vl-chip">'+fmtVal(cur,v)+'</span>';}).join('');
+    var res=[],m=modeOf(d);
+    var vals={
+      mode:fmtMode(cur,m),
+      median:cur===0?fmtNum(cur,medianOf(d),0):cur===1?medianOf(d)+'점':fmtNum(cur,medianOf(d)),
+      mean:cur===0?fmtNum(cur,meanOf(d),0):cur===1?fmtNum(cur,meanOf(d),0)+'점':fmtNum(cur,meanOf(d)),
+      geo:cur===0?fmtNum(cur,geoOf(d),0):cur===1?fmtNum(cur,geoOf(d),0)+'점':fmtNum(cur,geoOf(d))
+    };
+    var out='';
+    STAT.forEach(function(s){
+      var ok=cur>=s.from,why=ok?'':(s.key==='mean'?(cur===0?s.whyNom:s.whyOrd):s.why);
+      if(ok){out+='<div class="vl-stat"><div class="n">'+s.name+'</div><div class="v">'+vals[s.key]+'</div><div class="w">이 수준에서 의미 있다.</div></div>';}
+      else if(force){out+='<div class="vl-stat off forced"><div class="n">'+s.name+' (의미 없음)</div><div class="v">'+vals[s.key]+'</div><div class="w">'+(cur===0?'숫자 코드(1~4)에 적용한 값. ':'')+'계산은 되지만 해석할 수 없다. '+why+'</div></div>';}
+      else{out+='<div class="vl-stat off"><div class="n">'+s.name+'</div><div class="v">의미 없음</div><div class="w">'+why+'</div></div>';}
+    });
+    $('vl-stats').innerHTML=out;
+    var msg;
+    if(cur===0)msg='명목 변수 자료에서는 가장 자주 나온 범주(최빈값)만 요약으로 쓸 수 있다. 범주별 빈도는 '+NCAT.map(function(c,k){return c+' '+d.filter(function(v){return v===k+1;}).length;}).join(', ')+'이다.';
+    else if(cur===1)msg='서열 변수는 가운데 순위인 중앙값(자료 '+d.length+'개 중 가운데)까지 쓸 수 있다. 평균은 칸 사이 간격이 같다고 가정해야 해석된다(엄격한 기준에서는 해석할 수 없으며, 논문에서 평균을 보고하려면 등간 가정을 밝혀야 한다).';
+    else if(cur===2)msg='등간 변수는 평균까지 쓸 수 있다. 가장 이른 해와 늦은 해의 차이는 '+(Math.max.apply(null,d)-Math.min.apply(null,d))+'년이지만, 배수로는 말할 수 없다.';
+    else msg='비율 변수는 모든 값이 0보다 클 때 기하평균을 포함한 모든 통계량이 의미를 갖는다. 가장 큰 값은 가장 작은 값의 '+(Math.round(ratioOf(d)*10)/10)+'배다.';
+    $('vl-read').textContent=msg+' (가상 자료, 자료 '+(variant+1)+'번째 뽑기)';
+  }
+  function render(){
+    LV.forEach(function(L,i){var t=$('vl-tab'+i);t.setAttribute('aria-selected',i===cur?'true':'false');t.tabIndex=i===cur?0:-1;});
+    renderPanel();renderAbil();renderLab();
+  }
+  $('vl-redraw').addEventListener('click',function(){variant=(variant+1)%6;renderLab();});
+  $('vl-force').addEventListener('click',function(){force=!force;this.setAttribute('aria-pressed',force?'true':'false');renderLab();});
+
+  var done=0,right=0,answered=[];
+  var qh='';
+  QUIZ.forEach(function(q,i){
+    qh+='<div class="vl-q"><p class="vl-qt"><b>Q'+(i+1)+'.</b> '+q.q+'</p><div class="vl-opts" role="group" aria-label="Q'+(i+1)+' 보기">';
+    LV.forEach(function(L,j){qh+='<button type="button" class="vl-opt" data-q="'+i+'" data-o="'+j+'">'+L.name+'</button>';});
+    qh+='</div><p class="vl-why" id="vl-why'+i+'" role="status" aria-live="polite"></p></div>';
+  });
+  $('vl-quiz').innerHTML=qh;
+  $('vl-quiz').addEventListener('click',function(e){
+    var b=e.target.closest?e.target.closest('.vl-opt'):null;if(!b)return;
+    var qi=+b.getAttribute('data-q'),oi=+b.getAttribute('data-o');
+    if(answered[qi]!==undefined)return;
+    answered[qi]=oi;done++;
+    var ok=oi===QUIZ[qi].a;if(ok)right++;
+    var btns=$('vl-quiz').querySelectorAll('.vl-opt[data-q="'+qi+'"]');
+    Array.prototype.forEach.call(btns,function(x){
+      var o=+x.getAttribute('data-o');x.setAttribute('aria-disabled','true');
+      if(o===QUIZ[qi].a)x.classList.add('right');else if(o===oi)x.classList.add('wrong');
+    });
+    $('vl-why'+qi).textContent=(ok?'정답이다. ':'아쉽다. 정답은 '+LV[QUIZ[qi].a].name+' 변수다. ')+QUIZ[qi].why;
+    $('vl-score').textContent=done<QUIZ.length?done+'/'+QUIZ.length+'문항 응답, 지금까지 '+right+'개 정답.':'모두 응답했다. '+QUIZ.length+'문항 중 '+right+'개 정답이다. 문제의 보기는 설명용 가상 사례다.';
+  });
+  render();
+}
+
+var api={mk:mk,makeData:makeData,modeOf:modeOf,medianOf:medianOf,meanOf:meanOf,geoOf:geoOf,ratioOf:ratioOf,LV:LV,QUIZ:QUIZ};
+if(typeof window!=='undefined'){window.VL2=api;}
+if(typeof document!=='undefined'&&document.getElementById){
+  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init);else init();
+}
+})();
+</script>
 <script src="review-tool.js" defer></script>
 </body></html>
