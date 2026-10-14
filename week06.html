@@ -3,11 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>6주차 · 매개관계와 다차원 — 무엇을 거쳐 가는가 — 연구방법론 교재</title>
+<title>6주차 · 매개관계와 다차원: 무엇을 거쳐 가는가 | 연구방법론 교재</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Noto+Sans+KR:wght@300;400;500;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
-:root{--ink:#1B2635;--paper:#F5F4EF;--grid:#D8DFE6;--graph:#3D6B8E;--hl:#FFD447;--sub:#6B7683;--gold:#C7A008;--card:#FFF}
+:root{--ink:#1B2635;--paper:#F5F4EF;--grid:#D8DFE6;--graph:#3D6B8E;--hl:#FFD447;--sub:#5C6774;--gold:#C7A008;--card:#FFF;--neg:#A8402A;--orange:#C4501B;--cream:#FFFBE6;--pos-bg:#EEF3F7;--neg-bg:#FBEFEA;--muted:#9AAABB}
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
 body{font-family:'Noto Sans KR',sans-serif;color:var(--ink);background:var(--paper);
@@ -40,9 +40,9 @@ section.ch p b{color:var(--ink)}
 .note{border-left:4px solid var(--hl);background:rgba(255,212,71,.13);padding:16px 20px;margin:24px 0;font-size:15px}
 .note b{font-family:'Gowun Batang',serif}
 .vis{background:var(--card);border:2px solid var(--ink);padding:18px;margin:26px 0;box-shadow:6px 6px 0 rgba(27,38,53,.11)}
-.vis svg{width:100%;height:auto;display:block}
+.vis svg{width:100%;height:auto;display:block}.vis svg .axis-label{font-size:15px}
 .vis .cap{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--sub);margin-top:8px;text-align:right}
-.axis-label{font-family:'IBM Plex Mono',monospace;font-size:10px;fill:var(--sub)}
+.axis-label{font-family:'IBM Plex Mono',monospace;font-size:14px;fill:var(--sub)}
 table.terms{width:100%;border-collapse:collapse;margin:22px 0;background:var(--card);border:2px solid var(--ink);box-shadow:6px 6px 0 rgba(27,38,53,.11)}
 table.terms th{background:var(--ink);color:var(--card);font-family:'Gowun Batang',serif;font-size:14px;padding:11px 16px;text-align:left}
 table.terms td{padding:11px 16px;border-top:1px dashed var(--grid);font-size:14px;vertical-align:top}
@@ -65,6 +65,44 @@ table.terms td:first-child{font-family:'Gowun Batang',serif;font-weight:700;whit
 .pager a.next{text-align:right}
 .pager a.home{flex:0 0 100%;text-align:center;background:var(--paper)}
 footer{border-top:1px solid var(--grid);padding:24px 0;text-align:center;font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--sub)}
+.wv{background:var(--card);border:2px solid var(--ink);box-shadow:6px 6px 0 rgba(27,38,53,.11);padding:18px;margin:24px 0;line-height:1.7}
+.case .wv{box-shadow:none;background:var(--paper);margin:14px 0 18px;padding:14px}
+.wv .wv-tag{display:inline-block;font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.16em;background:var(--ink);color:var(--hl);padding:4px 12px;margin-bottom:10px;line-height:1.6}
+.wv .wv-h{font-family:'Gowun Batang',serif;font-weight:700;font-size:16px;margin-bottom:8px;line-height:1.5}
+.wv-grid{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);gap:18px;align-items:start}
+@media (max-width:760px){.wv-grid{grid-template-columns:minmax(0,1fr)}}
+.wv svg{width:100%;height:auto;display:block;background:transparent}
+.wv svg text{font-family:'Noto Sans KR',sans-serif}
+.wv-tabs{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:10px}
+.wv-btn{font-family:'Noto Sans KR',sans-serif;font-size:14px;min-height:44px;padding:8px 12px;border:2px solid var(--ink);background:var(--card);color:var(--ink);cursor:pointer;line-height:1.3}
+.wv-btn[aria-pressed="true"]{background:var(--hl);color:var(--ink);font-weight:700;box-shadow:3px 3px 0 rgba(27,38,53,.11)}
+.wv-btn:focus-visible,.wv input:focus-visible{outline:3px solid var(--graph);outline-offset:2px}
+.wv-lab{display:block;font-size:14px;margin:10px 0 0;color:var(--ink)}
+.wv input[type=range]{width:100%;min-height:44px;accent-color:var(--graph)}
+.wv-val{font-family:'IBM Plex Mono',monospace;font-size:13px}
+.wv-read{font-family:'IBM Plex Mono',monospace;font-size:12.5px;background:var(--cream);border:2px solid var(--ink);padding:10px 12px;margin-top:12px;line-height:1.75;overflow-wrap:anywhere}
+.wv-yes,.wv-no{margin-top:10px;font-size:14px;padding:8px 12px;border-left:4px solid;line-height:1.7}
+.wv-yes{border-color:var(--graph);background:var(--pos-bg)}
+.wv-no{border-color:var(--neg);background:var(--neg-bg)}
+.wv-leg{font-size:13px;color:var(--sub);margin-top:8px}
+.wv-fine{font-size:12.5px;color:var(--sub);margin-top:10px;line-height:1.7}
+.wv-tbl{width:100%;border-collapse:collapse;font-size:12.5px;margin-top:10px}
+.wv-tbl th,.wv-tbl td{border-top:1px dashed var(--grid);padding:4px 6px;text-align:left;font-weight:400}
+.wv-tbl th{font-family:'IBM Plex Mono',monospace;color:var(--sub);border-top:none}
+.wv-scroll{overflow-x:auto}
+.wv-out{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin-top:10px}
+.wv-out div{border:2px solid var(--ink);padding:6px 8px;font-size:13px;background:var(--card);line-height:1.5}
+.wv-out b{display:block;font-family:'IBM Plex Mono',monospace;font-size:17px;font-weight:500}
+.wv-verdict{font-weight:700;font-size:15px;margin-top:10px;padding:8px 12px;border:2px solid var(--ink);background:var(--hl)}
+@media (max-width:420px){.wv-out{grid-template-columns:minmax(0,1fr)}}
+@media (max-width:760px){.case .wv{padding:10px}}
+.wv-sw{display:inline-block;width:20px;height:0;border-top:3px solid;vertical-align:middle;margin-right:4px}
+.wv-model{font-family:'IBM Plex Mono',monospace;font-size:13px;border-left:4px solid var(--hl);background:var(--cream);padding:6px 10px;margin:0 0 10px;line-height:1.7;overflow-wrap:anywhere}
+.wv-tablist{display:flex;flex-wrap:wrap;gap:8px;margin:2px 0 12px}
+.wv-tab{flex:1 1 150px;min-height:44px;font-family:'Gowun Batang',serif;font-weight:700;font-size:15px;color:var(--ink);background:var(--card);border:2px solid var(--ink);cursor:pointer;padding:6px 10px;line-height:1.35}
+.wv-tab[aria-selected="true"]{background:var(--hl);box-shadow:4px 4px 0 rgba(27,38,53,.11)}
+.wv-tab:focus-visible{outline:3px solid var(--graph);outline-offset:2px}
+.wv-tbl td.unst{color:var(--sub);font-style:italic}
 </style>
 </head>
 <body>
@@ -72,29 +110,239 @@ footer{border-top:1px solid var(--grid);padding:24px 0;text-align:center;font-fa
   <div class="wrap">
     <div class="crumb"><a href="methods.html">← 강의 개요</a> / 제1부 · 데이터 해석 / 강의 교재</div>
     <span class="wk-badge">제6장 · 6주차</span>
-    <h1>매개관계와 다차원 — 무엇을 거쳐 가는가</h1>
-    <p class="lead">영향이 지나가는 길을 경로로 그린다. 국내 도시재생·CPTED 연구가 실제로 검증해 온 구조 — 환경 정비는 무질서 인식을 거쳐 두려움을 낮춘다 — 를 통해 매개를 배운다.</p>
+    <h1>매개관계와 다차원: 무엇을 거쳐 가는가</h1>
+    <p class="lead">영향이 지나가는 길을 경로로 그린다. 국내 도시재생·CPTED 연구가 보고해 온 구조(환경 정비는 무질서 인식을 거쳐 두려움을 낮춘다)를 통해 매개를 배운다.</p>
   </div>
 </header>
 <main>
-<section class="ch"><div class="wrap"><div class="sec-no">6.1</div><h2>매개효과 — '왜 효과가 있는가'에 답하다</h2><p>A가 B에 영향을 준다는 것을 알았다고 하자. 다음 질문은 이것이다. <b>그 힘은 어디를 지나가는가?</b> A의 효과가 제3의 변수 M을 거쳐 B에 도달할 때, M을 매개변수(mediator)라 한다. 조절변수가 관계의 세기를 바꾸는 '스위치'라면, 매개변수는 효과가 건너가는 '다리'다.</p><div class="vis"><svg viewBox="0 0 400 210" role="img" aria-label="매개 경로도">
+<section class="ch"><div class="wrap"><div class="sec-no">6.1</div><h2>매개효과: '왜 효과가 있는가'에 답하다</h2><p>A가 B에 영향을 준다는 것을 알았다고 하자. 다음 질문은 이것이다. <b>그 힘은 어디를 지나가는가?</b> A의 효과가 제3의 변수 M을 거쳐 B에 도달할 때, M을 매개변수(mediator)라 한다.</p><div class="note">조절변수가 관계의 세기를 바꾸는 '스위치'라면, 매개변수는 효과가 건너가는 '다리'다.</div><div class="vis"><svg viewBox="0 -10 400 220" role="img" aria-label="매개 경로도">
 <defs><marker id="arw" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
 <path d="M0,0 L9,4.5 L0,9 Z" fill="#1B2635"/></marker></defs>
-<rect x="18" y="86" width="102" height="44" fill="#FFF" stroke="#1B2635" stroke-width="2"/>
-<text x="69" y="113" text-anchor="middle" font-size="12" font-weight="500">환경 정비</text>
-<rect x="152" y="18" width="102" height="44" fill="#FFD447" stroke="#1B2635" stroke-width="2"/>
-<text x="203" y="45" text-anchor="middle" font-size="12" font-weight="500">무질서 인식 ↓</text>
-<rect x="284" y="86" width="102" height="44" fill="#FFF" stroke="#1B2635" stroke-width="2"/>
-<text x="335" y="113" text-anchor="middle" font-size="12" font-weight="500">범죄두려움 ↓</text>
-<line x1="122" y1="96" x2="150" y2="52" stroke="#1B2635" stroke-width="2.5" marker-end="url(#arw)"/>
-<line x1="256" y1="52" x2="284" y2="94" stroke="#1B2635" stroke-width="2.5" marker-end="url(#arw)"/>
-<line x1="122" y1="112" x2="280" y2="112" stroke="#9AAABB" stroke-width="2" stroke-dasharray="6 6" marker-end="url(#arw)"/>
+<rect x="8" y="86" width="116" height="44" fill="#FFF" stroke="#1B2635" stroke-width="2"/>
+<text x="66" y="113" text-anchor="middle" font-size="15" font-weight="500">환경 정비</text>
+<rect x="142" y="18" width="116" height="44" fill="#FFD447" stroke="#1B2635" stroke-width="2"/>
+<text x="200" y="45" text-anchor="middle" font-size="15" font-weight="500">무질서 인식 ↓</text>
+<rect x="276" y="86" width="116" height="44" fill="#FFF" stroke="#1B2635" stroke-width="2"/>
+<text x="334" y="113" text-anchor="middle" font-size="15" font-weight="500">범죄두려움 ↓</text>
+<line x1="126" y1="88" x2="140" y2="52" stroke="#1B2635" stroke-width="2.5" marker-end="url(#arw)"/>
+<line x1="260" y1="52" x2="280" y2="86" stroke="#1B2635" stroke-width="2.5" marker-end="url(#arw)"/>
+<line x1="126" y1="112" x2="272" y2="112" stroke="#9AAABB" stroke-width="2" stroke-dasharray="6 6" marker-end="url(#arw)"/>
 <text x="200" y="12" text-anchor="middle" class="axis-label">간접(매개) 경로</text>
 <text x="200" y="132" text-anchor="middle" class="axis-label">직접 경로</text>
-</svg><div class="cap">그림 6-1. 매개 경로도 — 국내 도시재생·CPTED 연구에서 실제 검증된 구조</div></div><p>매개를 찾는 일은 단순한 통계 기교가 아니라 <b>메커니즘의 발견</b>이다. 'CPTED가 두려움을 낮춘다'는 결과만으로는 왜 그런지 알 수 없고, 따라서 어떤 요소를 강화해야 할지도 알 수 없다. 그러나 '환경 정비가 무질서 인식을 낮추고, 낮아진 무질서 인식이 두려움을 줄인다'는 경로가 확인되면, 정책의 표적이 분명해진다 — 정비의 목표는 무질서의 신호를 지우는 것이다.</p></div></section><section class="ch"><div class="wrap"><div class="sec-no">6.2</div><h2>국내 연구에서 검증된 매개 구조</h2><div class="case"><span class="case-tag">국내 연구 사례</span><h4>도시재생 → 무질서 → 범죄두려움</h4><p>도시재생사업과 범죄예방의 관계를 다룬 한국경찰학회보 게재 연구는 도시재생 시범지역의 주민 282명을 설문하여 구조방정식모형과 Sobel 검정으로 매개효과를 분석하였다. 그 결과 1세대 CPTED(물리적 환경 개선)는 범죄두려움에 직접적으로는 유의미한 영향을 미치지 못했으나, <b>무질서 인식을 매개하여</b> 두려움에 영향을 미치는 것으로 나타났다.</p><p>이 결과가 흥미로운 이유는 직접 경로가 기각되었기 때문이다. 만약 이 연구가 매개변수 없이 CPTED와 두려움의 관계만 보았다면 '효과 없음'이라는 결론에 도달했을 것이다. 다리를 그려 넣는 순간, 보이지 않던 효과의 길이 드러난 것이다. 매개분석이 단순 회귀보다 깊은 이야기를 하는 이유가 여기에 있다.</p><p>대구 지역 주민 인식을 분석한 연구에서도 CPTED 실행전략 가운데 자연적 감시와 유지·관리가 범죄피해와 범죄두려움에 주요한 영향을 주는 요소로 확인되었는데, 이 역시 '주민의 인식'이라는 심리적 변수가 물리적 환경과 행동 사이에 놓인다는 같은 계열의 통찰이다.</p><div class="src">도시재생사업과 범죄예방: 도시재생사업과 CPTED, 무질서, 그리고 범죄두려움의 관계를 중심으로. <i>한국경찰학회보</i>. / 환경설계를 통한 범죄예방(CPTED)의 효과에 관한 연구: 대구주민의 주거환경 인식을 중심으로. <i>KCI 등재 학술지</i>. (서지사항은 KCI에서 제목으로 검색하여 확인하라 — 제2부의 원문 확인 원칙을 지금부터 적용한다.)</div></div><p>매개와 조절은 자주 혼동되므로 한 문장 구별법을 기억하라. <b>조절은 When — 어떤 조건에서 효과가 달라지는가. 매개는 How — 무엇을 거쳐 효과가 전달되는가.</b> '소득 수준에 따라 녹지의 효과가 다르다'는 조절이고, '녹지가 산책 빈도를 늘려 만족도를 높인다'는 매개다.</p></div></section><section class="ch"><div class="wrap"><div class="sec-no">6.3</div><h2>4차원 이상 — 분해해서 본다</h2><p>변수가 넷을 넘으면 한 장의 그림으로는 볼 수 없다. 전략은 분해다. 첫째, 모든 변수를 두 개씩 짝지은 <b>산점도 행렬</b>로 전체 지형을 훑는다. 둘째, 흥미로운 짝을 골라 세 번째 변수를 색으로 입혀 깊이 본다. 셋째, 그렇게 발견한 구조를 경로도로 종합한다.</p><p>요인분석, 군집분석, 구조방정식모형 같은 고급 기법들은 이 '분해해서 보기'를 수학적으로 자동화한 것이다. 원리를 이해하면, 소프트웨어를 직접 다루지 않아도 그 결과표를 읽고 비판할 수 있다 — 이 교재가 목표하는 수준이 바로 그것이다.</p><div class="note"><b>제1부를 마치며</b> — 2×2 표에서 경로도까지 왔다. 이제 여러분은 학술지 논문의 분석 결과 절을 열었을 때, 표와 그림에서 상관·영향·조절·매개의 구조를 스스로 읽어낼 수 있어야 한다. 제13장에서 이 읽기를 다시 '쓰기'로 뒤집을 것이다.</div></div></section><div class="wrap"><div class="summary"><div class="eyebrow">이 장의 요약</div><ul><li>매개변수는 효과가 건너가는 다리이며, 매개분석은 '왜 효과가 있는가'라는 메커니즘에 답한다.</li><li>국내 도시재생 연구는 CPTED의 직접 효과가 기각되고 무질서 인식을 매개한 간접 효과만 확인되는 구조를 보고했다 — 다리를 그려야 보이는 효과가 있다.</li><li>조절은 When, 매개는 How. 4차원 이상은 산점도 행렬로 훑고 색으로 깊이 보는 분해 전략을 쓴다.</li></ul></div></div><div class="wrap" style="padding-top:30px"><div class="refs"><h3>참고문헌</h3><ol><li>도시재생사업과 범죄예방: 도시재생사업과 CPTED, 무질서, 그리고 범죄두려움의 관계를 중심으로. <i>한국경찰학회보</i>.</li><li>환경설계를 통한 범죄예방(CPTED)의 효과에 관한 연구: 대구주민의 주거환경에 대한 인식이 범죄피해 및 범죄두려움에 미치는 영향을 중심으로. KCI 등재 학술지.</li><li>강석진·안은희·이경훈 (2005). 공동주택단지 외부공간을 중심으로 한 안전한 생활환경 조성방안에 관한 연구. <i>대한건축학회논문집</i>, 21(12).</li></ol><div class="find"><b>더 찾아보려면</b> — DBpia 또는 KCI에서 '매개효과 + 범죄두려움' 혹은 '구조방정식 + CPTED'로 검색하라. Sobel 검정, 부트스트래핑 등 매개 검증 절차의 실제 보고 형식을 확인할 수 있다.</div></div></div></main>
-<div class="wrap"><div class="pager"><a href="week05.html"><span class="dir">← 제5장</span><div class="ti">조절관계 — 조건에 따라 달라지는가</div></a><a class="next" href="week07.html"><span class="dir">제7장 →</span><div class="ti">키워드의 뿌리 찾기</div></a>
+</svg><div class="cap">그림 6-1. 매개 경로도: 국내 도시재생·CPTED 연구에서 보고된 구조(단면 설문 기반)</div></div><p>매개를 찾는 일은 단순한 통계 기교가 아니라 <b>메커니즘의 발견</b>이다. 'CPTED가 두려움을 낮춘다'는 결과만으로는 왜 그런지 알 수 없고, 따라서 어떤 요소를 강화해야 할지도 알 수 없다. 그러나 '환경 정비가 무질서 인식을 낮추고, 낮아진 무질서 인식이 두려움을 줄인다'는 경로가 확인되면, 정책의 표적이 분명해진다: 정비의 목표는 무질서의 신호를 지우는 것이다.</p><p>같은 구조를 다른 주제에 옮겨 보자. 아래 계산기는 그림 6-1처럼 상자 세 개(독립변수 X, 매개변수 M, 종속변수 Y)와 화살표 세 개(a, b, c′)로 이루어져 있다. 위쪽 탭에서 예시 1(도시의 공공성)과 예시 2(우주 달기지 건설)를 고른다. 두 예시는 같은 다이어그램과 슬라이더를 쓰며, 탭마다 슬라이더 값이 따로 기억된다. 슬라이더로 경로계수를 바꾸면 간접효과 a × b, 직접효과 c′, 총효과 c′ + a × b가 화면에서 계산되고, 두 경로의 크기를 비교해 어느 쪽이 주된지 알려 준다. 두 예시 모두 가상 예시다.</p><div class="wv" id="w6-med"></div><p>읽는 법: 간접효과는 두 화살표 계수의 곱이므로 둘 중 하나가 0에 가까우면 매개 경로 전체가 약해진다. 간접효과와 직접효과의 부호가 반대이면 총효과는 서로 상쇄되어 작아질 수 있다. 총효과 = c′ + a × b라는 분해는 선형 회귀이고 X와 M의 상호작용이 없을 때 성립한다. 반대로 이 계산기가 알려 주지 않는 것도 있다. 첫째, 계수가 통계적으로 유의한지는 알 수 없다. 간접효과는 부트스트랩 신뢰구간으로 확인하는 것이 권장되며, Sobel 검정은 보수적이어서 보조로 쓴다. 둘째, 매개 해석에는 <b>M과 Y를 함께 움직이는, 측정하지 않은 교란(제3의 요인)이 없다</b>는 가정이 필요하다. X를 무작위로 배정한 실험에서도 M은 배정되지 않으므로 b 경로는 관찰 자료로 추정한 것이고, 이 가정은 그대로 남는다. 셋째, X, M, Y를 한 시점에 함께 잰 단면 자료로는 X가 M보다, M이 Y보다 먼저라는 시간 순서를 확인할 수 없다. 이런 조건은 계산이 아니라 연구 설계에서 확보해야 한다.</p></div></section><section class="ch"><div class="wrap"><div class="sec-no">6.2</div><h2>국내 연구에서 보고된 매개 구조</h2><div class="case"><span class="case-tag">국내 연구 사례</span><h4>도시재생 → 무질서 → 범죄두려움</h4><p>도시재생사업과 범죄예방의 관계를 다룬 한국경찰학회보 게재 연구는 도시재생 시범지역의 주민 282명을 설문하여 구조방정식모형과 Sobel 검정으로 매개효과를 분석하였다. 그 결과 1세대 CPTED(물리적 환경 개선)는 범죄두려움에 직접적으로는 유의미한 영향을 미치지 못했으나, <b>무질서 인식을 매개하여</b> 두려움에 영향을 미치는 것으로 나타났다.</p><p>이 결과가 흥미로운 이유는 효과가 어느 길로 전달되는지가 드러났기 때문이다. 매개변수 없이 CPTED와 두려움의 관계만 보았다면 그 둘 사이의 전체 연관, 곧 총효과(위 계산기의 c′ + a × b)만 알았을 뿐, 그 효과가 무질서 인식을 거쳐 간다는 점은 알 수 없었을 것이다. 무질서 인식을 함께 넣자 직접 경로는 유의하지 않았다. 이것은 직접 경로에 대한 영가설을 기각하지 못했다는 뜻이며, 직접효과가 0이라는 증거는 아니다. 다리를 그려 넣는 순간 효과가 지나가는 길이 드러난 것이다. 매개분석이 단순 회귀보다 깊은 이야기를 하는 이유가 여기에 있다. 다만 이 연구는 한 시점의 주민 설문(단면 자료)이므로, 경로의 시간 순서와 인과는 설계로 확인된 것이 아니라 이론에 기대어 가정한 것이다.</p><p>대구 지역 주민 인식을 분석한 연구에서도 CPTED 실행전략 가운데 자연적 감시와 유지·관리가 범죄피해와 범죄두려움에 주요한 영향을 주는 요소로 확인되었는데, 이 역시 '주민의 인식'이라는 심리적 변수가 물리적 환경과 행동 사이에 놓인다는 같은 계열의 통찰이다.</p><div class="src">도시재생사업과 범죄예방: 도시재생사업과 CPTED, 무질서, 그리고 범죄두려움의 관계를 중심으로. <i>한국경찰학회보</i>. / 환경설계를 통한 범죄예방(CPTED)의 효과에 관한 연구: 대구주민의 주거환경 인식을 중심으로. <i>KCI 등재 학술지</i>. (서지사항은 KCI에서 제목으로 검색하여 확인하라: 제2부의 원문 확인 원칙을 지금부터 적용한다.)</div></div><p>매개와 조절은 자주 혼동되므로 한 문장 구별법을 기억하라. <b>조절은 When: 어떤 조건에서 효과가 달라지는가. 매개는 How: 무엇을 거쳐 효과가 전달되는가.</b> '소득 수준에 따라 녹지의 효과가 다르다'는 조절이고, '녹지가 산책 빈도를 늘려 만족도를 높인다'는 매개다.</p></div></section><section class="ch"><div class="wrap"><div class="sec-no">6.3</div><h2>4차원 이상: 분해해서 본다</h2><p>변수가 넷을 넘으면 한 장의 그림으로는 볼 수 없다. 전략은 분해다. 첫째, 모든 변수를 두 개씩 짝지은 <b>산점도 행렬</b>로 전체 지형을 훑는다. 둘째, 흥미로운 짝을 골라 세 번째 변수를 색으로 입혀 깊이 본다. 셋째, 그렇게 발견한 구조를 경로도로 종합한다.</p><p>차원을 더하는 일이 어떻게 표본을 쪼개는지 아래 그림에서 확인한다. 단계 버튼을 눌러 2차원에서 5차원까지 차원을 하나씩 더하고, 패널 수와 한 패널의 점 수, 칸별 기울기가 어떻게 바뀌는지 본다.</p><div class="wv" id="w6-dim"></div><p>읽는 법: 차원을 더할수록 보이는 정보는 늘지만, 한 칸에 남는 점은 줄어든다. 점이 적은 칸의 기울기는 표본이 조금만 달라져도 크게 변하므로 해석을 조심해야 한다. 이 그림은 가상 자료에서 칸이 얼마나 작아지는지 보여 줄 뿐, 실제 연구에서 필요한 표본 크기를 알려 주지는 않는다.</p><p>요인분석, 군집분석, 구조방정식모형 같은 고급 기법들은 이 '분해해서 보기'를 수학적으로 자동화한 것이다. 원리를 이해하면, 소프트웨어를 직접 다루지 않아도 그 결과표를 읽고 비판할 수 있다: 이 교재가 목표하는 수준이 바로 그것이다.</p><div class="note"><b>제1부를 마치며</b>: 2×2 표에서 경로도까지 왔다. 이제 여러분은 학술지 논문의 분석 결과 절을 열었을 때, 표와 그림에서 상관·영향·조절·매개의 구조를 스스로 읽어낼 수 있어야 한다. 제13장에서 이 읽기를 다시 '쓰기'로 뒤집을 것이다.</div></div></section><div class="wrap"><div class="summary"><div class="eyebrow">이 장의 요약</div><ul><li>매개변수는 효과가 건너가는 다리이며, 매개분석은 '왜 효과가 있는가'라는 메커니즘에 답한다.</li><li>국내 도시재생 연구는 무질서 인식을 함께 넣으면 CPTED의 직접 효과는 유의하지 않고(직접효과가 0이라는 증거는 아니다) 무질서 인식을 거친 간접 효과가 유의한 구조를 보고했다: 다리를 그려야 효과가 지나가는 길이 보인다.</li><li>조절은 When, 매개는 How. 4차원 이상은 산점도 행렬로 훑고 색으로 깊이 보는 분해 전략을 쓴다.</li></ul></div></div><div class="wrap" style="padding-top:30px"><div class="refs"><h3>참고문헌</h3><ol><li>도시재생사업과 범죄예방: 도시재생사업과 CPTED, 무질서, 그리고 범죄두려움의 관계를 중심으로. <i>한국경찰학회보</i>.</li><li>환경설계를 통한 범죄예방(CPTED)의 효과에 관한 연구: 대구주민의 주거환경에 대한 인식이 범죄피해 및 범죄두려움에 미치는 영향을 중심으로. KCI 등재 학술지.</li><li>강석진·안은희·이경훈 (2005). 공동주택단지 외부공간을 중심으로 한 안전한 생활환경 조성방안에 관한 연구. <i>대한건축학회논문집</i>, 21(12).</li></ol><div class="find"><b>더 찾아보려면</b>: DBpia 또는 KCI에서 '매개효과 + 범죄두려움' 혹은 '구조방정식 + CPTED'로 검색하라. 부트스트랩 신뢰구간(권장), Sobel 검정(보수적) 등 매개 검증 절차의 실제 보고 형식을 확인할 수 있다.</div></div></div></main>
+<div class="wrap"><div class="pager"><a href="week05.html"><span class="dir">← 제5장</span><div class="ti">조절관계: 조건에 따라 달라지는가</div></a><a class="next" href="week07.html"><span class="dir">제7장 →</span><div class="ti">키워드의 뿌리 찾기</div></a>
 <a class="home" href="methods.html"><span class="dir">INDEX</span><div class="ti">강의 개요로 돌아가기</div></a>
 </div></div>
 <footer>연구방법론 강의 교재 · 제6장 · 본문 예시의 수치는 교육용 가상 데이터이며, 인용 논문의 결과는 해당 원문을 따릅니다</footer>
+<script>
+(function(){
+'use strict';
+function mk(seed){var s=seed;return function(){s=(s*16807)%2147483647;return s/2147483647}}
+function el(id){return document.getElementById(id)}
+function f2(v){var s=v.toFixed(2);return s==='-0.00'?'0.00':(v>0?'+'+s:s)}
+function f2u(v){var s=v.toFixed(2);return s==='-0.00'?'0.00':s}
+function r6(v){return Math.round(v*1e6)/1e6}
+/* 색은 페이지의 CSS 변수에서 읽는다 */
+var CS=getComputedStyle(document.documentElement);
+function cv(n,f){var v=CS.getPropertyValue(n);return (v&&v.trim())||f}
+var INK=cv('--ink','#1B2635'),SUB=cv('--sub','#5C6774'),GRAPH=cv('--graph','#3D6B8E'),ORG=cv('--orange','#C4501B'),CARD=cv('--card','#FFF'),HL=cv('--hl','#FFD447'),MUTED=cv('--muted','#9AAABB');
+/* SVG 글자 크기: 화면에 렌더되는 크기가 10.5px 이상이 되도록 viewBox 단위로 키운다 */
+function fsz(svg,vbw,base){var w=svg.getBoundingClientRect().width;if(!w)return base;return Math.max(base,Math.ceil(10.5*vbw/w*10)/10)}
+function onResize(fn){var t;window.addEventListener('resize',function(){clearTimeout(t);t=setTimeout(fn,120)})}
+/* ---------- 순수 계산 함수 ---------- */
+/* 판정은 크기 비교만 한다(표준화 계수 가정, 기준 0.05는 임의). '완전/부분 매개' 이름은 쓰지 않는다. */
+function med(a,b,c){
+  var ind=r6(a*b),dir=r6(c),tot=r6(c+a*b),ai=Math.abs(ind),ci=Math.abs(dir),E=1e-9,T=0.05,kind,v;
+  var opp=(ai>=T-E&&ci>=T-E&&ind*dir<0);
+  if(ai<T-E&&ci<T-E){kind='none';v='두 경로 모두 0에 가까움 (|a × b|와 |c′| 모두 0.05 미만)'}
+  else if(opp){kind='cancel';v='상쇄: 간접효과와 직접효과의 부호가 반대여서 총효과의 크기가 두 경로 중 큰 쪽('+(ai>=ci?'간접':'직접')+')보다 작다'}
+  else if(Math.abs(ai-ci)<T-E){kind='similar';v='간접효과와 직접효과의 크기가 비슷함'}
+  else if(ai>ci){kind='ind';v='간접효과(X → M → Y)가 주된 경로'+(ci<T-E?' (직접효과는 거의 0: |c′| < 0.05)':'')}
+  else{kind='dir';v='직접효과(X → Y)가 주된 경로'+(ai<T-E?' (간접효과는 거의 0: |a × b| < 0.05)':'')}
+  return {ind:ind,dir:dir,tot:tot,kind:kind,verdict:v,opposite:opp};
+}
+function slope(arr){
+  var n=arr.length;if(n<4)return null;
+  var mx=0,my=0,i;
+  for(i=0;i<n;i++){mx+=arr[i].x;my+=arr[i].y}
+  mx/=n;my/=n;
+  var sxy=0,sxx=0;
+  for(i=0;i<n;i++){sxy+=(arr[i].x-mx)*(arr[i].y-my);sxx+=(arr[i].x-mx)*(arr[i].x-mx)}
+  if(sxx<=0)return null;
+  var b=sxy/sxx;return {b:b,a:my-b*mx,n:n,unstable:n<10};
+}
+window.W6Calc={med:med,slope:slope};
+
+/* ===== 위젯 A: 매개 경로 다이어그램 (6.1), 예시 두 개를 탭으로 ===== */
+(function(){
+  var root=el('w6-med');if(!root)return;
+  var EX=[
+    {tab:'예시 1. 도시의 공공성',title:'예시 1. 도시의 공공성: 공공공간 접근성이 이용·참여 경험을 거쳐 공공성 인식에 이른다',
+     x:['공공공간','접근성'],m:['주민의 이용·','참여 경험'],y:['공공성','인식'],init:[0.6,0.5,0.1],
+     alt:'공공공간 접근성, 주민의 이용·참여 경험, 공공성 인식을 잇는 매개 경로도',
+     fine:'이 예시는 개념 설명용 가상 예시이며 실제 연구 결과가 아니다. 계수는 모두 임의의 값이다.'},
+    {tab:'예시 2. 달기지 건설',title:'예시 2. 달기지 건설: 거주모듈 설계 요소가 스트레스 수준을 거쳐 임무 수행 만족도에 이른다',
+     x:['거주모듈','설계 요소','(공용공간 비율)'],m:['거주자의','스트레스 수준'],y:['임무 수행','만족도'],init:[-0.5,-0.7,0.15],
+     alt:'거주모듈 설계 요소, 거주자의 스트레스 수준, 임무 수행 만족도를 잇는 매개 경로도',
+     fine:'이 예시는 개념 설명용 가상 예시이며 실제 연구 결과가 아니다. 계수는 모두 임의의 값이고, 공용공간이 스트레스를 줄이고 스트레스가 만족도를 낮춘다는 방향도 설명을 위한 가정이다.'}
+  ];
+  var vals=EX.map(function(e){return e.init.slice()}),cur=0,p='w6m-';
+  var h='<span class="wv-tag">개념 설명용 가상 예시이며 실제 연구 결과가 아님</span>'+
+    '<div class="wv-tablist" role="tablist" aria-label="매개 예시 선택">';
+  EX.forEach(function(e,i){h+='<button type="button" role="tab" class="wv-tab" id="'+p+'t'+i+'" aria-controls="'+p+'panel" aria-selected="'+(i===0)+'" tabindex="'+(i===0?0:-1)+'">'+e.tab+'</button>'});
+  h+='</div><div id="'+p+'panel" role="tabpanel" aria-labelledby="'+p+'t0"><div class="wv-h" id="'+p+'h"></div>'+
+    '<div class="wv-grid"><div><svg id="'+p+'svg" viewBox="0 0 400 200" role="img" aria-label=""></svg>'+
+    '<div class="wv-leg">간접 경로: X → M → Y, 직접 경로: X → Y. 화살표 굵기는 계수의 절댓값에 비례하고, 파랑은 양(+), 주황은 음(−)의 부호다.</div></div><div>';
+  [['a','a: X → M'],['b','b: M → Y'],['c','c′: X → Y (직접)']].forEach(function(s){
+    h+='<label class="wv-lab" for="'+p+s[0]+'">'+s[1]+' 경로계수: <span class="wv-val" id="'+p+s[0]+'v"></span></label><input type="range" id="'+p+s[0]+'" min="-1" max="1" step="0.05" value="0">';
+  });
+  h+='</div></div><div class="wv-out"><div>간접효과 a × b<b id="'+p+'ind"></b></div><div>직접효과 c′<b id="'+p+'dir"></b></div><div>총효과 c′ + a × b<b id="'+p+'tot"></b></div></div>'+
+    '<div class="wv-verdict" id="'+p+'ver" role="status" aria-live="polite"></div>'+
+    '<div class="wv-fine"><span id="'+p+'fine"></span> 슬라이더의 계수는 표준화 계수로 가정했고, 판정에 쓴 0.05는 이 가정 아래의 임의 기준이다. 실제 논문에서는 \'완전 매개\', \'부분 매개\'라는 이름을 붙이기보다 간접효과 a × b의 크기와 부트스트랩 신뢰구간을 보고하는 것이 권장된다. 매개를 주장하려면 X가 M보다 먼저, M이 Y보다 먼저 일어났다는 시간 순서와 이를 뒷받침하는 연구 설계(종단 자료, 실험 등)가 필요하다.</div></div>';
+  root.innerHTML=h;
+  var svg=el(p+'svg'),tabs=[el(p+'t0'),el(p+'t1')],VBW=400,BW=128,NL=3;
+  function arrow(x1,y1,x2,y2,v){
+    var w=1+7*Math.abs(v),col=v<0?ORG:GRAPH,dx=x2-x1,dy=y2-y1,L=Math.sqrt(dx*dx+dy*dy),ux=dx/L,uy=dy/L;
+    var hl=10+w,hw=4+w*0.9,bx=x2-ux*hl,by=y2-uy*hl;
+    return '<line x1="'+x1.toFixed(1)+'" y1="'+y1.toFixed(1)+'" x2="'+bx.toFixed(1)+'" y2="'+by.toFixed(1)+'" stroke="'+col+'" stroke-width="'+w.toFixed(2)+'"/>'+
+      '<polygon points="'+x2.toFixed(1)+','+y2.toFixed(1)+' '+(bx-uy*hw).toFixed(1)+','+(by+ux*hw).toFixed(1)+' '+(bx+uy*hw).toFixed(1)+','+(by-ux*hw).toFixed(1)+'" fill="'+col+'"/>';
+  }
+  function draw(){
+    var e=EX[cur],F=fsz(svg,VBW,12),LH=F*1.25,BH=Math.round(8+LH*(1+NL)+2),gap=Math.round(F*2.2+16);
+    var Mb={x:136,y:4},Xb={x:4,y:4+BH+gap},Yb={x:268,y:4+BH+gap},H=Yb.y+BH+6;
+    svg.setAttribute('viewBox','0 0 '+VBW+' '+H);
+    function box(b,tag,lines,fill){
+      var tagY=b.y+6+F*0.95,top=tagY+4,area=b.y+BH-4-top,y0=top+(area-lines.length*LH)/2+F*0.95;
+      var o='<rect x="'+b.x+'" y="'+b.y+'" width="'+BW+'" height="'+BH+'" fill="'+fill+'" stroke="'+INK+'" stroke-width="2"/>'+
+        '<text x="'+(b.x+BW/2)+'" y="'+tagY.toFixed(1)+'" text-anchor="middle" font-size="'+F+'" fill="'+SUB+'">'+tag+'</text>';
+      lines.forEach(function(l,i){o+='<text x="'+(b.x+BW/2)+'" y="'+(y0+i*LH).toFixed(1)+'" text-anchor="middle" font-size="'+F+'" font-weight="500" fill="'+INK+'">'+l+'</text>'});
+      return o;
+    }
+    var v=vals[cur],a=v[0],b=v[1],c=v[2],r=med(a,b,c);
+    var midGap=Mb.y+BH+gap/2,cy=Xb.y+BH/2;
+    var o=arrow(Xb.x+BW*0.72,Xb.y-2,Mb.x+BW*0.25,Mb.y+BH+2,a)+arrow(Mb.x+BW*0.75,Mb.y+BH+2,Yb.x+BW*0.28,Yb.y-2,b)+arrow(Xb.x+BW+2,cy,Yb.x-2,cy,c);
+    o+=box(Xb,'독립변수 X',e.x,CARD)+box(Mb,'매개변수 M',e.m,HL)+box(Yb,'종속변수 Y',e.y,CARD);
+    o+='<text x="4" y="'+(midGap+F*0.35).toFixed(1)+'" font-size="'+F+'" font-weight="700" fill="'+INK+'">a = '+f2(a)+'</text>';
+    o+='<text x="396" y="'+(midGap+F*0.35).toFixed(1)+'" text-anchor="end" font-size="'+F+'" font-weight="700" fill="'+INK+'">b = '+f2(b)+'</text>';
+    o+='<text x="200" y="'+(cy-6-(1+7*Math.abs(c))/2).toFixed(1)+'" text-anchor="middle" font-size="'+F+'" font-weight="700" fill="'+INK+'">c′ = '+f2(c)+'</text>';
+    svg.innerHTML=o;
+    svg.setAttribute('aria-label',e.alt);
+    el(p+'h').textContent=e.title;
+    el(p+'fine').textContent=e.fine;
+    ['a','b','c'].forEach(function(k,i){el(p+k).value=v[i];el(p+k+'v').textContent=f2(v[i])});
+    el(p+'ind').textContent=f2u(r.ind);el(p+'dir').textContent=f2u(r.dir);el(p+'tot').textContent=f2u(r.tot);
+    el(p+'ver').textContent='판정(크기 비교): '+r.verdict;
+  }
+  function select(i,focus){
+    cur=i;
+    tabs.forEach(function(t,j){t.setAttribute('aria-selected',j===i?'true':'false');t.tabIndex=(j===i?0:-1)});
+    el(p+'panel').setAttribute('aria-labelledby',p+'t'+i);
+    if(focus)tabs[i].focus();
+    draw();
+  }
+  tabs.forEach(function(t,i){
+    t.addEventListener('click',function(){select(i,false)});
+    t.addEventListener('keydown',function(ev){
+      var n=tabs.length,k=ev.key,j=null;
+      if(k==='ArrowRight'||k==='ArrowDown')j=(i+1)%n;
+      else if(k==='ArrowLeft'||k==='ArrowUp')j=(i-1+n)%n;
+      else if(k==='Home')j=0;
+      else if(k==='End')j=n-1;
+      if(j!==null){ev.preventDefault();select(j,true)}
+    });
+  });
+  ['a','b','c'].forEach(function(k,i){el(p+k).addEventListener('input',function(){vals[cur][i]=parseFloat(this.value);draw()})});
+  onResize(draw);
+  draw();
+})();
+
+/* ===== 위젯 B: 4차원 이상, 분해해서 보기 (6.3) ===== */
+(function(){
+  var root=el('w6-dim');if(!root)return;
+  var rnd=mk(7788),N=150,pts=[],i;
+  for(i=0;i<N;i++){
+    var x=rnd()*10,us=rnd(),uz=rnd(),age=rnd()*40;
+    var g=Math.sqrt(-2*Math.log(Math.max(rnd(),1e-9)))*Math.cos(2*Math.PI*rnd());
+    var sta=us<0.3?1:0,zone=uz<0.6?0:(uz<0.75?1:2);
+    pts.push({x:x,y:8+(sta?2.4:1.6)*x+zone*2+3*g,sta:sta,zone:zone,age:age,old:age>=20?1:0});
+  }
+  var ymin=1e9,ymax=-1e9;
+  pts.forEach(function(p){ymin=Math.min(ymin,p.y);ymax=Math.max(ymax,p.y)});
+  ymin=Math.floor(ymin-1);ymax=Math.ceil(ymax+1);
+  var ZN=['주거','상업','혼합'],AN=['신축','구축'],CN=['비역세권','역세권'],CC=[GRAPH,ORG];
+  var stage=1;
+  var labs=['2차원: 기본','3차원: 색 추가','4차원: 행 패널 추가','5차원: 열 패널 추가'];
+  var h='<span class="wv-tag">설명용 가상 자료 (시드 고정, 실제 자료 아님)</span><div class="wv-h">차원을 하나씩 더하면 한 칸의 점은 얼마나 줄어드는가</div><div class="wv-tabs" role="group" aria-label="차원 단계">';
+  labs.forEach(function(l,k){h+='<button type="button" class="wv-btn" data-st="'+(k+1)+'" aria-pressed="false">'+l+'</button>'});
+  h+='</div><div class="wv-grid"><div><svg id="w6d-svg" viewBox="0 0 420 330" role="img" aria-label=""></svg><div class="wv-leg" id="w6d-leg"></div></div><div>'+
+    '<div class="wv-out" id="w6d-out"></div><div class="wv-read" id="w6d-read" role="status" aria-live="polite"></div></div></div>'+
+    '<div class="wv-scroll"><table class="wv-tbl" id="w6d-tbl"></table></div>'+
+    '<div class="wv-fine">x는 전용면적, y는 거래가격으로 가정한 가상 변수다. 색은 역세권 여부, 행 패널은 용도지역 유형(주거·상업·혼합), 열 패널은 건물 연식을 20년 기준으로 나눈 신축·구축이다. 기울기는 각 칸의 점으로 단순 회귀선을 직접 계산한 값이다. 점이 4개 미만이면 계산하지 않고, 4~9개이면 값이 매우 불안정하므로 표에 \'(불안정)\'으로, 그림에 흐린 점선으로 표시한다.</div>';
+  root.innerHTML=h;
+  var svg=el('w6d-svg');
+  function panelIdx(p){return stage<3?0:(stage===3?p.zone:p.zone*2+p.old)}
+  function panelTitle(k){return stage<3?'전체':(stage===3?ZN[k]:ZN[Math.floor(k/2)]+'·'+AN[k%2])}
+  function draw(){
+    var F=fsz(svg,420,13);
+    var P=stage<3?1:(stage===3?3:6),cols=stage>=4?2:1,rows=P/cols;
+    var W=404,H=314,gap=6,cw=(W-gap*(cols-1))/cols,ch=(H-gap*(rows-1))/rows;
+    var panels=[],k;
+    for(k=0;k<P;k++)panels.push([[],[]]);
+    pts.forEach(function(p){panels[panelIdx(p)][stage>=2?p.sta:0].push(p)});
+    var o='',tbl='',low=0,uns=0,mn=1e9,sizes=[];
+    var clip='<defs>';
+    var head=stage>=2?'<tr><th>칸</th><th>점 수</th><th>비역세권 기울기</th><th>역세권 기울기</th></tr>':'<tr><th>칸</th><th>점 수</th><th>기울기</th></tr>';
+    for(k=0;k<P;k++){
+      var c={x0:6+(k%cols)*(cw+gap),y0:6+Math.floor(k/cols)*(ch+gap),w:cw,h:ch};
+      var np=panels[k][0].length+panels[k][1].length;sizes.push(np);mn=Math.min(mn,np);
+      clip+='<clipPath id="w6d-c'+k+'"><rect x="'+c.x0+'" y="'+c.y0+'" width="'+c.w+'" height="'+c.h+'"/></clipPath>';
+      o+='<rect x="'+c.x0+'" y="'+c.y0+'" width="'+c.w+'" height="'+c.h+'" fill="'+CARD+'" stroke="'+INK+'" stroke-width="1.5"/>';
+      o+='<text x="'+(c.x0+4)+'" y="'+(c.y0+F+1).toFixed(1)+'" font-size="'+F+'" fill="'+INK+'">'+panelTitle(k)+' (n='+np+')</text>';
+      var cells=stage>=2?[0,1]:[0],row='<tr><td>'+panelTitle(k)+'</td><td>'+np+'</td>';
+      cells.forEach(function(g){
+        var arr=panels[k][g],col=stage>=2?CC[g]:GRAPH;
+        arr.forEach(function(p){
+          var cx=c.x0+4+p.x/10*(c.w-8),cy=c.y0+c.h-4-(p.y-ymin)/(ymax-ymin)*(c.h-8);
+          o+=(stage>=2&&g===1)?'<rect x="'+(cx-2.4).toFixed(1)+'" y="'+(cy-2.4).toFixed(1)+'" width="4.8" height="4.8" fill="'+col+'" fill-opacity=".8"/>':'<circle cx="'+cx.toFixed(1)+'" cy="'+cy.toFixed(1)+'" r="2.5" fill="'+col+'" fill-opacity=".8"/>';
+        });
+        var s=slope(arr);
+        if(stage>=2&&arr.length<4)low++;
+        if(s&&s.unstable)uns++;
+        if(s){
+          var xs=arr.map(function(p){return p.x}),x0=Math.min.apply(null,xs),x1=Math.max.apply(null,xs);
+          var X=function(v){return c.x0+4+v/10*(c.w-8)},Y=function(v){return c.y0+c.h-4-(v-ymin)/(ymax-ymin)*(c.h-8)};
+          o+='<line clip-path="url(#w6d-c'+k+')" x1="'+X(x0).toFixed(1)+'" y1="'+Y(s.a+s.b*x0).toFixed(1)+'" x2="'+X(x1).toFixed(1)+'" y2="'+Y(s.a+s.b*x1).toFixed(1)+'" stroke="'+(stage>=2?col:INK)+'" stroke-width="2.5"'+(s.unstable?' stroke-dasharray="5 4" stroke-opacity=".55"':'')+'/>';
+        }
+        row+=(s&&s.unstable?'<td class="unst">':'<td>')+(s?s.b.toFixed(2)+(s.unstable?' (불안정)':''):'표본 부족')+(stage>=2?' (n='+arr.length+')':'')+'</td>';
+      });
+      tbl+=row+'</tr>';
+    }
+    svg.innerHTML=clip+'</defs>'+o;
+    el('w6d-tbl').innerHTML=head+tbl;
+    svg.setAttribute('aria-label',labs[stage-1]+': 패널 '+P+'개, 점 '+N+'개');
+    el('w6d-leg').innerHTML=stage>=2?'<span style="color:'+CC[0]+'">●</span> 비역세권 (파랑 원) / <span style="color:'+CC[1]+'">■</span> 역세권 (주황 사각). 선은 칸 안의 회귀선, 흐린 점선은 점이 4~9개인 불안정한 선.':'선은 전체 점의 회귀선.';
+    el('w6d-out').innerHTML='<div>패널 수<b>'+P+'</b></div><div>전체 점 수<b>'+N+'</b></div><div>한 패널의 점 수<b>'+(N/P).toFixed(0)+'</b><span style="font-size:12px">평균, 최소 '+mn+'</span></div>';
+    var msg='';
+    if(stage===1)msg='2차원: 점 '+N+'개가 한 칸에 모여 있어 기울기 하나로 요약된다. 표본은 넉넉하다.';
+    else if(stage===2)msg='3차원: 색으로 역세권 여부를 더했다. 칸은 그대로 1개지만 색별 점은 각각 '+panels[0][0].length+'개, '+panels[0][1].length+'개로 나뉜다.';
+    else if(stage===3)msg='4차원: 용도지역으로 행을 나눠 패널이 3개가 됐다. 한 패널은 평균 '+(N/P).toFixed(0)+'개, 가장 적은 패널은 '+mn+'개다. 색별로는 더 적다.';
+    else msg='5차원: 열 패널(연식)까지 더해 패널이 6개가 됐다. 한 패널은 평균 '+(N/P).toFixed(0)+'개, 가장 적은 패널은 '+mn+'개다.';
+    if(stage>=2){
+      msg+='\n점이 4개 미만이어서 기울기를 계산하지 못한 칸: '+low+'개. 점이 4~9개여서 기울기가 불안정한 칸: '+uns+'개.';
+      msg+=(low+uns)>0?'\n쪼갤수록 한 칸의 표본이 줄어 같은 자료도 기울기가 들쭉날쭉해지고 해석이 불안정해진다. 표본 부족 칸과 불안정 칸의 선은 읽지 말아야 한다.':'\n아직 모든 칸에서 기울기를 구할 수 있지만 칸마다 점은 줄고 있다. 다음 단계를 눌러 변화를 확인해 보라.';
+    }else msg+='\n차원을 더할수록 무엇이 줄어드는지 다음 단계를 눌러 확인해 보라.';
+    el('w6d-read').textContent=msg;el('w6d-read').style.whiteSpace='pre-line';
+    Array.prototype.forEach.call(root.querySelectorAll('[data-st]'),function(b){b.setAttribute('aria-pressed',parseInt(b.getAttribute('data-st'),10)===stage?'true':'false')});
+  }
+  root.addEventListener('click',function(e){
+    var b=e.target.closest?e.target.closest('button'):null;
+    if(!b||!b.hasAttribute('data-st'))return;
+    stage=parseInt(b.getAttribute('data-st'),10);draw();
+  });
+  onResize(draw);
+  draw();
+})();
+})();
+</script>
 <script src="review-tool.js" defer></script>
 </body></html>

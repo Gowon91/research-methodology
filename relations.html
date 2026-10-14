@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>상관, 영향, 인과 — 무엇을 말할 수 있나</title>
+<title>상관, 영향, 인과: 무엇을 말할 수 있나</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Noto+Sans+KR:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
@@ -62,7 +62,7 @@ table{width:100%;border-collapse:collapse;background:var(--card);border:2px soli
 th,td{border:1px solid var(--grid);padding:10px 14px;text-align:left;vertical-align:top;font-size:15px}
 thead th{background:var(--ink);color:#fff;font-weight:500}
 tbody th{background:#FFFBE6;font-weight:500}
-.tscroll{overflow-x:auto}
+.tscroll{overflow-x:auto}.tscroll:focus-visible{outline:3px solid var(--graph);outline-offset:2px}
 .ok{color:var(--graph);font-weight:700}
 .bad{color:var(--warn);font-weight:700}
 .note{margin-top:22px;background:#FFFBE6;border:2px solid var(--ink);border-left-width:8px;padding:16px 18px;font-size:15px}
@@ -77,10 +77,10 @@ footer{border-top:2px solid var(--ink);padding:18px 0;font-family:'IBM Plex Mono
 <nav class="topbar" aria-label="이동"><div class="wrap"><a href="index.html">← 첫 화면</a><a href="methods.html#corr-vs-effect">← 연구방법론 홈</a></div></nav>
 
 <header class="hero"><div class="wrap">
-<div class="eyebrow">PART 1 — 보충 · 데이터 해석</div>
+<div class="eyebrow">PART 1: 보충 · 데이터 해석</div>
 <h1>산점도의 <span class="mark">방향과 강도</span>,<br>인과라고 말해도 될까</h1>
 <p class="lead">점이 오른쪽 위로 흐르고 선에 바짝 모여 있어도, 그것만으로 “원인과 결과”를 말할 수는 없습니다. 무엇을 말할 수 있고 무엇을 말할 수 없는지 그래프로 하나씩 확인합니다.</p>
-<div class="quote">“x가 높을수록 y가 커진다” — 이 문장은 어떤 관계를 말하는가?</div>
+<div class="quote">“x가 높을수록 y가 커진다”: 이 문장은 어떤 관계를 말하는가?</div>
 </div></header>
 
 <main>
@@ -136,6 +136,19 @@ footer{border-top:2px solid var(--ink);padding:18px 0;font-family:'IBM Plex Mono
     <span class="badge">설계가 있어야 쓸 수 있음</span>
   </article>
 </div>
+
+<div class="note" id="same-word"><b>논문에서는 같은 단어, 다른 주장</b>
+<p style="margin-top:8px">한국어 논문의 “A는 B에 영향을 미치는 것으로 나타났다”는 대개 회귀계수가 유의하다는 결과 서술(STEP 2)입니다. 그런데 독자는 이를 인과 명제(STEP 3)로 읽기 쉽습니다. 단어는 같아도 필요한 근거가 다른 주장입니다. 아래 예시는 개념 설명용 가상 예시(실제 문헌 아님)입니다.</p>
+<div class="tscroll" style="margin-top:12px" tabindex="0" role="region" aria-label="회귀 영향 문장과 인과 문장 비교표 (가로로 스크롤할 수 있음)"><table>
+<caption class="tagline" style="text-align:left;padding-bottom:8px">회귀 영향 문장과 인과 문장의 비교 (가상 예시)</caption>
+<thead><tr><th scope="col">문장 예</th><th scope="col">근거</th><th scope="col">독자가 오해하기 쉬운 점</th></tr></thead>
+<tbody>
+<tr><td>“녹지율이 높을수록 지가가 높게 나타났다.”</td><td>통계적으로 유의한 양(+)의 회귀계수가 추정되었습니다.</td><td>녹지율을 높이면 지가가 오른다는 뜻으로 읽힙니다.</td></tr>
+<tr><td>“역세권 여부를 통제한 뒤에도 연관이 유지되었다.”</td><td>교란 일부 통제</td><td>인과가 증명되었다고 읽힙니다.</td></tr>
+<tr><td>“정책 시행 후 시행 지역의 지가가 비교 지역보다 더 올랐다(차이의 차이).”</td><td>준실험 설계와 평행 추세 가정</td><td>준실험이면 가정 없이도 인과가 확정된다고 읽힙니다.</td></tr>
+</tbody></table></div>
+<p style="margin-top:12px"><b>권장:</b> 설계가 없으면 “영향을 미쳤다” 대신 “관련이 있었다”, “높게 나타났다”, “예측했다”로 씁니다. 설계가 있으면 가정과 한계를 함께 적습니다.</p>
+<p style="margin-top:8px"><a href="week03.html">3주차에서 인과 표현 조건 더 보기 →</a></p></div>
 </div></section>
 
 <!-- 3. 두 가지 읽기 -->
